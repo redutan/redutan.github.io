@@ -4,6 +4,9 @@ permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
+markdown: redcarpet
+redcarpet:
+    extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"]
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
@@ -11,11 +14,11 @@ highlighter: pygments
 title : "MJ's Developages"
 tagline: Site Tagline
 author :
-  name : Myeongju Jung
+  name : MJ
   email : redutan@gmail.com
   github : redutan
-  twitter :
-  feedburner :
+  twitter : ""
+  feedburner : ""
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
@@ -83,13 +86,17 @@ JB :
     provider : disqus
     disqus :
       short_name : redutan
+    livefyre :
+      site_id : 123
+    intensedebate :
+      account : 123abc
     facebook :
       appid : 123
       num_posts: 5
       width: 580
       colorscheme: light
     duoshuo :
-      short_name : redutan
+      short_name : jekyllbootstrap
 
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
