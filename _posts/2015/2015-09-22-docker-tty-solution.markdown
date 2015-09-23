@@ -2,14 +2,13 @@
 layout: post
 title: "Docker windows tty 오류 솔루션 - 'cannot enable tty mode on non tty input' "
 date: '2015-09-22 11:23'
-categories: vm docker
-tags: [error, windows]
+tags: [docker, error]
 ---
 
 [Docker 윈도우즈 튜토리얼][DockerWindowsTutorial]을 윈도우즈 환경에서 따라가다 보면 막히는 부분이 하나 있습니다.
 
 ```Bash
-$ docker run -it -name centos centos
+$ docker run -it --name centos centos
 cannot enable tty mode on non tty input
 ```
 
@@ -19,7 +18,7 @@ Docker내 이미지를 기동하기 위한 구문인데, 윈도우즈 환경에�
 솔루션은 검색결과 여러가지 방법이 있었으나, 개인적으로 아래 방법을 추천합니다.
 
 ```bash
-$ winpty docker run -it -name centos centos
+$ winpty docker run -it --name centos centos
 [root@35fb8a39901b /]#
 ```
 
