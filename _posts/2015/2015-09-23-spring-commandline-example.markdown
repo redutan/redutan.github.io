@@ -2,7 +2,7 @@
 layout: post
 title: "Spring 커맨드라인 기반 예제 from Toby"
 date: "2015-09-23 21:20"
-tags: [docker, error]
+tags: [spring, spring-boot, lifecycle]
 ---
 
 최근 각종 개발자 방송에 유행이다. 나프다, 코코티비 등 뿐만 아니라 웹비나도 같이 유행이다.
