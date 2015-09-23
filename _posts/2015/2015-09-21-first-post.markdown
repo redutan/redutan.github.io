@@ -2,7 +2,7 @@
 layout: post
 title: "Github 블로그 첫번째 포스트"
 date: "2015-09-21 19:39"
-categories: blahblah
+tags: [blahblah]
 ---
 #Github 블로그
 
