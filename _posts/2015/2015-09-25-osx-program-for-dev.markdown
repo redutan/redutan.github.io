@@ -20,7 +20,7 @@ tags: ["osx", "install"]
 - App Store : https://itunes.apple.com/kr/app/microsoft-remote-desktop/id715768417?mt=12
 
 # Homebrew
-- OS X 용 패키지 관리자 (like yum from CentOS)
+- OS X 용 패키지 관리자
 - http://brew.sh/index_ko.html
 
 ```bash
@@ -113,9 +113,18 @@ brew cask install staruml
 
 ### Office
 - 적절한 오피스 프로그램 설치요망
- * OpenOffice (무료)
- * Apple 제공 오피스 툴 (Pages, Numbers, Keynote)
- * Microsoft Office
+
+##### OpenOffice : 무료
+```bash
+brew cask install openoffice
+```
+
+##### iWork : 신규 맥 또는 iOS 기기구입자 **무료**
+- Pages : https://itunes.apple.com/kr/app/pages/id409201541?mt=12
+- Numbers : https://itunes.apple.com/kr/app/numbers/id409203825?mt=12
+- Keynote : https://itunes.apple.com/kr/app/keynote/id409183694?mt=12
+
+##### Microsoft Office
 
 ### jekyll
 - 정적페이지 생성 툴
