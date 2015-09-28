@@ -4,7 +4,7 @@
  <title>Java.NET loper</title>
  <link href="http://redutan.github.io/atom.xml" rel="self"/>
  <link href="http://redutan.github.io"/>
- <updated>2015-09-29T00:23:14+09:00</updated>
+ <updated>2015-09-29T01:02:01+09:00</updated>
  <id>http://redutan.github.io</id>
  <author>
    <name>MJ</name>
@@ -210,11 +210,13 @@
 
 &lt;h3 id=&quot;예제-해운-활동과-항로&quot;&gt;예제 : 해운 활동과 항로&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-2-4-580x599-108608.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 2-4&quot; data-downloadable=&quot;true&quot; &gt;
-&lt;em&gt;기술적 모델&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2015/09/DDD-2-4.jpg&quot; alt=&quot;그림 2-4&quot;&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-2-5-580x201-06a6a5.png&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 2-5&quot; data-downloadable=&quot;true&quot; &gt;
-&lt;em&gt;설명을 위한 모델&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;기술적 모델&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/09/DDD-2-5.png&quot; alt=&quot;그림 2-5&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;설명을 위한 모델&lt;/em&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -285,7 +287,7 @@
 &lt;li&gt;선박화물 운송 예약을 위한 어플리케이션 도메인 모델&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-1-8-580x182-8f1398.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 1-8&quot; data-downloadable=&quot;true&quot; &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2015/09/DDD-1-8.jpg&quot; alt=&quot;그림 1-8&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orderConfirmationSequence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addCargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
@@ -294,10 +296,10 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;요구사항 추가
-&lt;strong&gt;10% 초과예약 허용&lt;/strong&gt;
-*
-&lt;img src=&quot;/generated/2015/09/DDD-1-9-580x182-86f74d.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 1-9&quot; data-downloadable=&quot;true&quot; &gt;&lt;/li&gt;
+&lt;strong&gt;10% 초과예약 허용&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/09/DDD-1-9.jpg&quot; alt=&quot;그림 1-9&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxBooking&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bookedCargosize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
@@ -311,7 +313,7 @@
 &lt;li&gt;&lt;strong&gt;10% 초과 예약&lt;/strong&gt; 은 정책이고 이는 전략패턴으로 구조화 할 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-1-10-580x361-41a9df.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 1-9&quot; data-downloadable=&quot;true&quot; &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2015/09/DDD-1-10.jpg&quot; alt=&quot;그림 1-10&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;overbookingPolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isAllowed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orderConfirmationSequence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;

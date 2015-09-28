@@ -137,8 +137,10 @@ tags: "ddd"
 
 ### 예제 : 해운 활동과 항로
 
-{% image users 2015/09/DDD-2-4.jpg alt="그림 2-4" data-downloadable="true" %}
+![그림 2-4](/images/2015/09/DDD-2-4.jpg)
+
 _기술적 모델_
 
-{% image users 2015/09/DDD-2-5.png alt="그림 2-5" data-downloadable="true" %}
+![그림 2-5](/images/2015/09/DDD-2-5.png)
+
 _설명을 위한 모델_

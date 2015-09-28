@@ -167,7 +167,7 @@
 <li>선박화물 운송 예약을 위한 어플리케이션 도메인 모델</li>
 </ul>
 
-<p><img src="/generated/2015/09/DDD-1-8-580x182-8f1398.jpg" class="user-portrait" itemprop="image" alt="그림 1-8" data-downloadable="true" ></p>
+<p><img src="/images/2015/09/DDD-1-8.jpg" alt="그림 1-8"></p>
 <div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">makeBooking</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
   <span class="kt">int</span> <span class="n">confirmation</span> <span class="o">=</span> <span class="n">orderConfirmationSequence</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
   <span class="n">voyage</span><span class="o">.</span><span class="na">addCargo</span><span class="o">(</span><span class="n">cargo</span><span class="o">,</span> <span class="n">confirmation</span><span class="o">);</span>
@@ -176,10 +176,10 @@
 </code></pre></div>
 <ul>
 <li>요구사항 추가
-<strong>10% 초과예약 허용</strong>
-*
-<img src="/generated/2015/09/DDD-1-9-580x182-86f74d.jpg" class="user-portrait" itemprop="image" alt="그림 1-9" data-downloadable="true" ></li>
+<strong>10% 초과예약 허용</strong></li>
 </ul>
+
+<p><img src="/images/2015/09/DDD-1-9.jpg" alt="그림 1-9"></p>
 <div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">makeBooking</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
   <span class="kt">double</span> <span class="n">maxBooking</span> <span class="o">=</span> <span class="n">voyage</span><span class="o">.</span><span class="na">capacity</span><span class="o">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="o">;</span>
   <span class="k">if</span> <span class="o">((</span><span class="n">voyage</span><span class="o">.</span><span class="na">bookedCargosize</span><span class="o">()</span> <span class="o">+</span> <span class="n">cargo</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">&gt;</span> <span class="n">maxBooking</span><span class="o">)</span>
@@ -193,7 +193,7 @@
 <li><strong>10% 초과 예약</strong> 은 정책이고 이는 전략패턴으로 구조화 할 수 있다.</li>
 </ul>
 
-<p><img src="/generated/2015/09/DDD-1-10-580x361-41a9df.jpg" class="user-portrait" itemprop="image" alt="그림 1-9" data-downloadable="true" ></p>
+<p><img src="/images/2015/09/DDD-1-10.jpg" alt="그림 1-10"></p>
 <div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">makeBooking</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
   <span class="k">if</span> <span class="o">(!</span><span class="n">overbookingPolicy</span><span class="o">.</span><span class="na">isAllowed</span><span class="o">(</span><span class="n">cargo</span><span class="o">,</span> <span class="n">voyage</span><span class="o">))</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
   <span class="kt">int</span> <span class="n">confirmation</span> <span class="o">=</span> <span class="n">orderConfirmationSequence</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>

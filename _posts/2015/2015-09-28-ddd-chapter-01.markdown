@@ -48,7 +48,7 @@ tags:
 
 - 선박화물 운송 예약을 위한 어플리케이션 도메인 모델
 
-{% image users 2015/09/DDD-1-8.jpg alt="그림 1-8" data-downloadable="true" %}
+![그림 1-8](/images/2015/09/DDD-1-8.jpg)
 
 ```Java
 public int makeBooking(Cargo cargo, Voyage voyage) {
@@ -60,8 +60,8 @@ public int makeBooking(Cargo cargo, Voyage voyage) {
 
 - 요구사항 추가
 **10% 초과예약 허용**
-*
-{% image users 2015/09/DDD-1-9.jpg alt="그림 1-9" data-downloadable="true" %}
+
+![그림 1-9](/images/2015/09/DDD-1-9.jpg)
 
 ```Java
 public int makeBooking(Cargo cargo, Voyage voyage) {
@@ -75,7 +75,7 @@ public int makeBooking(Cargo cargo, Voyage voyage) {
 ```
 - **10% 초과 예약** 은 정책이고 이는 전략패턴으로 구조화 할 수 있다.
 
-{% image users 2015/09/DDD-1-10.jpg alt="그림 1-9" data-downloadable="true" %}
+![그림 1-10](/images/2015/09/DDD-1-10.jpg)
 
 ```Java
 public int makeBooking(Cargo cargo, Voyage voyage) {
