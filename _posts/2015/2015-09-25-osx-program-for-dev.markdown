@@ -5,6 +5,10 @@ date: "2015-09-25 13:16"
 tags: ["osx", "install"]
 ---
 
+회사에서 새로운 맥북을 지급 받은 것을 바탕으로 포스팅을 함.
+
+순전히 본인의 취향이 반영된 것임을 미리 알려드림.
+
 # App Store
 
 ### Xcode (필수아님)
@@ -50,7 +54,7 @@ brew cask install iterm2
 ```
 
 ### Docker
-- 가상환경
+- 가상환경 컨테이너
 - virtualbox + docer2boot + docker 통합 설치
 
 ```bash
