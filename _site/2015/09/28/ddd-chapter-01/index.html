@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DDD 01장 - 지식탐구</title>
+    
+    <meta name="author" content="MJ">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/css/1.4.0/bootstrap.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/syntax.emacs.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="/">Java.NET loper</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>DDD 01장 - 지식탐구 <small>Supporting tagline</small></h1>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <blockquote>
+<p><em>본 포스트는 <strong>도메인 주도 설계</strong>라는 책을 참조하였습니다.</em></p>
+
+<blockquote>
+<p><em>가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.</em>
+<a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216">http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216</a></p>
+</blockquote>
+</blockquote>
+
+<h2 id="효과적인-모델링의-요소">효과적인 모델링의 요소</h2>
+
+<ol>
+<li>모델과 구현의 연계.</li>
+<li>모델을 기반으로 하는 언어 정제.</li>
+<li>풍부한 지식이 담긴 모델 개발.</li>
+<li>모델의 정제.</li>
+<li>브레인스토밍과 싪험.</li>
+</ol>
+
+<p><strong>위와 같은 지식탐구는 팀 내 지식을 가치있는 모델로 만든다</strong></p>
+
+<h2 id="지식-탐구">지식 탐구</h2>
+
+<ul>
+<li>지식 탐구 팀 = <strong>개발자</strong>(주도) + 도메인전문가</li>
+<li>원재료
+
+<ul>
+<li>도메인 전문가의 지식</li>
+<li>기존 시스템 사용자</li>
+<li>동일 도메인에 관련된 레거시 시스템의 기술팀</li>
+<li>이전의 비슷한 프로젝트에서 얻은 경험</li>
+</ul></li>
+</ul>
+
+<p><strong>개념적 엄밀함(conceptual rigor)</strong></p>
+
+<h2 id="지속적인-학습">지속적인 학습</h2>
+
+<blockquote>
+<p>소프트웨어를 작성하기 시작할 때 우리는 충분히 알지 못한 상태에서 시작한다.</p>
+</blockquote>
+
+<ul>
+<li>생산성이 뛰어난 팀은 <strong>지속적인 학습</strong> 을 바탕으로 의식적으로 지식을 함양한다.</li>
+<li>팀 구성원이나 개발자, 도메인 전문가에게서 모두 똑같이 지식을 얻고 의사소통 체계를 공유하며, 구현을 거쳐 피드백 고리를 완성하는 일을 모두 효과적으로 수행하는 지식탐구 프로세스를 궤도에 올리는 것</li>
+<li>발견을 위한 항해는 어디선가 시작돼야 한다.</li>
+</ul>
+
+<h2 id="풍부한-지식이-담긴-설계">풍부한 지식이 담긴 설계</h2>
+
+<ul>
+<li>엔티티와 값 + <strong>업무활동과 규칙</strong></li>
+<li>규칙을 명확하게, 구체화, 필요없는 것은 배제</li>
+</ul>
+
+<h4 id="감춰진-개념-추출하기">감춰진 개념 추출하기</h4>
+
+<ul>
+<li>선박화물 운송 예약을 위한 어플리케이션 도메인 모델</li>
+</ul>
+
+<p><img src="/generated/2015/09/DDD-1-8-580x182-8f1398.jpg" class="user-portrait" itemprop="image" alt="그림 1-8" data-downloadable="true" ></p>
+<div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">makeBooking</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">confirmation</span> <span class="o">=</span> <span class="n">orderConfirmationSequence</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+  <span class="n">voyage</span><span class="o">.</span><span class="na">addCargo</span><span class="o">(</span><span class="n">cargo</span><span class="o">,</span> <span class="n">confirmation</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">confirmation</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+<ul>
+<li>요구사항 추가
+<strong>10% 초과예약 허용</strong>
+*
+<img src="/generated/2015/09/DDD-1-9-580x182-86f74d.jpg" class="user-portrait" itemprop="image" alt="그림 1-9" data-downloadable="true" ></li>
+</ul>
+<div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">makeBooking</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kt">double</span> <span class="n">maxBooking</span> <span class="o">=</span> <span class="n">voyage</span><span class="o">.</span><span class="na">capacity</span><span class="o">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="o">;</span>
+  <span class="k">if</span> <span class="o">((</span><span class="n">voyage</span><span class="o">.</span><span class="na">bookedCargosize</span><span class="o">()</span> <span class="o">+</span> <span class="n">cargo</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">&gt;</span> <span class="n">maxBooking</span><span class="o">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="kt">int</span> <span class="n">confirmation</span> <span class="o">=</span> <span class="n">orderConfirmationSequence</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+  <span class="n">voyage</span><span class="o">.</span><span class="na">addCargo</span><span class="o">(</span><span class="n">cargo</span><span class="o">,</span> <span class="n">confirmation</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">confirmation</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+<ul>
+<li><strong>10% 초과 예약</strong> 은 정책이고 이는 전략패턴으로 구조화 할 수 있다.</li>
+</ul>
+
+<p><img src="/generated/2015/09/DDD-1-10-580x361-41a9df.jpg" class="user-portrait" itemprop="image" alt="그림 1-9" data-downloadable="true" ></p>
+<div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">makeBooking</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(!</span><span class="n">overbookingPolicy</span><span class="o">.</span><span class="na">isAllowed</span><span class="o">(</span><span class="n">cargo</span><span class="o">,</span> <span class="n">voyage</span><span class="o">))</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">confirmation</span> <span class="o">=</span> <span class="n">orderConfirmationSequence</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+  <span class="n">voyage</span><span class="o">.</span><span class="na">addCargo</span><span class="o">(</span><span class="n">cargo</span><span class="o">,</span> <span class="n">confirmation</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">confirmation</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-Java" data-lang="Java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">overbookingPolicy</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAllowed</span><span class="o">(</span><span class="n">Cargo</span> <span class="n">cargo</span><span class="o">,</span> <span class="n">Voyage</span> <span class="n">voyage</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="o">(</span><span class="n">cargo</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="n">voyage</span><span class="o">.</span><span class="na">bookedCargoSize</span><span class="o">())</span> <span class="o">&lt;=</span> <span class="o">(</span><span class="n">voyage</span><span class="o">.</span><span class="na">capacity</span><span class="o">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p><strong>도메인의 모든 세부사항에 이러한 정교한 설계를 적용하라고 권하는 것이 아니다.</strong></p>
+
+<ul>
+<li>중요한 것에 <strong>집중</strong> 하고 나머지는 <strong>축소하거나 분리</strong></li>
+<li>지식을 보전하고 공유</li>
+<li>명시적인 설계</li>
+<li>그리고 도메인 전문가와 프로그래머 사이에 <strong>피드백 고리</strong> 를 완성하는 것</li>
+</ul>
+
+<h2 id="심층-모델">심층 모델</h2>
+
+<p>더 깊은 지식탐구를 통한 도메인 모델링</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2015/09/28/ddd-1" title="DDD 1부 - 동작하는 도메인 모델 만들기">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2015/09/28/ddd-chapter-02" title="DDD 02장 - 의사소통과 언어 사용">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'redutan'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>28 September 2015</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#ddd-ref">ddd <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; MJ 2012
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+
+  </body>
+</html>
+

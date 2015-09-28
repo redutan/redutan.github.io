@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Java.NET loper</title>
+ <link href="http://redutan.github.io/atom.xml" rel="self"/>
+ <link href="http://redutan.github.io"/>
+ <updated>2015-09-29T00:23:14+09:00</updated>
+ <id>http://redutan.github.io</id>
+ <author>
+   <name>MJ</name>
+   <email>redutan@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>DDD 02장 - 의사소통과 언어 사용</title>
+   <link href="http://redutan.github.io/2015/09/28/ddd-chapter-02"/>
+   <updated>2015-09-28T15:43:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/28/ddd-chapter-02</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;본 포스트는 &lt;strong&gt;도메인 주도 설계&lt;/strong&gt;라는 책을 참조하였습니다.&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.&lt;/em&gt;
+&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216&quot;&gt;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;도메인 모델은 프로젝트를 위한 공통언어의 핵심&lt;/li&gt;
+&lt;li&gt;모델 기반 의사소통은 UML 상의 다이어그램으로 한정되어서는 안된다
+
+&lt;ul&gt;
+&lt;li&gt;다이어그램이 표현하고자하는 의미가 포함되어야한다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;공통 언어?&lt;/p&gt;
+
+&lt;h2 id=&quot;ubiquitous-language-보편-언어&quot;&gt;UBIQUITOUS LANGUAGE (보편 언어)&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;도메인 전문가 VS 개발자 사이의 언어 차이&lt;/strong&gt;
+과연 어떻게 해결할 수 있는가? 의 고민에서 부터 출발&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;언어의 분열로 인한 도메인 전문가와 개발자 사이의 업무 이해도 저하 - 각각 따로 도메인 이해&lt;/li&gt;
+&lt;li&gt;코드, 개발자, 도메인 전문가 사이의 단절 및 오해&lt;/li&gt;
+&lt;li&gt;잦은 번역으로 인한 의사소통이 무뎌지고, 지식탐구가 빈약해짐&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모든 사람&lt;/strong&gt; 이 이해할 수 있어야지 &lt;strong&gt;공통 언어&lt;/strong&gt; 라고 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;도메인 모델은 공통언어의 근간을 제공하고 동시에 팀 내 의사 소통을 소프트웨어 구현까지 연결할 수 있다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;지식탐구 과정 중 &lt;strong&gt;언어가 변화&lt;/strong&gt; 되면 필연적으로 &lt;strong&gt;도메인 모델 변화&lt;/strong&gt; 로 이어지며, 코드상으로는 &lt;strong&gt;리펙토링&lt;/strong&gt; 이 된다.&lt;/p&gt;
+
+&lt;p&gt;즉,&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;모델을 언어의 근간으로 사용하라. 팀 내 모든 의사소통과 코드에서 해당 언어를 끊임없이 적용하는 데 전념하라. 다이어그램과 문서에서,
+그리고 특히 말할 때 동일한 언어로 사용하라&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;도메인 전문가는 도메인을 이해하는 데 부자연스럽고 부정확한 용어나 구조에 대해 반대 의사를 표명해야한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개발자는 설계를 어렵게 만드는 모호함과 불일치를 찾아내는 데 촉각을 곤두세워야 한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;큰-소리내어-모델링하기&quot;&gt;큰 소리내어 모델링하기&lt;/h2&gt;
+
+&lt;p&gt;말하기(의사소통), 쓰기(문서화, 모델링) 간 언어 일치&lt;/p&gt;
+
+&lt;h4 id=&quot;소리내어-말하는-모델링-고도화&quot;&gt;소리내어 말하는 모델링 고도화&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&amp;quot;Routing Servie에 출발지, 목적지, 도착 시각을 전달하면 화물이 멈춰야 할 지점을 찾고, 음... 그것을 데이터베이스에 삽입한다.&amp;quot;
+
+&lt;ul&gt;
+&lt;li&gt;모호하고 기술적임&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;quot;출발지, 목적지, 등등... 이것들을 모두 Routing Service에 넣으면 필요한 것이 모두 담긴 Ltinerary(운항일정)를 돌려받는다.&amp;quot;
+
+&lt;ul&gt;
+&lt;li&gt;좀 더 완전해졌지만, 장황함&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;quot;Routing Service는 Route Specification(항로설정명세)을 만족하는 Ltinerary를 찾는다&amp;quot;
+
+&lt;ul&gt;
+&lt;li&gt;간결함&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;시스템에 관해 이야기를 주고받을 때 모델을 사용하라.
+모델의 요소와 상호작용을 이용하고 모델이 허용하는 범위에 개념을 조합하면서 시나리오를 큰 소리로 말해보라.
+표현해야 할 것을 더 쉽게 말하는 방법을 찾아낸 다음 그러한 새로운 아이디어를 다이어그램과 코드에 적용하라&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;한-팀-한-언어&quot;&gt;한 팀, 한 언어&lt;/h2&gt;
+
+&lt;p&gt;도메인 전문가와 개발자는 도메인 모델을 통해서 소통해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;수준 높은 도메이 전문가도 해당 모델을 이해하지 못한다면 모델이 뭔가 잘못된 것이다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;도메인 전문가와 개발자 사이에 언어적 분열이 일어나서는 안된다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;보편 언어 : 개발자와 도메인 전문가 간 교집합
+
+&lt;ul&gt;
+&lt;li&gt;도메인 모델 용어&lt;/li&gt;
+&lt;li&gt;BOUNDED CONTEXT(제한된 컨텍스트)의 이름&lt;/li&gt;
+&lt;li&gt;대규모 구조의 용어&lt;/li&gt;
+&lt;li&gt;이 책의 여러 패턴 이름&lt;/li&gt;
+&lt;li&gt;개발자가 이해하지 못하는 보편 언어의 확장 영역 : 개발자가 이해하지 못하는 업무 관련 용어, 모든 이들이 사용하지만 설계에 나타나지 않는 용어&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;개발자 언어
+
+&lt;ul&gt;
+&lt;li&gt;설계의 기술적인 측면&lt;/li&gt;
+&lt;li&gt;기술적인 용어&lt;/li&gt;
+&lt;li&gt;기술적인 디자인 패턴&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;문서와-다이어그램&quot;&gt;문서와 다이어그램&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;소프트웨어 설계 시 꼭 시각화된 UML 다이어그램 (또는 비슷한 것)을 그리자.&lt;/li&gt;
+&lt;li&gt;형식은 중요한 것이 아니다. 다이어그램 자체가 참석자 간 &lt;strong&gt;구심점&lt;/strong&gt; 역활을 하면 된다.&lt;/li&gt;
+&lt;li&gt;UML 또한 &lt;strong&gt;언어&lt;/strong&gt; 이다.&lt;/li&gt;
+&lt;li&gt;모델링의 기본 개념은 &lt;strong&gt;나무를 보는 것이 아니라 숲을 보는 것&lt;/strong&gt; 이다. 즉 모든 것을 포괄할 필요도 너무 구체화 할 필요도 없다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;uml의-표현의-한계-2가지&quot;&gt;UML의 표현의 한계 2가지&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;모델이 나타내는 개념의 의미&lt;/li&gt;
+&lt;li&gt;모델 내 객체의 행위
+
+&lt;ul&gt;
+&lt;li&gt;객체의 상호작용(또는 Sequence) 다이어그램으로 암묵적으로 표현 가능&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;하지만 인간의 언어(자연어)를 통해서 한계를 극복할 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;다이어그램&lt;/strong&gt; 은 의사소통과 설명의 수단이며 브레인스토밍을 촉진한다. 이러한 목적은 다이어그램이 최소화됐을 때 가장 잘 전달된다.&lt;/li&gt;
+&lt;li&gt;다이어그램들은 설계상의 제약조건을 보여주지만 모든 세부사항에 걸친 &lt;em&gt;설계 명세는 아니다.&lt;/em&gt; 그것들은 &lt;strong&gt;아이디어의 골자&lt;/strong&gt; 를 나타낼 뿐이다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;설계의 생생한 세부사항은 코드에 담긴다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;모델은 다이어그램이 아니라는 점을 항상 명심해야 한다.&lt;/strong&gt; &amp;gt; 다이어그램이 표현하고자 하는 의미이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;글로-쓴-설계-문서&quot;&gt;글로 쓴 설계 문서&lt;/h4&gt;
+
+&lt;p&gt;구두(자연어)에 의한 의사 소통은 코드의 정연함과 상세함을 의미적으로 보충한다.
+하지만 어느 정도의 문서(글)이 없다면 기록되지 않으므로 구두적인 내용을 다시 상기시킬 수 없게 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;기록은 기억을 지배한다.
+&lt;strong&gt;고로, 어느 정도는 글로 쓴 문서로 안정과 공유를 꾀할 필요가 있다.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;문서를 평가하는 두 가지 일반적인 지침&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;문서는 코드와 말을 보완하는 역할을 해야 한다.&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;문서는 코드가 이미 잘 하고 있는 것을 하려고 해서는 안 된다.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;세부사항과 프로그램 행위의 정확한 명세는 코드에 양보한다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;문서는 유효한 상태를 유지하고 최신 내용을 담고 있어야 한다.&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;설계 문서의 가장 큰 가치는 모델의 개념을 설명하고, 코드의 세부사항을 파악해 나가는데 도움을 주며, 어쩌면 모델의 의도된 사용 방식에 어떤 통찰력을 주는 데 있다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;문서는 프로젝트 활동과 관련을 맺고 있어야한다.&lt;/strong&gt; : UBIQUITOUS LANGUAGE가 문서(다이어그램), 코드, 대화에 나타나야한다.&lt;/li&gt;
+&lt;li&gt;문서의 이력관리가 되지 않는다면 유효한 상태로 유지되면서 혼란을 일으키고 프로젝트에 악영향을 줄 가능성이 크다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;문서를 최소한으로 유지하고 코드와 대화를 보완하는데 집중함&lt;/strong&gt; &amp;gt; 프로젝트와 연관된 상태로 유지가능&lt;/li&gt;
+&lt;li&gt;UBIQUITOUS LANGUAGE와 그것이 발전이 문서를 유효한 상태로 유지하고 프로젝트 활동과 결부되게 만드는 구심점으로 삼아라&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;프로젝트 활동 : 코드, 문서(다이어그램), 대화&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;실행-가능한-기반&quot;&gt;실행 가능한 기반 ??&lt;/h4&gt;
+
+&lt;p&gt;코드에 대한 테스트&lt;/p&gt;
+
+&lt;p&gt;올바르게 &lt;strong&gt;실행&lt;/strong&gt; 되는 것 뿐만 아니라 올바른 의미를 &lt;strong&gt;전달&lt;/strong&gt; 하는 코드를 작성하자면 엄청나게 세심한 노력을 기울어야 한다.&lt;/p&gt;
+
+&lt;p&gt;현재의 표준 기술(ex:JUnit)을 활용해 코드의 행위, 의도, 메시지를 일치시키려면 훈련과 설계에 관한 어떤 특정한 사고방식이 필요하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;설명을-위한-모델&quot;&gt;설명을 위한 모델 ??&lt;/h2&gt;
+
+&lt;p&gt;하나의 모델 을 통해서 구현, 설계, 의사소통(프로젝트 활동)의 기초가 돼야 한다. &lt;strong&gt;하지만 설명을 위한 모델은 ??&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;기술적 모델(from 개발자) : 최소한의 수준으로 엄격하게 - 객체 (or 클래스) 다이어그램&lt;/li&gt;
+&lt;li&gt;설명을 위한 모델(from 도메인 전문가) : 다양한 방식으로 표현할 수 있다.
+
+&lt;ul&gt;
+&lt;li&gt;도메인 전문가가 개발자들를 교육하고자 하는 경우 다양한 방식으로 사용&lt;/li&gt;
+&lt;li&gt;오히려 UML적일 필요가 없으며, 오히려 그렇지 않을 때가 일반적으로 가장 좋다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;설명을 위한 모델과 설계를 주도하는 모델(기술적 모델) 간의 차이를 의식하고 있어야한다. 즉, 두 모델은 같을 필요가 없다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;기술적 모델과 설명을 위한 모델이 함께할 때 이해하기가 쉽다&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;예제-해운-활동과-항로&quot;&gt;예제 : 해운 활동과 항로&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-2-4-580x599-108608.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 2-4&quot; data-downloadable=&quot;true&quot; &gt;
+&lt;em&gt;기술적 모델&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-2-5-580x201-06a6a5.png&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 2-5&quot; data-downloadable=&quot;true&quot; &gt;
+&lt;em&gt;설명을 위한 모델&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>DDD 01장 - 지식탐구</title>
+   <link href="http://redutan.github.io/2015/09/28/ddd-chapter-01"/>
+   <updated>2015-09-28T15:27:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/28/ddd-chapter-01</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;본 포스트는 &lt;strong&gt;도메인 주도 설계&lt;/strong&gt;라는 책을 참조하였습니다.&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.&lt;/em&gt;
+&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216&quot;&gt;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;효과적인-모델링의-요소&quot;&gt;효과적인 모델링의 요소&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;모델과 구현의 연계.&lt;/li&gt;
+&lt;li&gt;모델을 기반으로 하는 언어 정제.&lt;/li&gt;
+&lt;li&gt;풍부한 지식이 담긴 모델 개발.&lt;/li&gt;
+&lt;li&gt;모델의 정제.&lt;/li&gt;
+&lt;li&gt;브레인스토밍과 싪험.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;위와 같은 지식탐구는 팀 내 지식을 가치있는 모델로 만든다&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;지식-탐구&quot;&gt;지식 탐구&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;지식 탐구 팀 = &lt;strong&gt;개발자&lt;/strong&gt;(주도) + 도메인전문가&lt;/li&gt;
+&lt;li&gt;원재료
+
+&lt;ul&gt;
+&lt;li&gt;도메인 전문가의 지식&lt;/li&gt;
+&lt;li&gt;기존 시스템 사용자&lt;/li&gt;
+&lt;li&gt;동일 도메인에 관련된 레거시 시스템의 기술팀&lt;/li&gt;
+&lt;li&gt;이전의 비슷한 프로젝트에서 얻은 경험&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;개념적 엄밀함(conceptual rigor)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;지속적인-학습&quot;&gt;지속적인 학습&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;소프트웨어를 작성하기 시작할 때 우리는 충분히 알지 못한 상태에서 시작한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;생산성이 뛰어난 팀은 &lt;strong&gt;지속적인 학습&lt;/strong&gt; 을 바탕으로 의식적으로 지식을 함양한다.&lt;/li&gt;
+&lt;li&gt;팀 구성원이나 개발자, 도메인 전문가에게서 모두 똑같이 지식을 얻고 의사소통 체계를 공유하며, 구현을 거쳐 피드백 고리를 완성하는 일을 모두 효과적으로 수행하는 지식탐구 프로세스를 궤도에 올리는 것&lt;/li&gt;
+&lt;li&gt;발견을 위한 항해는 어디선가 시작돼야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;풍부한-지식이-담긴-설계&quot;&gt;풍부한 지식이 담긴 설계&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;엔티티와 값 + &lt;strong&gt;업무활동과 규칙&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;규칙을 명확하게, 구체화, 필요없는 것은 배제&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;감춰진-개념-추출하기&quot;&gt;감춰진 개념 추출하기&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;선박화물 운송 예약을 위한 어플리케이션 도메인 모델&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-1-8-580x182-8f1398.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 1-8&quot; data-downloadable=&quot;true&quot; &gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orderConfirmationSequence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addCargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;요구사항 추가
+&lt;strong&gt;10% 초과예약 허용&lt;/strong&gt;
+*
+&lt;img src=&quot;/generated/2015/09/DDD-1-9-580x182-86f74d.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 1-9&quot; data-downloadable=&quot;true&quot; &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxBooking&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bookedCargosize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orderConfirmationSequence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addCargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;10% 초과 예약&lt;/strong&gt; 은 정책이고 이는 전략패턴으로 구조화 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/generated/2015/09/DDD-1-10-580x361-41a9df.jpg&quot; class=&quot;user-portrait&quot; itemprop=&quot;image&quot; alt=&quot;그림 1-9&quot; data-downloadable=&quot;true&quot; &gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeBooking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;overbookingPolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isAllowed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orderConfirmationSequence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addCargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;overbookingPolicy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isAllowed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Cargo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Voyage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cargo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bookedCargoSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;voyage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;도메인의 모든 세부사항에 이러한 정교한 설계를 적용하라고 권하는 것이 아니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;중요한 것에 &lt;strong&gt;집중&lt;/strong&gt; 하고 나머지는 &lt;strong&gt;축소하거나 분리&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;지식을 보전하고 공유&lt;/li&gt;
+&lt;li&gt;명시적인 설계&lt;/li&gt;
+&lt;li&gt;그리고 도메인 전문가와 프로그래머 사이에 &lt;strong&gt;피드백 고리&lt;/strong&gt; 를 완성하는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;심층-모델&quot;&gt;심층 모델&lt;/h2&gt;
+
+&lt;p&gt;더 깊은 지식탐구를 통한 도메인 모델링&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>DDD 1부 - 동작하는 도메인 모델 만들기</title>
+   <link href="http://redutan.github.io/2015/09/28/ddd-1"/>
+   <updated>2015-09-28T11:42:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/28/ddd-1</id>
+   <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;본 포스트는 &lt;strong&gt;도메인 주도 설계&lt;/strong&gt;라는 책을 참조하였습니다.&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.&lt;/em&gt;
+&lt;a href=&quot;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216&quot;&gt;http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;사용자가 프로그램을 사용하는 대상 영역이 바로 해당 소프트웨어의 &lt;strong&gt;도메인(Domain)&lt;/strong&gt; 이다&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;항공권 예약 프로그램 : 승객&lt;/li&gt;
+&lt;li&gt;회계 프로그램 : 화폐, 금융&lt;/li&gt;
+&lt;li&gt;도메인은 컴퓨터와 거의 관련이 없다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;모델&lt;/strong&gt; 은 지식을 선택적으로 단순화하고 의식적으로 구조화한 형태다.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;문제의 복잡성을 단순화&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;도메인모델&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;다이어그램이 아니라 다이어그램이 전달하고자하는 아이디어&lt;/li&gt;
+&lt;li&gt;도메인전문가의 머릿속에만 존재하는 지식이 아니라 해당 지식을 엄격하게 구성하고 선택적으로 추상화 한 것 - 개발을 위해서&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;도메인-주도-설계에서의-모델의-유용성&quot;&gt;도메인 주도 설계에서의 모델의 유용성&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;모델과 핵심 설계는 서로 영향을 주며 구체화된다.&lt;/li&gt;
+&lt;li&gt;모델은 모든 팀 구성원이 사용하는 언어의 중추다.&lt;/li&gt;
+&lt;li&gt;모델은 지식의 정수만을 뽑아낸 것이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;소프트웨어의-본질&quot;&gt;소프트웨어의 본질&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;기술에 집중하기 보다는 도메인 연구에 먼저 집중해야한다.&lt;/li&gt;
+&lt;li&gt;도메인이 중심이 되는 개념을 바탕으로 프로젝트를 진행해야한다.&lt;/li&gt;
+&lt;li&gt;복잡성을 단순화 시키는 명쾌한 모델 제시 - 통찰력&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>OS X - Java 개발자를 위한 프로그램 설치</title>
+   <link href="http://redutan.github.io/2015/09/25/osx-program-for-dev"/>
+   <updated>2015-09-25T13:16:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/25/osx-program-for-dev</id>
+   <content type="html">&lt;p&gt;회사에서 새로운 맥북을 지급 받은 것을 바탕으로 포스팅을 함.&lt;/p&gt;
+
+&lt;p&gt;순전히 본인의 취향이 반영된 것임을 미리 알려드림.&lt;/p&gt;
+
+&lt;h1 id=&quot;app-store&quot;&gt;App Store&lt;/h1&gt;
+
+&lt;h3 id=&quot;xcode-필수아님&quot;&gt;Xcode (필수아님)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;App Store : &lt;a href=&quot;https://itunes.apple.com/kr/app/xcode/id497799835?mt=12&quot;&gt;https://itunes.apple.com/kr/app/xcode/id497799835?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;evernote&quot;&gt;Evernote&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;App Store : &lt;a href=&quot;https://itunes.apple.com/kr/app/evernote/id406056744?mt=12&quot;&gt;https://itunes.apple.com/kr/app/evernote/id406056744?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pdf-reader-x&quot;&gt;PDF Reader X&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;App Store : &lt;a href=&quot;https://itunes.apple.com/kr/app/pdf-reader-x/id684812309?mt=12&quot;&gt;https://itunes.apple.com/kr/app/pdf-reader-x/id684812309?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;microsoft-remote-desktop&quot;&gt;Microsoft Remote Desktop&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;App Store : &lt;a href=&quot;https://itunes.apple.com/kr/app/microsoft-remote-desktop/id715768417?mt=12&quot;&gt;https://itunes.apple.com/kr/app/microsoft-remote-desktop/id715768417?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;homebrew&quot;&gt;Homebrew&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS X 용 패키지 관리자&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://brew.sh/index_ko.html&quot;&gt;http://brew.sh/index_ko.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ruby -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;homebrew-extension-cask&quot;&gt;Homebrew extension Cask&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Homebrew의 확장 저장소&lt;/li&gt;
+&lt;li&gt;각종 retail 어플리케이션 지원&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install google-chrome
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;chrome&quot;&gt;Chrome&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;웹브라우저&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install google-chrome
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;iterm&quot;&gt;iTerm&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS X 용 터미널 프로그램&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install iterm2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;docker&quot;&gt;Docker&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;가상환경 컨테이너&lt;/li&gt;
+&lt;li&gt;virtualbox + docer2boot + docker 통합 설치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew install cask dockertoolbox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&quot;dev&quot;&gt;Dev&lt;/h1&gt;
+
+&lt;h3 id=&quot;java-sdk&quot;&gt;Java SDK&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install java
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;oracle-sqldeveloper&quot;&gt;Oracle sqldeveloper&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;오라클 클라이언트 툴&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html&quot;&gt;http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mysql-workbench&quot;&gt;MySQL Workbench&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MySQL 클라이언트 툴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install mysqlworkbench
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;sourcetree&quot;&gt;SourceTree&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install sourcetree
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;intellij&quot;&gt;IntelliJ&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install intellij-idea
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;sts-eclipse&quot;&gt;STS (eclipse)&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install sts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;atom&quot;&gt;Atom&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chromium 기반 에디터&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install atom
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;staruml&quot;&gt;StarUML&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;무료 UML 툴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install staruml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;markdown-writer 패키지 추가 : jekyll 관리용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;utils&quot;&gt;Utils&lt;/h1&gt;
+
+&lt;h3 id=&quot;office&quot;&gt;Office&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;적절한 오피스 프로그램 설치요망&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;openoffice-무료&quot;&gt;OpenOffice : 무료&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install openoffice
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5 id=&quot;iwork-신규-맥-또는-ios-기기구입자-무료&quot;&gt;iWork : 신규 맥 또는 iOS 기기구입자 &lt;strong&gt;무료&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pages : &lt;a href=&quot;https://itunes.apple.com/kr/app/pages/id409201541?mt=12&quot;&gt;https://itunes.apple.com/kr/app/pages/id409201541?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Numbers : &lt;a href=&quot;https://itunes.apple.com/kr/app/numbers/id409203825?mt=12&quot;&gt;https://itunes.apple.com/kr/app/numbers/id409203825?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Keynote : &lt;a href=&quot;https://itunes.apple.com/kr/app/keynote/id409183694?mt=12&quot;&gt;https://itunes.apple.com/kr/app/keynote/id409183694?mt=12&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;microsoft-office&quot;&gt;Microsoft Office&lt;/h5&gt;
+
+&lt;h3 id=&quot;jekyll&quot;&gt;jekyll&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;정적페이지 생성 툴&lt;/li&gt;
+&lt;li&gt;Github pages 등을 이용한 블로그 관리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;xmind&quot;&gt;XMind&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;무료 마인드맵 툴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install xmind
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;skype&quot;&gt;Skype&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;영상통화&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew cask install skype
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&quot;font&quot;&gt;Font&lt;/h1&gt;
+
+&lt;h3 id=&quot;source-code-pro&quot;&gt;Source Code Pro&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/adobe-fonts/source-code-pro&quot;&gt;https://github.com/adobe-fonts/source-code-pro&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;네이버-나눔글꼴&quot;&gt;네이버 나눔글꼴&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://hangeul.naver.com/font&quot;&gt;http://hangeul.naver.com/font&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hack&quot;&gt;Hack&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/chrissimpkins/Hack#desktop-usage&quot;&gt;https://github.com/chrissimpkins/Hack#desktop-usage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;참조 : &lt;a href=&quot;https://gist.github.com/kevinelliott/3135044&quot;&gt;https://gist.github.com/kevinelliott/3135044&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Spring 커맨드라인 기반 예제 from Toby</title>
+   <link href="http://redutan.github.io/2015/09/23/spring-commandline-example"/>
+   <updated>2015-09-23T21:20:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/23/spring-commandline-example</id>
+   <content type="html">&lt;p&gt;최근 각종 개발자 방송에 유행이다. 나프다, 코코티비 등 뿐만 아니라 웹비나도 같이 유행이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;그런데&lt;/strong&gt; 최근에 토비의 스프링을 저술하신 Toby님 께서 라이브코딩 방송을 하였다.
+관련해서 해당 내용을 복기하는 차원에서 포스트를 해본다.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;간단하게 내용을 이야기 하자면 스프링 어플리케이션 초기화(자원할당), 마무리(자원해제) 에 대한 고찰이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://youtu.be/dnCf2-XYXL8&quot;&gt;토비님 방송 링크&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;step-1-simple&quot;&gt;Step 1. Simple&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;단순하게 &lt;code&gt;main()&lt;/code&gt;을 출력하고 마무리.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;참고로 &lt;code&gt;@SpringBootApplication&lt;/code&gt; 는 각종 &lt;a href=&quot;https://en.wikibooks.org/wiki/Java_Programming/Annotations/Meta-Annotations&quot;&gt;메타 어너테이션&lt;/a&gt;이 선언되어 있다.&lt;/li&gt;
+&lt;li&gt;기본적으로 &lt;code&gt;@Target(ElementType.TYPE)&lt;/code&gt; 으로 선언되어 있으면 &lt;code&gt;ElementTypeANNOTATION_TYPE&lt;/code&gt; 에서도 사용할 수 있기 때문에 일반 어너테이션 이면서 메타 어너테이션이 될 수 있다.&lt;/li&gt;
+&lt;li&gt;메타 어너테이션으로만 사용하고 싶으면 자바 기본 메타 어너테이션 처럼 &lt;code&gt;@Target(ElementType.ANNOTATION_TYPE)&lt;/code&gt; 으로 선언하면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@Target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ElementType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Retention&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RetentionPolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;RUNTIME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Documented&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Inherited&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@EnableAutoConfiguration&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@ComponentScan&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpringBootApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;step-2-implementation-commandlinerunner&quot;&gt;Step 2. Implementation CommandLineRunner&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CommandLineRunner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;run()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;run()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-3-commandlinerunner-bean-등록-with-lamda-expression&quot;&gt;Step 3. CommandLineRunner @Bean 등록 with Lamda Expression&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CommandLineRunner&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;runner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;runner()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;runner()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-4-commandlinerunner-component-등록&quot;&gt;Step 4. CommandLineRunner @Component 등록&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyRunner&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CommandLineRunner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;MyRunner#run()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;runnerMyRunner#run()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-5-initializingbean-bean-등록-with-lamda-expression&quot;&gt;Step 5. InitializingBean @Bean 등록 with Lamda Expression&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InitializingBean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;runner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;afterPropertiesSet()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;afterPropertiesSet()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-6-try-with-resources&quot;&gt;Step 6. try-with-resources&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigurableApplicationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Something&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Something&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-7-try-with-resources-with-lamda-expression&quot;&gt;Step 7. try-with-resources with Lamda Expression&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ConfigurableApplicationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AutoCloseable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;closable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Auto close&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Something&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Something&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Auto close&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-8-runtime-addshutdownhook&quot;&gt;Step 8. Runtime.addShutdownHook&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Java&quot; data-lang=&quot;Java&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Springcl2Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Runtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getRuntime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addShutdownHook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;shutdown&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ConfigurableApplicationContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Springcl2Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AutoCloseable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;closable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Auto close&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Something&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;main()&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Something&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Auto close&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;main()&lt;/code&gt; 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;shutdown&lt;/code&gt; 출력&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://hellotojavaworld.blogspot.com.au/2010/11/runtimeaddshutdownhook.html?m=1&quot;&gt;Runtime.addShutdownHook 참조 링크&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;스프링의 &lt;strong&gt;라이프사이클&lt;/strong&gt; 과 자바에서 제공하는 라이브러리 등을 이용해서 스프링 어플리케이션 구동 시 각종 초기화, 마무리 작업을 다양한 방법으로 제어할 수 있다.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Docker windows tty 오류 솔루션 - &#39;cannot enable tty mode on non tty input&#39; </title>
+   <link href="http://redutan.github.io/2015/09/22/docker-tty-solution"/>
+   <updated>2015-09-22T11:23:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/22/docker-tty-solution</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/windows/started&quot;&gt;Docker 윈도우즈 튜토리얼&lt;/a&gt;을 윈도우즈 환경에서 따라가다 보면 막히는 부분이 하나 있습니다.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-Bash&quot; data-lang=&quot;Bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker run -it --name centos centos
+cannot &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;tty mode on non tty input
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Docker내 이미지를 기동하기 위한 구문인데, 윈도우즈 환경에서는 위와 같은 오류가 발생한다.
+&lt;code&gt;tty&lt;/code&gt;(?) 관련해서 윈도우즈쉘이 적절하게 지원되지 않아서 인데 관련해서 공부를 해봐야하는 부분이다.&lt;/p&gt;
+
+&lt;p&gt;솔루션은 검색결과 여러가지 방법이 있었으나, 개인적으로 아래 방법을 추천합니다.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;winpty docker run -it --name centos centos
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;root@35fb8a39901b /&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;생각보다 검색이 잘되지 않더라구요 ㅠ&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Github 블로그 첫번째 포스트</title>
+   <link href="http://redutan.github.io/2015/09/21/first-post"/>
+   <updated>2015-09-21T19:39:00+09:00</updated>
+   <id>http://redutan.github.io/2015/09/21/first-post</id>
+   <content type="html">&lt;h1 id=&quot;github-블로그&quot;&gt;Github 블로그&lt;/h1&gt;
+
+&lt;p&gt;``기존 네이버, 티스토리 블로그가 있었는데, 에버노트에 의존하다보니 블로깅을 거의 접는 상황이었다.
+그러던 중 Github를 이용해서 블로그가 가능하다는 글을 봐서 다시 이렇게 써본다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;jekyll 꽤 쓸만한듯&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;개발 관심사에 대한 부분들을 열심히 포스팅 해봐야겠다!&lt;/strong&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Jekyll Introduction</title>
+   <link href="http://redutan.github.io/lessons/2011/12/29/jekyll-introduction"/>
+   <updated>2011-12-29T00:00:00+09:00</updated>
+   <id>http://redutan.github.io/lessons/2011/12/29/jekyll-introduction</id>
+   <content type="html">&lt;p&gt;This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
+Directly following the intro we&amp;#39;ll learn exactly &lt;em&gt;how&lt;/em&gt; Jekyll does what it does.&lt;/p&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;h3 id=&quot;what-is-jekyll&quot;&gt;What is Jekyll?&lt;/h3&gt;
+
+&lt;p&gt;Jekyll is a parsing engine bundled as a ruby gem used to build static websites from
+dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as &amp;quot;a simple, blog aware, static site generator&amp;quot;.&lt;/p&gt;
+
+&lt;h3 id=&quot;examples&quot;&gt;Examples&lt;/h3&gt;
+
+&lt;p&gt;This website is created with Jekyll. &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Sites&quot;&gt;Other Jekyll websites&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-does-jekyll-do&quot;&gt;What does Jekyll Do?&lt;/h3&gt;
+
+&lt;p&gt;Jekyll is a ruby gem you install on your local system.
+Once there you can call &lt;code&gt;jekyll --server&lt;/code&gt; on a directory and provided that directory
+is setup in a way jekyll expects, it will do magic stuff like parse markdown/textile files,
+compute categories, tags, permalinks, and construct your pages from layout templates and partials.&lt;/p&gt;
+
+&lt;p&gt;Once parsed, Jekyll stores the result in a self-contained static &lt;code&gt;_site&lt;/code&gt; folder.
+The intention here is that you can serve all contents in this folder statically from a plain static web-server.&lt;/p&gt;
+
+&lt;p&gt;You can think of Jekyll as a normalish dynamic blog but rather than parsing content, templates, and tags
+on each request, Jekyll does this once &lt;em&gt;beforehand&lt;/em&gt; and caches the &lt;em&gt;entire website&lt;/em&gt; in a folder for serving statically.&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll-is-not-blogging-software&quot;&gt;Jekyll is Not Blogging Software&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Jekyll is a parsing engine.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Jekyll does not come with any content nor does it have any templates or design elements.
+This is a common source of confusion when getting started.
+Jekyll does not come with anything you actually use or see on your website - you have to make it.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-should-i-care&quot;&gt;Why Should I Care?&lt;/h3&gt;
+
+&lt;p&gt;Jekyll is very minimalistic and very efficient.
+The most important thing to realize about Jekyll is that it creates a static representation of your website requiring only a static web-server.
+Traditional dynamic blogs like Wordpress require a database and server-side code.
+Heavily trafficked dynamic blogs must employ a caching layer that ultimately performs the same job Jekyll sets out to do; serve static content.&lt;/p&gt;
+
+&lt;p&gt;Therefore if you like to keep things simple and you prefer the command-line over an admin panel UI then give Jekyll a try.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Developers like Jekyll because we can write content like we write code:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ability to write content in markdown or textile in your favorite text-editor.&lt;/li&gt;
+&lt;li&gt;Ability to write and preview your content via localhost.&lt;/li&gt;
+&lt;li&gt;No internet connection required.&lt;/li&gt;
+&lt;li&gt;Ability to publish via git.&lt;/li&gt;
+&lt;li&gt;Ability to host your blog on a static web-server.&lt;/li&gt;
+&lt;li&gt;Ability to host freely on GitHub Pages.&lt;/li&gt;
+&lt;li&gt;No database required.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;how-jekyll-works&quot;&gt;How Jekyll Works&lt;/h1&gt;
+
+&lt;p&gt;The following is a complete but concise outline of exactly how Jekyll works.&lt;/p&gt;
+
+&lt;p&gt;Be aware that core concepts are introduced in rapid succession without code examples.
+This information is not intended to specifically teach you how to do anything, rather it
+is intended to give you the &lt;em&gt;full picture&lt;/em&gt; relative to what is going on in Jekyll-world.&lt;/p&gt;
+
+&lt;p&gt;Learning these core concepts should help you avoid common frustrations and ultimately
+help you better understand the code examples contained throughout Jekyll-Bootstrap.&lt;/p&gt;
+
+&lt;h2 id=&quot;initial-setup&quot;&gt;Initial Setup&lt;/h2&gt;
+
+&lt;p&gt;After &lt;a href=&quot;/index.html#start-now&quot;&gt;installing jekyll&lt;/a&gt; you&amp;#39;ll need to format your website directory in a way jekyll expects.
+Jekyll-bootstrap conveniently provides the base directory format.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-jekyll-application-base-format&quot;&gt;The Jekyll Application Base Format&lt;/h3&gt;
+
+&lt;p&gt;Jekyll expects your website directory to be laid out like so:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;.
+|-- _config.yml
+|-- _includes
+|-- _layouts
+|   |-- default.html
+|   |-- post.html
+|-- _posts
+|   |-- 2011-10-25-open-source-is-good.markdown
+|   |-- 2011-04-26-hello-world.markdown
+|-- _site
+|-- index.html
+|-- assets
+    |-- css
+        |-- style.css
+    |-- javascripts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_config.yml&lt;/strong&gt;
+Stores configuration data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_includes&lt;/strong&gt;
+This folder is for partial views.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_layouts&lt;/strong&gt;
+This folder is for the main templates your content will be inserted into.
+You can have different layouts for different pages or page sections.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_posts&lt;/strong&gt;
+This folder contains your dynamic content/posts.
+the naming format is required to be &lt;code&gt;@YEAR-MONTH-DATE-title.MARKUP@&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;_site&lt;/strong&gt;
+This is where the generated site will be placed once Jekyll is done transforming it.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;assets&lt;/strong&gt;
+This folder is not part of the standard jekyll structure.
+The assets folder represents &lt;em&gt;any generic&lt;/em&gt; folder you happen to create in your root directory.
+Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(read more: &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Usage&quot;&gt;https://github.com/mojombo/jekyll/wiki/Usage&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll-configuration&quot;&gt;Jekyll Configuration&lt;/h3&gt;
+
+&lt;p&gt;Jekyll supports various configuration options that are fully outlined here:
+(&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Configuration&quot;&gt;https://github.com/mojombo/jekyll/wiki/Configuration&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;content-in-jekyll&quot;&gt;Content in Jekyll&lt;/h2&gt;
+
+&lt;p&gt;Content in Jekyll is either a post or a page.
+These content &amp;quot;objects&amp;quot; get inserted into one or more templates to build the final output for its respective static-page.&lt;/p&gt;
+
+&lt;h3 id=&quot;posts-and-pages&quot;&gt;Posts and Pages&lt;/h3&gt;
+
+&lt;p&gt;Both posts and pages should be written in markdown, textile, or HTML and may also contain Liquid templating syntax.
+Both posts and pages can have meta-data assigned on a per-page basis such as title, url path, as well as arbitrary custom meta-data.&lt;/p&gt;
+
+&lt;h3 id=&quot;working-with-posts&quot;&gt;Working With Posts&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Creating a Post&lt;/strong&gt;
+Posts are created by properly formatting a file and placing it the &lt;code&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
+A post must have a valid filename in the form &lt;code&gt;YEAR-MONTH-DATE-title.MARKUP&lt;/code&gt; and be placed in the &lt;code&gt;_posts&lt;/code&gt; directory.
+If the data format is invalid Jekyll will not recognize the file as a post. The date and title are automatically parsed from the filename of the post file.
+Additionally, each file must have &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&quot;&gt;YAML Front-Matter&lt;/a&gt; prepended to its content.
+YAML Front-Matter is a valid YAML syntax specifying meta-data for the given file.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Order&lt;/strong&gt;
+Ordering is an important part of Jekyll but it is hard to specify a custom ordering strategy.
+Only reverse chronological and chronological ordering is supported in Jekyll.&lt;/p&gt;
+
+&lt;p&gt;Since the date is hard-coded into the filename format, to change the order, you must change the dates in the filenames.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tags&lt;/strong&gt;
+Posts can have tags associated with them as part of their meta-data.
+Tags may be placed on posts by providing them in the post&amp;#39;s YAML front matter.
+You have access to the post-specific tags in the templates. These tags also get added to the sitewide collection.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Categories&lt;/strong&gt;
+Posts may be categorized by providing one or more categories in the YAML front matter.
+Categories offer more significance over tags in that they can be reflected in the URL path to the given post.
+Note categories in Jekyll work in a specific way.
+If you define more than one category you are defining a category hierarchy &amp;quot;set&amp;quot;.
+Example:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;---
+title :  Hello World
+categories : [lessons, beginner]
+---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This defines the category hierarchy &amp;quot;lessons/beginner&amp;quot;. Note this is &lt;em&gt;one category&lt;/em&gt; node in Jekyll.
+You won&amp;#39;t find &amp;quot;lessons&amp;quot; and &amp;quot;beginner&amp;quot; as two separate categories unless you define them elsewhere as singular categories.&lt;/p&gt;
+
+&lt;h3 id=&quot;working-with-pages&quot;&gt;Working With Pages&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Creating a Page&lt;/strong&gt;
+Pages are created by properly formatting a file and placing it anywhere in the root directory or subdirectories that do &lt;em&gt;not&lt;/em&gt; start with an underscore.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
+In order to register as a Jekyll page the file must contain &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&quot;&gt;YAML Front-Matter&lt;/a&gt;.
+Registering a page means 1) that Jekyll will process the page and 2) that the page object will be available in the &lt;code&gt;site.pages&lt;/code&gt; array for inclusion into your templates.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Categories and Tags&lt;/strong&gt;
+Pages do not compute categories nor tags so defining them will have no effect.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sub-Directories&lt;/strong&gt;
+If pages are defined in sub-directories, the path to the page will be reflected in the url.
+Example:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;.
+|-- people
+    |-- bob
+        |-- essay.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This page will be available at &lt;code&gt;http://yourdomain.com/people/bob/essay.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Recommended Pages&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;index.html&lt;/strong&gt;
+You will always want to define the root index.html page as this will display on your root URL.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;404.html&lt;/strong&gt;
+Create a root 404.html page and GitHub Pages will serve it as your 404 response.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sitemap.html&lt;/strong&gt;
+Generating a sitemap is good practice for SEO.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;about.html&lt;/strong&gt;
+A nice about page is easy to do and gives the human perspective to your website.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;templates-in-jekyll&quot;&gt;Templates in Jekyll&lt;/h2&gt;
+
+&lt;p&gt;Templates are used to contain a page&amp;#39;s or post&amp;#39;s content.
+All templates have access to a global site object variable: &lt;code&gt;site&lt;/code&gt; as well as a page object variable: &lt;code&gt;page&lt;/code&gt;.
+The site variable holds all accessible content and metadata relative to the site.
+The page variable holds accessible data for the given page or post being rendered at that point.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Create a Template&lt;/strong&gt;
+Templates are created by properly formatting a file and placing it in the &lt;code&gt;_layouts&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Formatting&lt;/strong&gt;
+Templates should be coded in HTML and contain YAML Front Matter.
+All templates can contain Liquid code to work with your site&amp;#39;s data.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rending Page/Post Content in a Template&lt;/strong&gt;
+There is a special variable in all templates named : &lt;code&gt;content&lt;/code&gt;.
+The &lt;code&gt;content&lt;/code&gt; variable holds the page/post content including any sub-template content previously defined.
+Render the content variable wherever you want your main content to be injected into your template:&lt;/p&gt;
+
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;...
+&amp;lt;body&amp;gt;
+  &amp;lt;div id=&amp;quot;sidebar&amp;quot;&amp;gt; ... &amp;lt;/div&amp;gt;
+  &amp;lt;div id=&amp;quot;main&amp;quot;&amp;gt;
+    &amp;#123;{content}&amp;#125;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sub-templates&quot;&gt;Sub-Templates&lt;/h3&gt;
+
+&lt;p&gt;Sub-templates are exactly templates with the only difference being they
+define another &amp;quot;root&amp;quot; layout/template within their YAML Front Matter.
+This essentially means a template will render inside of another template.&lt;/p&gt;
+
+&lt;h3 id=&quot;includes&quot;&gt;Includes&lt;/h3&gt;
+
+&lt;p&gt;In Jekyll you can define include files by placing them in the &lt;code&gt;_includes&lt;/code&gt; folder.
+Includes are NOT templates, rather they are just code snippets that get included into templates.
+In this way, you can treat the code inside includes as if it was native to the parent template.&lt;/p&gt;
+
+&lt;p&gt;Any valid template code may be used in includes.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-liquid-for-templating&quot;&gt;Using Liquid for Templating&lt;/h2&gt;
+
+&lt;p&gt;Templating is perhaps the most confusing and frustrating part of Jekyll.
+This is mainly due to the fact that Jekyll templates must use the Liquid Templating Language.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-liquid&quot;&gt;What is Liquid?&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Shopify/liquid&quot;&gt;Liquid&lt;/a&gt; is a secure templating language developed by &lt;a href=&quot;http://shopify.com&quot;&gt;Shopify&lt;/a&gt;.
+Liquid is designed for end-users to be able to execute logic within template files
+without imposing any security risk on the hosting server.&lt;/p&gt;
+
+&lt;p&gt;Jekyll uses Liquid to generate the post content within the final page layout structure and as the primary interface for working with
+your site and post/page data.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-do-we-have-to-use-liquid&quot;&gt;Why Do We Have to Use Liquid?&lt;/h3&gt;
+
+&lt;p&gt;GitHub uses Jekyll to power &lt;a href=&quot;http://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;.
+GitHub cannot afford to run arbitrary code on their servers so they lock developers down via Liquid.&lt;/p&gt;
+
+&lt;h3 id=&quot;liquid-is-not-programmer-friendly&quot;&gt;Liquid is Not Programmer-Friendly.&lt;/h3&gt;
+
+&lt;p&gt;The short story is liquid is not real code and its not intended to execute real code.
+The point being you can&amp;#39;t do jackshit in liquid that hasn&amp;#39;t been allowed explicitly by the implementation.
+What&amp;#39;s more you can only access data-structures that have been explicitly passed to the template.&lt;/p&gt;
+
+&lt;p&gt;In Jekyll&amp;#39;s case it is not possible to alter what is passed to Liquid without hacking the gem or running custom plugins.
+Both of which cannot be supported by GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;As a programmer - this is very frustrating.&lt;/p&gt;
+
+&lt;p&gt;But rather than look a gift horse in the mouth we are going to
+suck it up and view it as an opportunity to work around limitations and adopt client-side solutions when possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Aside&lt;/strong&gt;
+My personal stance is to not invest time trying to hack liquid. It&amp;#39;s really unnecessary
+&lt;em&gt;from a programmer&amp;#39;s&lt;/em&gt; perspective. That is to say if you have the ability to run custom plugins (i.e. run arbitrary ruby code)
+you are better off sticking with ruby. Toward that end I&amp;#39;ve built &lt;a href=&quot;http://github.com/plusjade/mustache-with-jekyll&quot;&gt;Mustache-with-Jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;static-assets&quot;&gt;Static Assets&lt;/h2&gt;
+
+&lt;p&gt;Static assets are any file in the root or non-underscored subfolders that are not pages.
+That is they have no valid YAML Front Matter and are thus not treated as Jekyll Pages.&lt;/p&gt;
+
+&lt;p&gt;Static assets should be used for images, css, and javascript files.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-jekyll-parses-files&quot;&gt;How Jekyll Parses Files&lt;/h2&gt;
+
+&lt;p&gt;Remember Jekyll is a processing engine. There are two main types of parsing in Jekyll.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Content parsing.&lt;/strong&gt;
+This is done with textile or markdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Template parsing.&lt;/strong&gt;
+This is done with the liquid templating language.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And thus there are two main types of file formats needed for this parsing.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Post and Page files.&lt;/strong&gt;
+All content in Jekyll is either a post or a page so valid posts and pages are parsed with markdown or textile.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Template files.&lt;/strong&gt;
+These files go in &lt;code&gt;_layouts&lt;/code&gt; folder and contain your blogs &lt;strong&gt;templates&lt;/strong&gt;. They should be made in HTML with the help of Liquid syntax.
+Since include files are simply injected into templates they are essentially parsed as if they were native to the template.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Arbitrary files and folders.&lt;/strong&gt;
+Files that &lt;em&gt;are not&lt;/em&gt; valid pages are treated as static content and pass through
+Jekyll untouched and reside on your blog in the exact structure and format they originally existed in.&lt;/p&gt;
+
+&lt;h3 id=&quot;formatting-files-for-parsing&quot;&gt;Formatting Files for Parsing.&lt;/h3&gt;
+
+&lt;p&gt;We&amp;#39;ve outlined the need for valid formatting using &lt;strong&gt;YAML Front Matter&lt;/strong&gt;.
+Templates, posts, and pages all need to provide valid YAML Front Matter even if the Matter is empty.
+This is the only way Jekyll knows you want the file processed.&lt;/p&gt;
+
+&lt;p&gt;YAML Front Matter must be prepended to the top of template/post/page files:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;---
+layout: post
+category : pages
+tags : [how-to, jekyll]
+---
+
+... contents ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Three hyphens on a new line start the Front-Matter block and three hyphens on a new line end the block.
+The data inside the block must be valid YAML.&lt;/p&gt;
+
+&lt;p&gt;Configuration parameters for YAML Front-Matter is outlined here:
+&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&quot;&gt;A comprehensive explanation of YAML Front Matter&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;defining-layouts-for-posts-and-templates-parsing&quot;&gt;Defining Layouts for Posts and Templates Parsing.&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code&gt;layout&lt;/code&gt; parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into.
+If a template file specifies its own layout, it is effectively being used as a &lt;code&gt;sub-template.&lt;/code&gt;
+That is to say loading a post file into a template file that refers to another template file with work in the way you&amp;#39;d expect; as a nested sub-template.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-jekyll-generates-the-final-static-files&quot;&gt;How Jekyll Generates the Final Static Files.&lt;/h2&gt;
+
+&lt;p&gt;Ultimately, Jekyll&amp;#39;s job is to generate a static representation of your website.
+The following is an outline of how that&amp;#39;s done:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll collects data.&lt;/strong&gt;
+Jekyll scans the posts directory and collects all posts files as post objects. It then scans the layout assets and collects those and finally scans other directories in search of pages.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll computes data.&lt;/strong&gt;
+Jekyll takes these objects, computes metadata (permalinks, tags, categories, titles, dates) from them and constructs one
+big &lt;code&gt;site&lt;/code&gt; object that holds all the posts, pages, layouts, and respective metadata.
+At this stage your site is one big computed ruby object.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll liquifies posts and templates.&lt;/strong&gt;
+Next jekyll loops through each post file and converts (through markdown or textile) and &lt;strong&gt;liquifies&lt;/strong&gt; the post inside of its respective layout(s).
+Once the post is parsed and liquified inside the the proper layout structure, the layout itself is &amp;quot;liquified&amp;quot;.
+&lt;strong&gt;Liquification&lt;/strong&gt; is defined as follows: Jekyll initiates a Liquid template, and passes a simpler hash representation of the ruby site object as well as a simpler
+hash representation of the ruby post object. These simplified data structures are what you have access to in the templates.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jekyll generates output.&lt;/strong&gt;
+Finally the liquid templates are &amp;quot;rendered&amp;quot;, thereby processing any liquid syntax provided in the templates
+and saving the final, static representation of the file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Notes.&lt;/strong&gt;
+Because Jekyll computes the entire site in one fell swoop, each template is given access to
+a global &lt;code&gt;site&lt;/code&gt; hash that contains useful data. It is this data that you&amp;#39;ll iterate through and format
+using the Liquid tags and filters in order to render it onto a given page.&lt;/p&gt;
+
+&lt;p&gt;Remember, in Jekyll you are an end-user. Your API has only two components:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The manner in which you setup your directory.&lt;/li&gt;
+&lt;li&gt;The liquid syntax and variables passed into the liquid templates.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;All the data objects available to you in the templates via Liquid are outlined in the &lt;strong&gt;API Section&lt;/strong&gt; of Jekyll-Bootstrap.
+You can also read the original documentation here: &lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Template-Data&quot;&gt;https://github.com/mojombo/jekyll/wiki/Template-Data&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I hope this paints a clearer picture of what Jekyll is doing and why it works the way it does.
+As noted, our main programming constraint is the fact that our API is limited to what is accessible via Liquid and Liquid only.&lt;/p&gt;
+
+&lt;p&gt;Jekyll-bootstrap is intended to provide helper methods and strategies aimed at making it more intuitive and easier to work with Jekyll =)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Thank you&lt;/strong&gt; for reading this far.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+
+&lt;p&gt;Please take a look at &lt;a href=&quot;&quot;&gt;&lt;/a&gt;
+or jump right into &lt;a href=&quot;&quot;&gt;Usage&lt;/a&gt; if you&amp;#39;d like.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>

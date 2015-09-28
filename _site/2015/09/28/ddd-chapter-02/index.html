@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DDD 02장 - 의사소통과 언어 사용</title>
+    
+    <meta name="author" content="MJ">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/css/1.4.0/bootstrap.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/syntax.emacs.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="/">Java.NET loper</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>DDD 02장 - 의사소통과 언어 사용 <small>Supporting tagline</small></h1>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <blockquote>
+<p><em>본 포스트는 <strong>도메인 주도 설계</strong>라는 책을 참조하였습니다.</em></p>
+
+<blockquote>
+<p><em>가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.</em>
+<a href="http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216">http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216</a></p>
+</blockquote>
+</blockquote>
+
+<ul>
+<li>도메인 모델은 프로젝트를 위한 공통언어의 핵심</li>
+<li>모델 기반 의사소통은 UML 상의 다이어그램으로 한정되어서는 안된다
+
+<ul>
+<li>다이어그램이 표현하고자하는 의미가 포함되어야한다.</li>
+</ul></li>
+</ul>
+
+<p>공통 언어?</p>
+
+<h2 id="ubiquitous-language-보편-언어">UBIQUITOUS LANGUAGE (보편 언어)</h2>
+
+<p><strong>도메인 전문가 VS 개발자 사이의 언어 차이</strong>
+과연 어떻게 해결할 수 있는가? 의 고민에서 부터 출발</p>
+
+<ul>
+<li>언어의 분열로 인한 도메인 전문가와 개발자 사이의 업무 이해도 저하 - 각각 따로 도메인 이해</li>
+<li>코드, 개발자, 도메인 전문가 사이의 단절 및 오해</li>
+<li>잦은 번역으로 인한 의사소통이 무뎌지고, 지식탐구가 빈약해짐</li>
+<li><strong>모든 사람</strong> 이 이해할 수 있어야지 <strong>공통 언어</strong> 라고 할 수 있다.</li>
+</ul>
+
+<p><strong>도메인 모델은 공통언어의 근간을 제공하고 동시에 팀 내 의사 소통을 소프트웨어 구현까지 연결할 수 있다.</strong></p>
+
+<p>지식탐구 과정 중 <strong>언어가 변화</strong> 되면 필연적으로 <strong>도메인 모델 변화</strong> 로 이어지며, 코드상으로는 <strong>리펙토링</strong> 이 된다.</p>
+
+<p>즉,</p>
+
+<p><strong>모델을 언어의 근간으로 사용하라. 팀 내 모든 의사소통과 코드에서 해당 언어를 끊임없이 적용하는 데 전념하라. 다이어그램과 문서에서,
+그리고 특히 말할 때 동일한 언어로 사용하라</strong></p>
+
+<ul>
+<li><strong>도메인 전문가는 도메인을 이해하는 데 부자연스럽고 부정확한 용어나 구조에 대해 반대 의사를 표명해야한다.</strong></li>
+<li><strong>개발자는 설계를 어렵게 만드는 모호함과 불일치를 찾아내는 데 촉각을 곤두세워야 한다.</strong></li>
+</ul>
+
+<h2 id="큰-소리내어-모델링하기">큰 소리내어 모델링하기</h2>
+
+<p>말하기(의사소통), 쓰기(문서화, 모델링) 간 언어 일치</p>
+
+<h4 id="소리내어-말하는-모델링-고도화">소리내어 말하는 모델링 고도화</h4>
+
+<ol>
+<li>&quot;Routing Servie에 출발지, 목적지, 도착 시각을 전달하면 화물이 멈춰야 할 지점을 찾고, 음... 그것을 데이터베이스에 삽입한다.&quot;
+
+<ul>
+<li>모호하고 기술적임</li>
+</ul></li>
+<li>&quot;출발지, 목적지, 등등... 이것들을 모두 Routing Service에 넣으면 필요한 것이 모두 담긴 Ltinerary(운항일정)를 돌려받는다.&quot;
+
+<ul>
+<li>좀 더 완전해졌지만, 장황함</li>
+</ul></li>
+<li>&quot;Routing Service는 Route Specification(항로설정명세)을 만족하는 Ltinerary를 찾는다&quot;
+
+<ul>
+<li>간결함</li>
+</ul></li>
+</ol>
+
+<p><strong>시스템에 관해 이야기를 주고받을 때 모델을 사용하라.
+모델의 요소와 상호작용을 이용하고 모델이 허용하는 범위에 개념을 조합하면서 시나리오를 큰 소리로 말해보라.
+표현해야 할 것을 더 쉽게 말하는 방법을 찾아낸 다음 그러한 새로운 아이디어를 다이어그램과 코드에 적용하라</strong></p>
+
+<h2 id="한-팀-한-언어">한 팀, 한 언어</h2>
+
+<p>도메인 전문가와 개발자는 도메인 모델을 통해서 소통해야한다.</p>
+
+<p><strong>수준 높은 도메이 전문가도 해당 모델을 이해하지 못한다면 모델이 뭔가 잘못된 것이다.</strong></p>
+
+<p><strong>도메인 전문가와 개발자 사이에 언어적 분열이 일어나서는 안된다.</strong></p>
+
+<ul>
+<li>보편 언어 : 개발자와 도메인 전문가 간 교집합
+
+<ul>
+<li>도메인 모델 용어</li>
+<li>BOUNDED CONTEXT(제한된 컨텍스트)의 이름</li>
+<li>대규모 구조의 용어</li>
+<li>이 책의 여러 패턴 이름</li>
+<li>개발자가 이해하지 못하는 보편 언어의 확장 영역 : 개발자가 이해하지 못하는 업무 관련 용어, 모든 이들이 사용하지만 설계에 나타나지 않는 용어</li>
+</ul></li>
+<li>개발자 언어
+
+<ul>
+<li>설계의 기술적인 측면</li>
+<li>기술적인 용어</li>
+<li>기술적인 디자인 패턴</li>
+</ul></li>
+</ul>
+
+<h2 id="문서와-다이어그램">문서와 다이어그램</h2>
+
+<ul>
+<li>소프트웨어 설계 시 꼭 시각화된 UML 다이어그램 (또는 비슷한 것)을 그리자.</li>
+<li>형식은 중요한 것이 아니다. 다이어그램 자체가 참석자 간 <strong>구심점</strong> 역활을 하면 된다.</li>
+<li>UML 또한 <strong>언어</strong> 이다.</li>
+<li>모델링의 기본 개념은 <strong>나무를 보는 것이 아니라 숲을 보는 것</strong> 이다. 즉 모든 것을 포괄할 필요도 너무 구체화 할 필요도 없다.</li>
+</ul>
+
+<h4 id="uml의-표현의-한계-2가지">UML의 표현의 한계 2가지</h4>
+
+<ol>
+<li>모델이 나타내는 개념의 의미</li>
+<li>모델 내 객체의 행위
+
+<ul>
+<li>객체의 상호작용(또는 Sequence) 다이어그램으로 암묵적으로 표현 가능</li>
+</ul></li>
+</ol>
+
+<blockquote>
+<p>하지만 인간의 언어(자연어)를 통해서 한계를 극복할 수 있다.</p>
+</blockquote>
+
+<ul>
+<li><strong>다이어그램</strong> 은 의사소통과 설명의 수단이며 브레인스토밍을 촉진한다. 이러한 목적은 다이어그램이 최소화됐을 때 가장 잘 전달된다.</li>
+<li>다이어그램들은 설계상의 제약조건을 보여주지만 모든 세부사항에 걸친 <em>설계 명세는 아니다.</em> 그것들은 <strong>아이디어의 골자</strong> 를 나타낼 뿐이다.</li>
+<li><strong>설계의 생생한 세부사항은 코드에 담긴다.</strong></li>
+<li><strong>모델은 다이어그램이 아니라는 점을 항상 명심해야 한다.</strong> &gt; 다이어그램이 표현하고자 하는 의미이다.</li>
+</ul>
+
+<h4 id="글로-쓴-설계-문서">글로 쓴 설계 문서</h4>
+
+<p>구두(자연어)에 의한 의사 소통은 코드의 정연함과 상세함을 의미적으로 보충한다.
+하지만 어느 정도의 문서(글)이 없다면 기록되지 않으므로 구두적인 내용을 다시 상기시킬 수 없게 된다.</p>
+
+<blockquote>
+<p>기록은 기억을 지배한다.
+<strong>고로, 어느 정도는 글로 쓴 문서로 안정과 공유를 꾀할 필요가 있다.</strong></p>
+</blockquote>
+
+<p><strong>문서를 평가하는 두 가지 일반적인 지침</strong></p>
+
+<ol>
+<li><strong>문서는 코드와 말을 보완하는 역할을 해야 한다.</strong>
+
+<ul>
+<li><strong>문서는 코드가 이미 잘 하고 있는 것을 하려고 해서는 안 된다.</strong></li>
+<li>세부사항과 프로그램 행위의 정확한 명세는 코드에 양보한다.</li>
+</ul></li>
+<li><strong>문서는 유효한 상태를 유지하고 최신 내용을 담고 있어야 한다.</strong>
+
+<ul>
+<li>설계 문서의 가장 큰 가치는 모델의 개념을 설명하고, 코드의 세부사항을 파악해 나가는데 도움을 주며, 어쩌면 모델의 의도된 사용 방식에 어떤 통찰력을 주는 데 있다.</li>
+<li><strong>문서는 프로젝트 활동과 관련을 맺고 있어야한다.</strong> : UBIQUITOUS LANGUAGE가 문서(다이어그램), 코드, 대화에 나타나야한다.</li>
+<li>문서의 이력관리가 되지 않는다면 유효한 상태로 유지되면서 혼란을 일으키고 프로젝트에 악영향을 줄 가능성이 크다.</li>
+<li><strong>문서를 최소한으로 유지하고 코드와 대화를 보완하는데 집중함</strong> &gt; 프로젝트와 연관된 상태로 유지가능</li>
+<li>UBIQUITOUS LANGUAGE와 그것이 발전이 문서를 유효한 상태로 유지하고 프로젝트 활동과 결부되게 만드는 구심점으로 삼아라</li>
+</ul></li>
+</ol>
+
+<blockquote>
+<p>프로젝트 활동 : 코드, 문서(다이어그램), 대화</p>
+</blockquote>
+
+<h4 id="실행-가능한-기반">실행 가능한 기반 ??</h4>
+
+<p>코드에 대한 테스트</p>
+
+<p>올바르게 <strong>실행</strong> 되는 것 뿐만 아니라 올바른 의미를 <strong>전달</strong> 하는 코드를 작성하자면 엄청나게 세심한 노력을 기울어야 한다.</p>
+
+<p>현재의 표준 기술(ex:JUnit)을 활용해 코드의 행위, 의도, 메시지를 일치시키려면 훈련과 설계에 관한 어떤 특정한 사고방식이 필요하다.</p>
+
+<h2 id="설명을-위한-모델">설명을 위한 모델 ??</h2>
+
+<p>하나의 모델 을 통해서 구현, 설계, 의사소통(프로젝트 활동)의 기초가 돼야 한다. <strong>하지만 설명을 위한 모델은 ??</strong></p>
+
+<ul>
+<li>기술적 모델(from 개발자) : 최소한의 수준으로 엄격하게 - 객체 (or 클래스) 다이어그램</li>
+<li>설명을 위한 모델(from 도메인 전문가) : 다양한 방식으로 표현할 수 있다.
+
+<ul>
+<li>도메인 전문가가 개발자들를 교육하고자 하는 경우 다양한 방식으로 사용</li>
+<li>오히려 UML적일 필요가 없으며, 오히려 그렇지 않을 때가 일반적으로 가장 좋다.</li>
+</ul></li>
+<li>설명을 위한 모델과 설계를 주도하는 모델(기술적 모델) 간의 차이를 의식하고 있어야한다. 즉, 두 모델은 같을 필요가 없다.</li>
+</ul>
+
+<p><strong>기술적 모델과 설명을 위한 모델이 함께할 때 이해하기가 쉽다</strong></p>
+
+<h3 id="예제-해운-활동과-항로">예제 : 해운 활동과 항로</h3>
+
+<p><img src="/generated/2015/09/DDD-2-4-580x599-108608.jpg" class="user-portrait" itemprop="image" alt="그림 2-4" data-downloadable="true" >
+<em>기술적 모델</em></p>
+
+<p><img src="/generated/2015/09/DDD-2-5-580x201-06a6a5.png" class="user-portrait" itemprop="image" alt="그림 2-5" data-downloadable="true" >
+<em>설명을 위한 모델</em></p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2015/09/28/ddd-chapter-01" title="DDD 01장 - 지식탐구">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'redutan'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>28 September 2015</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#ddd-ref">ddd <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; MJ 2012
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+
+  </body>
+</html>
+
