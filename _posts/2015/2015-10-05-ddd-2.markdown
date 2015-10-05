@@ -1,0 +1,11 @@
+---
+layout: post
+title: "DDD 2부 - 모델 주도 설계의 기본 요소"
+date: "2015-10-05 12:56"
+tags: ddd
+---
+
+## 네비게이션 맵
+![MODEL-DRIVEN DESIGN의 언어로 구성된 내비게이션 맵](/images/2015/10/ddd-diagram.png)
+
+_출처 : http://www.infoq.com/minibooks/domain-driven-design-quickly_
