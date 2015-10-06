@@ -14,6 +14,11 @@ tags: ["osx", "install"]
 ### Xcode (필수아님)
 - App Store : https://itunes.apple.com/kr/app/xcode/id497799835?mt=12
 
+### Xcode Command Line Tools
+```bash
+$ xcode-select --install
+```
+
 ### Evernote
 - App Store : https://itunes.apple.com/kr/app/evernote/id406056744?mt=12
 
