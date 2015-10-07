@@ -71,5 +71,5 @@ export JAVA_HOME = /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJ
 
 
   [fed7853c]: /2015/09/25/osx-program-for-dev/#homebrew "OX X에 Homebrew와 Cask Extension 설치"
-  [670fa358]: http://redutan.github.io/2015/09/25/osx-program-for-dev/#sourcetree "OS X에 Homebrew로 IntelliJ 설치"
-  [99e9fe27]: http://redutan.github.io/2015/09/25/osx-program-for-dev/#dev "OS X에 Homebrew로 JDK설치"
+  [670fa358]: /2015/09/25/osx-program-for-dev/#sourcetree "OS X에 Homebrew로 IntelliJ 설치"
+  [99e9fe27]: /2015/09/25/osx-program-for-dev/#dev "OS X에 Homebrew로 JDK설치"
