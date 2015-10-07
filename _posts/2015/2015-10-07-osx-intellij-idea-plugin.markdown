@@ -54,7 +54,7 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 
 ## Checkstyle
 
-- 정적코드분석
+- 코딩컨벤션 강제화
 
 `Checkstyle-IDEA`을 플러그인 검색을 통해서 설치
 
