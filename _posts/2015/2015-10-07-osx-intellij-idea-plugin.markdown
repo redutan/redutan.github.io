@@ -54,7 +54,7 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 
 ## Checkstyle
 
-- 코딩컨벤션 강제화
+- 코딩컨벤션제어
 
 `Checkstyle-IDEA`을 플러그인 검색을 통해서 설치
 
@@ -69,3 +69,10 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 - 정적코드분석
 
 `Findbugs-IDEA`을 플러그인 검색을 통해서 설치
+
+## Atlassian Connector
+
+- Atlassian 제품(JIRA, Bamboo, Crucible, FishEye) 연동 플러그인
+- 개인적으로 JIRA 연동을 위해서 설치함. 다른 종류의 ITS를 사용한다면 해당 플러그인이나 기본 Task 플러그인 사용요망
+
+`Atlassian Connector for IntelliJ IDE`
