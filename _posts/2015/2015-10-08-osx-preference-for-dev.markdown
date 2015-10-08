@@ -87,6 +87,8 @@ export HOMEBREW_GITHUB_API_TOKEN=???????????????????????????????
 # :wq
 ```
 
+> [Homebrew Install][a38ca92d]
+
 #### Java
 - 만약 Java를 설치한다면 `JAVA_HOME`를 설정하는 것이 좋다.
 - _실제 `JAVA_HOME` 정보는 OS 버전별로 바뀔 수 있으니 유의하자._
@@ -99,3 +101,8 @@ export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJD
 
 # :wq
 ```
+
+> [Java Install][0e59b43a]
+
+  [a38ca92d]: /2015/09/25/osx-program-for-dev/#homebrew "Homebrew Install"
+  [0e59b43a]: /2015/09/25/osx-program-for-dev/#dev "Java Install"
