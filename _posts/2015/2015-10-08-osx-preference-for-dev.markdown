@@ -32,7 +32,8 @@ tags:
 ![Keyboard-keymap](/images/2015/10/osx-04-2-keyboard-change.png)
 
 #### Spotlight
-- 단축키 변경 : 기본 단축키가 `^C`인데, IDE 에서 자동완성 단축키로 사용되기 때문에 변경요망
+- 단축키 변경 : 기본 단축키가 `⌃ Space`인데, IDE 에서 자동완성 단축키로 사용되기 때문에 변경요망
+- 본인은 `⇧⌘ Space`로 수정했다.
 
 ![Spotlight-search](/images/2015/10/osx-05-spotlight.png)
 
