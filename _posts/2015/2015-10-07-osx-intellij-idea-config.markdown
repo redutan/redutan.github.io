@@ -30,8 +30,42 @@ export JAVA_HOME = /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJ
 
 **IntelliJ-IDEA 설치**
 
- - Homebrew를 이용한 설치 : [OS X에 Homebrew로 IntelliJ 설치][670fa358]
- - web에서 직접 다운로드 : https://www.jetbrains.com/idea/download/
+- **web에서 직접 다운로드 (추천)** : https://www.jetbrains.com/idea/download/
+- Homebrew를 이용한 설치 : [OS X에 Homebrew로 IntelliJ 설치][670fa358]
+  - *Homebrew로 설치 후 업그레이드 시 잔재가 남음*
+
+## IntelliJ 튜닝
+
+IntelliJ의 설치파일이 존재하는 경로로 이동하면 `idea.vmoption` 파일이 존재
+
+- `/Applications/IntelliJ IDEA 14.app/Contents/bin/idea.vmoption`
+
+**원본**
+
+```bash
+Xms128m
+Xmx750m
+XX:MaxPermSize=350m
+XX:ReservedCodeCacheSize=225m
+XX:+UseCompressedOops
+```
+
+**튜닝 후**
+
+```bash
+Xms1024m
+Xmx1024m
+XX:MaxPermSize=350m
+XX:ReservedCodeCacheSize=225m
+XX:+UseCompressedOops
+XX:+UseG1GC
+```
+
+- `XX:ReservedCodeCacheSize=225m` : JIT 컴파일러 캐시 사이즈
+- `XX:+UseCompressedOops` : 32bit 형으로 데이터 압축
+- `XX:+UseG1GC` : G1 GC 활성화화
+
+> 최소한의 튜닝을 기조로 설정함
 
 ## IntelliJ 환경설정
 
@@ -68,6 +102,13 @@ export JAVA_HOME = /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJ
 - `Enable Time Tracking` 활성화
 
 ![Time Tracking](/images/2015/10/05_timeTracking.png)
+
+#### Mark modified tabs
+
+- `Mark modified tabs with asterisk` 활성화
+- 수정된 파일에 `*` 표시
+
+![Mark modified tabs](/images/2015/10/06_markModified.png)
 
 
   [fed7853c]: /2015/09/25/osx-program-for-dev/#homebrew "OX X에 Homebrew와 Cask Extension 설치"

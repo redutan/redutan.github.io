@@ -19,6 +19,10 @@ tags: ["osx", "install"]
 $ xcode-select --install
 ```
 
+### Alfred
+- Spotlight 대처
+- App Store : https://itunes.apple.com/kr/app/alfred/id405843582?mt=12
+
 ### Evernote
 - App Store : https://itunes.apple.com/kr/app/evernote/id406056744?mt=12
 
