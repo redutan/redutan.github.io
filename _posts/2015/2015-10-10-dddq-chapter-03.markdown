@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DDDQ 요약 - 2"
+title: "DDDQ 3장 모델 주도 설계"
 date: "2015-10-10 21:13"
 tags:
   - "ddd"

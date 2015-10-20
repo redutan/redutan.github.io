@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DDDQ 요약 - 1
+title: DDDQ 1장 도메인 주도 설계란 무엇인가?
 date: '2015-10-10 21:12'
 tags:
   - ddd
@@ -9,8 +9,6 @@ tags:
 > **DDDQ(Domain Driven Design Quickly) - 도메인 주도 설계란 무엇인가?**
 >
 > 라는 책의 간단 요약 정리
-
-# 도메인 주도 설계란 무엇인가?
 
 **소프트웨어 개발이 어려운 이유는 현실세계 문제의 복잡성에서 시작된다**
 
