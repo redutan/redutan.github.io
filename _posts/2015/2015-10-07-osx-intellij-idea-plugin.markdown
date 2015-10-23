@@ -75,4 +75,16 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 - Atlassian 제품(JIRA, Bamboo, Crucible, FishEye) 연동 플러그인
 - 개인적으로 JIRA 연동을 위해서 설치함. 다른 종류의 ITS를 사용한다면 해당 플러그인이나 기본 Task 플러그인 사용요망
 
-`Atlassian Connector for IntelliJ IDE`
+`Atlassian Connector for IntelliJ IDE`를 플러그인 검색을 통해서 설치
+
+## Eclipse Code Formatter
+
+- IntelliJ를 이클립스 기본 코딩 스타일로 적용
+- 이클립스 사용자와 협업을 한다면 설정을 추천
+- 형상관리툴에서 코드포맷(특히 import) 이슈를 많이 해결해 준다.
+
+`Eclipse Code Formatter`를 플러그인 검색을 통해서 설치
+
+*설정참조*
+
+![Eclipse Code Formatter Configuration](/images/2015/10/intellijPlugin_eclipseCodeFormatter.png)
