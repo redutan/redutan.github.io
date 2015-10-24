@@ -50,7 +50,7 @@ XX:ReservedCodeCacheSize=225m
 XX:+UseCompressedOops
 ```
 
-**튜닝 후**
+**튜닝**
 
 ```bash
 Xms1024m
@@ -66,6 +66,29 @@ XX:+UseG1GC
 - `XX:+UseG1GC` : G1 GC 활성화화
 
 > 최소한의 튜닝을 기조로 설정함
+
+## IntelliJ 레티나 폰트 가독성 향상
+
+- 일부 폰트가 레티나 디스플레이를 표현 못할 경우 아래 파일의 일부 내용 수정 요망
+- `/Applications/IntelliJ IDEA 14.app/Contents/Info.plist`
+
+**원본**
+
+```bash
+...
+<key>JVMVersion</key>
+<string>1.8*</string>
+...
+```
+
+**튜닝**
+
+```bash
+...
+<key>JVMVersion</key>
+<string>1.8+</string>
+...
+```
 
 ## IntelliJ 환경설정
 
