@@ -160,6 +160,14 @@ brew cask install xmind
 ```bash
 brew cask install skype
 ```
+# Shell
+
+### tree
+- 폴더 구조를 트리형태로 노출
+
+```bash
+brew install tree
+```
 
 # Font
 
