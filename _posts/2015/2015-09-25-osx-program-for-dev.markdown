@@ -113,14 +113,14 @@ brew cask install sts
 brew cask install atom
 ```
 
+- markdown-writer 패키지 추가 : jekyll 관리용
+
 ### StarUML
 - 무료 UML 툴
 
 ```bash
 brew cask install staruml
 ```
-
-- markdown-writer 패키지 추가 : jekyll 관리용
 
 # Utils
 
