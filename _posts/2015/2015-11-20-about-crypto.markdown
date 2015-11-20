@@ -41,6 +41,7 @@ public class Crypto {
 ```
 
 일반적으로 대부분의 개발자들은 개발 시 암/복호화를 위해서 위와 같은 인터페이스가 필요할 것입니다.
+
 *반론으로 왜 `byte[]` 가 지원되지 않는가?, 왜 암호화 키를 입력 받지 않는가도 있지만, 그것은 생각하지 않겠습니다.*
 
 위와 같은 간단한 인터페이스를 통해서 간단하게 암호화가 가능하게 할려면 최소 아래와 같은 내용을 확인해야합니다.
@@ -52,9 +53,9 @@ public class Crypto {
   - 필요에 따라서 block size
 - 암호화 모드
 - Padding 방식
-- 암호화 키 문자열
-  - 일부 암호화 모드에서는 초기화벡터 문자열도 필요함
-- 암호문자열 - 바이트 간 인코딩 방식 + charset 필요
+- 암호화 키
+  - 일부 암호화 모드에서는 초기화벡터 도 필요함
+- 암호문자열 바이트인코딩 + 문자인코딩
 - 키문자열(암호화키, 초기화벡터) - 바이트 간 인코딩 방식 (문자인코딩, 바이트인코딩 둘 다 가능)
   - *암호 문자열과 인코딩 방식과 키문자열 인코딩 방식이 다르면 필요*
 
@@ -94,9 +95,9 @@ public class AES256Crypto implements Crypto {
 
 기본적으로 알고리즘, 모드, 패딩이 필요합니다.
 
-- 알고리즘은 암호화 알고리즘이며 예제의 경우 AES 방식을 사용합니다. 블록암호화 방식이기 때문에 Byte Padding이 필요합니다.
-- 모드는 암호화 방식이다 예제의 경우 `CBC`를 사용하는데 이럴 경우 초기화 벡터가 필요합니다.
-- 블록 암호화 방식이기 때문에 패딩 방식이 필요합니다.
+- 알고리즘은 암호화 알고리즘이며 예제의 경우 `AES` 방식을 사용합니다. 블록암호화 방식이기 때문에 Byte Padding이 필요합니다.
+- 모드는 암호화 방식입니다. 예제의 경우 `CBC`를 사용하는데 이럴 경우 초기화 벡터가 필요합니다.
+- 블록 암호화 방식이기 때문에 padding 방식이 필요합니다.
 
 예제의 경우 우선 암호화(`encrypt`) 부터 구현하겠습니다.
 
@@ -129,8 +130,9 @@ public class AES256Crypto implements Crypto {
 ```
 
 256 bit 암호화 방식이기 때문에 키 입력에 대한 유효성을 추가하였습니다. - 아직은 논란이 있는 코드입니다.
+key size가 암호화 알고리즘의 bit 수를 가르치는 것과 동일하게 됩니다.
+**즉 AES256 이라는 것은 암호화 키 사이즈가 256 bit 라는 말과 동일합니다.**
 
-`Rijendael` 알고리즘 경우에는 128 192 256 bit이기 때문에 달라질 수 있습니다.
 
 
 #### 초기화 벡터, block size
@@ -164,11 +166,14 @@ public class AES256Crypto implements Crypto {
 }
 ```
 
-block size의 경우 AES는 128 bit 고정이기 때문에 별 다른 변화가 없습니다.
+`AES`의 block size는 128 bit 고정이기 때문에 별 다른 변화가 없습니다.
+
+`AES`의 모태가 되는 `Rijendael`알고리즘 경우에는 128 192 256 bit이기 때문에 달라질 수 있습니다.
 
 단, 초기화벡터(iv)의 경우 block size와 같아야 하기 때문에 128 bit 여야합니다.
 iv의 경우 더 강력한 암호화를 위해서는 암호화 요청 시 마다 달라지는 것이 보안에 더 좋으나,
 예제이므로 우선은 초기 세팅으로 표현하겠습니다.
+
 
 #### 암호문 인코딩
 ```java
@@ -180,10 +185,10 @@ public interface Encoder {
 }
 ```
 
-갑자기 새로운 인터페이스가 추가되었다.
-암호문을 인코딩 하기 위해서는 위와 같은 인터페이스가 필요하다.
+갑자기 새로운 인터페이스가 추가되었습니다.
+암호문을 인코딩 하기 위해서는 위와 같은 인터페이스가 필요하기 때문입니다.
 
-간단하게 설명하면 bytes -> string 가 `encode`이며, string -> bytes 는 `decode`입니다.
+간단하게 설명하면 string -> bytes 가 `encode`이며, bytes -> string 는 `decode`입니다.
 기본적으로 인코딩은 charset와 연관관계가 깊은 문자인코딩으로 생각하기 쉬운데, 암호화의 경우에는 암호화로 인해
 문자인코딩과는 별개의 규칙이 없는 bytes가 반환되므로 문자로 표현할 수 없게 됩니다.
 
@@ -197,7 +202,7 @@ public interface Encoder {
 
 #### 암호문 Base 64 인코딩 구현
 ```java
-public class Base64Encoder {
+public class Base64Encoder implements Encoder {
   // base64는 아스키 코드 내로 표현가능한 인코딩 방식
   private static final String ASCII = "US-ASCII";
 
@@ -231,7 +236,7 @@ public class AES256Crypto implements Crypto {
   private final String iv;
   // 문자인코딩 방식
   private final String charset = "UTF-8";
-  // 암호문 인코더
+  // 암호문 바이트 인코더
   private Encoder encoder = new Base64Encoder();
   ...
 
@@ -318,7 +323,7 @@ public class AES256Crypto implements Crypto {
   private final String iv;
   // 문자인코딩 방식
   private final String charset = "UTF-8";
-  // 암호문 인코더
+  // 암호문 바이트 인코더
   private Encoder encoder = new Base64Encoder();
   // 키 인코더
   private Encoder keyEncoder = new StringEncoder("US-ASCII");
@@ -384,17 +389,20 @@ public class AES256Crypto implements Crypto {
 
 암호화와는 반대로 진행하는 것을 확인할 수 있습니다.
 
+
 **암호화**
 
-1. `String#getBytes(String)`(문자인코딩)를 이용해서 bytes로 변환
+1. `String#getBytes(String)`(문자 인코딩)를 이용해서 bytes로 변환
 1. 암호화
-1. `encoder.encode`(바이트인코딩)를 이용해서 String으로 변환
+1. `encoder.encode`(바이트 인코딩)를 이용해서 String으로 변환
 
 **복호화**
 
-1. `encoder.decode`(바이트인코딩)를 통해서 bytes로 변환
+1. `encoder.decode`(바이트 디코딩)를 통해서 bytes로 변환
 1. 복호화
-1. `new String(byte[], String)`(문자인코딩)을 이용해서 String으로 변환
+1. `new String(byte[], String)`(문자 디코딩)을 이용해서 String으로 변환
+
+![암/복호화 흐름](/images/2015/11/crypto-flow.png)
 
 *구현체에 중복코드가 많아서 약간의 리펙토링을 진행하고 전체코드를 보겠습니다.*
 
