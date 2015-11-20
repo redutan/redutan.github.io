@@ -283,7 +283,7 @@ encoder.encode(encrypted);
 
 #### 키 인코더 구현
 ```java
-public class StringEncoder() {
+public class StringEncoder implements Encoder {
   // 문자인코딩
   private final String charset;
 
