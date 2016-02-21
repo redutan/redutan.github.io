@@ -4,7 +4,7 @@ title: Effective Java 2/E - Chatper 03 모든 객체의 공통 메서드
 date: '2016-02-21 22:06'
 tags:
   - book
-  - Effective-java
+  - effective-java2
 ---
 
 # Role 08 - `equals`를 재정의할 때는 일반규약을 따르라
