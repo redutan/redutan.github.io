@@ -27,11 +27,11 @@ tags:
 
 equals 메서드는 **동치 관계(equivalence relation)** 를 만족해야함
 
-- **반사성(reflexive)** : `x.equals(x)` = true
-- **대칭성(symmetric)** : `x.equals(y)` = true -> `y.equals(x)` = true
-- **추이성(transitive)** : `x.equals(y)` = true && `y.equals(z)` = true` -> `x.equals(z)` = true
+- **반사성(reflexive)** : `x.equals(x) = true`
+- **대칭성(symmetric)** : `x.equals(y) = true -> y.equals(x) = true`
+- **추이성(transitive)** : `x.equals(y) = true && y.equals(z) = true` -> `x.equals(z) = true`
 - **일관성(consistent)** : `x.equals(y)` 을 여러 번 해도 -> all true
-- **Null에 대한 비동치성(Non-nullity)** : `x.equals(null)` -> false
+- **Null에 대한 비동치성(Non-nullity)** : `x.equals(null) = false`
 
 하지만 애석하게도 **객체 생성 가능(instantiable) 클래스를 상속하여 새로운 속성을 추가하면서 `equals` 규약을 어기지 않을 방법은 없다.** *상속을 이용할 경우 동치관계는 깨짐*
 그 외에도 여러가지 우회법이 있지만 다 문제가 생긴다 (ex: `instanceof` 대신 `getClass`를 이용하는 경우)
