@@ -6,10 +6,9 @@ tags:
   - ddd
 ---
 
-> _본 포스트는 **도메인 주도 설계**라는 책을 참조하였습니다._
-
-> - _가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다._
-> - http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216
+> 본 포스트는 **도메인 주도 설계** 라는 책을 참조하였습니다.
+가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.
+> [http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216)
 
 ## 효과적인 모델링의 요소
 

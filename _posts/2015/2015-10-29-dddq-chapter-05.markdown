@@ -6,6 +6,8 @@ tags:
   - ddd
 ---
 
+> **DDDQ(Domain Driven Design Quickly) - 도메인 주도 설계란 무엇인가?** 라는 책의 간단 요약 정리
+
 컨텍스트 기반 다양한 협업 상황에서의 모델 관리
 
 **모델 내부의 일관성. 즉 통일성(unification)을 유지해야함**

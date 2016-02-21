@@ -5,6 +5,10 @@ date: '2015-11-25 21:37'
 tags: ddd
 ---
 
+> 본 포스트는 **도메인 주도 설계** 라는 책을 참조하였습니다.
+가능하면 본 책을 직접 보시고 DDD를 이해하는 것을 추천드립니다.
+> [http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=12174216)
+
 ## Service
 
 도메인의 개념 중 사물(도메인객체)이 아닌 활동이나 행동(연산)로 표현되는 모델링 대상

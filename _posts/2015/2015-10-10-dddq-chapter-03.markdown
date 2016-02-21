@@ -6,9 +6,7 @@ tags:
   - "ddd"
 ---
 
-> **DDDQ(Domain Driven Design Quickly) - 도메인 주도 설계란 무엇인가?**
->
-> 라는 책의 간단 요약 정리
+> **DDDQ(Domain Driven Design Quickly) - 도메인 주도 설계란 무엇인가?** 라는 책의 간단 요약 정리
 
 # 모델 주도 설계
 

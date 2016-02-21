@@ -6,6 +6,8 @@ tags:
   - ddd
 ---
 
+> **DDDQ(Domain Driven Design Quickly) - 도메인 주도 설계란 무엇인가?** 라는 책의 간단 요약 정리
+
 ### 공통 언어의 필요성
 
 **공통 언어가 없다면?**
