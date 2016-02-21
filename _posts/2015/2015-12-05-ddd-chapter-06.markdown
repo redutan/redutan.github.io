@@ -11,7 +11,7 @@ tags: ddd
 
 ![도메인객체_라이프사이클](/images/2015/11/ddd-lifecycle.png)
 
-*그림 1 | 도메인 객체 생명주기*
+*그림 1) 도메인 객체 생명주기*
 
 <br/>
 
@@ -43,7 +43,7 @@ tags: ddd
 
 ![지역 및 전역 식별성과 객체 참조](/images/2015/11/ddd-aggregate-1.jpg)
 
-*그림 2 | 지역 및 전역 식별성과 객체참조*
+*그림 2) 지역 및 전역 식별성과 객체참조*
 
 > 참조 : http://www.moshesty.com/category/ddd/
 
