@@ -119,3 +119,91 @@ class Point {
 **package 클래스, private 중첩 클래스의 필드는 외부로 공개하는 것이 나을 수도 있다.**
 
 # Role 15 - 변경가능성을 최소화하라
+
+**불변객체(값객체)를 사용하라.**
+
+### 장점
+- 설계하기 쉽다.
+- 구현하기 쉽다.
+- 사용하기 쉽다.
+- 오류가능성이 적다.
+- 안전하다. - threadsafe
+
+### 불변객체 5규칙
+1. **setter를 제공하지 않는다.**
+2. **계승(상속)할 수 없도록 한다.**
+    1. `final class`
+    2. `private 생성자`
+3. **모든 필드를 final로 선언한다.**
+4. **모든 필드를 private로 선언한다.**
+5. **변경 가능 컴포넌트에 대한 독점적 접근권을 보장한다.**
+    6. 생성자, 접근자, readObject(규칙 76)안에서는 방어복사로 설정한다.
+
+*example*
+{% highlight java %}
+public final class Complex {
+    private final double re;
+    private final double im;
+
+    public Complex(double re, double im) {
+        this.re = re;
+        this.im = im;
+    }
+
+    // 대응되는 수정자가 없는 접근자들
+    public double realPart() { return re; }
+    public double imageinaryPart { return im; }
+
+    public Complex add(Complex c) {
+        return new Complex(re + c.re, im + c.im);
+    }
+
+    public Complex subtract(Complex c) {
+        return new Complex(re - c.re, im - c.im);
+    }
+
+    @Overrice
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if(!(o instanceof Complex))
+            return false;
+         Complex c = (Complex) o;
+
+         return Double.compare(re, c.re) == 0 &&
+                Double.compare(im, c.im);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17 + hashDouble(re);
+        result = 31 * result + hashDouble(im);
+        return result;
+    }
+
+    private static int hashDouble(double val) {
+        long longBits = Double.doubleToLongBits(val);
+        return (int) (longBits ^ (longBits >>> 32));
+    }
+
+    @Override
+    public String toString() {
+        return "(" + re + " + " + im + "i)";
+    }
+}
+{% endhighlight %}
+
+### 장점상세
+- **단순하다.**
+- **스레드에 안전하다. 동기화도 필요없다.**
+- **자유롭게 공유할 수 있다.**
+- **내부도 공유할 수 있다.**
+    - 객체 내부의 일부 상태값을 공유함
+- **다른 객체의 구성요소로 훌륭하다.**
+
+### 단점
+- 항상 값마다 별도의 객체를 생성해야한다.
+    - 가능한 기본타입(primitive)로 제공한다.
+    - 가변 헬퍼 클래스 제공 - ex) `String`(불변)과 `StringBuilder`(가변)
+
+### 구현상세
