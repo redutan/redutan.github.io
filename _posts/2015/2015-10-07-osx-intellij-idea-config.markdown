@@ -19,12 +19,12 @@ tag:
 3. JAVA_HOME 환경변수 설정
  - `~/.bash_profile` 파일에 아래와 같이 추가해서 환경변수 설정을 한다.
 
-```bash
+{% highlight bash %}
 $ vi ~/.bash_profile
 # vi
 export JAVA_HOME = /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
 # :wq (저장)
-```
+{% endhighlight %}
 
 > 환경변수 적용을 위해서 사용자계정 로그오프 후 재접속 해야한다.
 
@@ -42,24 +42,24 @@ IntelliJ의 설치파일이 존재하는 경로로 이동하면 `idea.vmoption` 
 
 **원본**
 
-```bash
+{% highlight bash %}
 Xms128m
 Xmx750m
 XX:MaxPermSize=350m
 XX:ReservedCodeCacheSize=225m
 XX:+UseCompressedOops
-```
+{% endhighlight %}
 
 **튜닝**
 
-```bash
+{% highlight bash %}
 Xms1024m
 Xmx1024m
 XX:MaxPermSize=350m
 XX:ReservedCodeCacheSize=225m
 XX:+UseCompressedOops
 XX:+UseG1GC
-```
+{% endhighlight %}
 
 - `XX:ReservedCodeCacheSize=225m` : JIT 컴파일러 캐시 사이즈
 - `XX:+UseCompressedOops` : 32bit 형으로 데이터 압축
@@ -74,21 +74,21 @@ XX:+UseG1GC
 
 **원본**
 
-```bash
+{% highlight bash %}
 ...
 <key>JVMVersion</key>
 <string>1.8*</string>
 ...
-```
+{% endhighlight %}
 
 **튜닝**
 
-```bash
+{% highlight bash %}
 ...
 <key>JVMVersion</key>
 <string>1.8+</string>
 ...
-```
+{% endhighlight %}
 
 ## IntelliJ 환경설정
 

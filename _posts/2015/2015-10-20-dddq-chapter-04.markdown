@@ -58,7 +58,7 @@ tags:
 
 as-is
 
-```java
+{% highlight java %}
 public class Bookshelf {
   private int capacity = 20;
   private Collection content;
@@ -72,11 +72,11 @@ public class Bookshelf {
     }
   }
 }
-```
+{% endhighlight %}
 
 제약사항 메소드 분리를 통한 리팩토링 후
 
-```java
+{% highlight java %}
 public class Bookshelf {
   private int capacity = 20;
   private Collection content;
@@ -94,7 +94,7 @@ public class Bookshelf {
     return content.size() < capacity;
   }
 }
-```
+{% endhighlight %}
 
 **처리(process)**
 

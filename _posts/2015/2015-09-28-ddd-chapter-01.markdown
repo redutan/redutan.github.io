@@ -51,20 +51,20 @@ tags:
 
 ![그림 1-8](/images/2015/09/DDD-1-8.jpg)
 
-```Java
+{% highlight java %}
 public int makeBooking(Cargo cargo, Voyage voyage) {
   int confirmation = orderConfirmationSequence.next();
   voyage.addCargo(cargo, confirmation);
   return confirmation;
 }
-```
+{% endhighlight %}
 
 - 요구사항 추가
 **10% 초과예약 허용**
 
 ![그림 1-9](/images/2015/09/DDD-1-9.jpg)
 
-```Java
+{% highlight java %}
 public int makeBooking(Cargo cargo, Voyage voyage) {
   double maxBooking = voyage.capacity() * 1.1;
   if ((voyage.bookedCargosize() + cargo.size()) > maxBooking)
@@ -73,27 +73,27 @@ public int makeBooking(Cargo cargo, Voyage voyage) {
   voyage.addCargo(cargo, confirmation);
   return confirmation;
 }
-```
+{% endhighlight %}
 - **10% 초과 예약** 은 정책이고 이는 전략패턴으로 구조화 할 수 있다.
 
 ![그림 1-10](/images/2015/09/DDD-1-10.jpg)
 
-```Java
+{% highlight java %}
 public int makeBooking(Cargo cargo, Voyage voyage) {
   if (!overbookingPolicy.isAllowed(cargo, voyage)) return -1;
   int confirmation = orderConfirmationSequence.next();
   voyage.addCargo(cargo, confirmation);
   return confirmation;
 }
-```
+{% endhighlight %}
 
-```Java
+{% highlight java %}
 public class overbookingPolicy {
     public boolean isAllowed(Cargo cargo, Voyage voyage) {
       return (cargo.size() + voyage.bookedCargoSize()) <= (voyage.capacity() * 1.1);
     }
 }
-```
+{% endhighlight %}
 
 **도메인의 모든 세부사항에 이러한 정교한 설계를 적용하라고 권하는 것이 아니다.**
 

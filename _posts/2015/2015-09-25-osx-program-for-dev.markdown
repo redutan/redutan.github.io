@@ -15,9 +15,9 @@ tags: ["osx", "install"]
 - App Store : https://itunes.apple.com/kr/app/xcode/id497799835?mt=12
 
 ### Xcode Command Line Tools
-```bash
+{% highlight bash %}
 $ xcode-select --install
-```
+{% endhighlight %}
 
 ### Alfred
 - Spotlight 대처
@@ -36,46 +36,46 @@ $ xcode-select --install
 - OS X 용 패키지 관리자
 - http://brew.sh/index_ko.html
 
-```bash
+{% highlight bash %}
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+{% endhighlight %}
 
 ### Homebrew extension Cask
 - Homebrew의 확장 저장소
 - 각종 retail 어플리케이션 지원
 
-```bash
+{% highlight bash %}
 brew cask install google-chrome
-```
+{% endhighlight %}
 
 ### Chrome
 - 웹브라우저
 
-```bash
+{% highlight bash %}
 brew cask install google-chrome
-```
+{% endhighlight %}
 
 ### iTerm
 - OS X 용 터미널 프로그램
 
-```bash
+{% highlight bash %}
 brew cask install iterm2
-```
+{% endhighlight %}
 
 ### Docker
 - 가상환경 컨테이너
 - virtualbox + docer2boot + docker 통합 설치
 
-```bash
+{% highlight bash %}
 brew install cask dockertoolbox
-```
+{% endhighlight %}
 
 # Dev
 
 ### Java SDK
-```bash
+{% highlight bash %}
 brew cask install java
-```
+{% endhighlight %}
 
 ### Oracle sqldeveloper
 - 오라클 클라이언트 툴
@@ -84,43 +84,43 @@ brew cask install java
 ### MySQL Workbench
 - MySQL 클라이언트 툴
 
-```bash
+{% highlight bash %}
 brew cask install mysqlworkbench
-```
+{% endhighlight %}
 
 ### SourceTree
 
-```bash
+{% highlight bash %}
 brew cask install sourcetree
-```
+{% endhighlight %}
 
 ### IntelliJ
 
-```bash
+{% highlight bash %}
 brew cask install intellij-idea
-```
+{% endhighlight %}
 
 ### STS (eclipse)
 
-```bash
+{% highlight bash %}
 brew cask install sts
-```
+{% endhighlight %}
 
 ### Atom
 - Chromium 기반 에디터
 
-```bash
+{% highlight bash %}
 brew cask install atom
-```
+{% endhighlight %}
 
 - markdown-writer 패키지 추가 : jekyll 관리용
 
 ### StarUML
 - 무료 UML 툴
 
-```bash
+{% highlight bash %}
 brew cask install staruml
-```
+{% endhighlight %}
 
 # Utils
 
@@ -128,9 +128,9 @@ brew cask install staruml
 - 적절한 오피스 프로그램 설치요망
 
 ##### OpenOffice : 무료
-```bash
+{% highlight bash %}
 brew cask install openoffice
-```
+{% endhighlight %}
 
 ##### iWork : 신규 맥 또는 iOS 기기구입자 **무료**
 - Pages : https://itunes.apple.com/kr/app/pages/id409201541?mt=12
@@ -143,31 +143,31 @@ brew cask install openoffice
 - 정적페이지 생성 툴
 - Github pages 등을 이용한 블로그 관리
 
-```bash
+{% highlight bash %}
 sudo gem install jekyll
-```
+{% endhighlight %}
 
 ### XMind
 - 무료 마인드맵 툴
 
-```bash
+{% highlight bash %}
 brew cask install xmind
-```
+{% endhighlight %}
 
 ### Skype
 - 영상통화
 
-```bash
+{% highlight bash %}
 brew cask install skype
-```
+{% endhighlight %}
 # Shell
 
 ### tree
 - 폴더 구조를 트리형태로 노출
 
-```bash
+{% highlight bash %}
 brew install tree
-```
+{% endhighlight %}
 
 # Font
 

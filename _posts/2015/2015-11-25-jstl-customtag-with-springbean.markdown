@@ -18,7 +18,7 @@ tags:
 
 예제코드를 확인해봅시다.
 
-```java
+{% highlight java %}
 // 1. RequestContextAwareTag 상속
 public class CodeTag extends RequestContextAwareTag {
     @Autowired
@@ -38,7 +38,7 @@ public class CodeTag extends RequestContextAwareTag {
         return SKIP_BODY;
     }
 }
-```
+{% endhighlight %}
 
 **참 쉽죠 ~**
 

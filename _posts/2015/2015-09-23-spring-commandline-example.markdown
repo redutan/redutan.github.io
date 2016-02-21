@@ -15,7 +15,7 @@ tags: [spring, spring-boot, lifecycle]
 > [토비님 방송 링크][TobyTVLink]
 
 ## Step 1. Simple
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class Springcl2Application {
     System.out.println("main()");
   }
 }
-```
+{% endhighlight %}
 
 단순하게 `main()`을 출력하고 마무리.
 
@@ -32,7 +32,7 @@ public class Springcl2Application {
 - 기본적으로 `@Target(ElementType.TYPE)` 으로 선언되어 있으면 `ElementTypeANNOTATION_TYPE` 에서도 사용할 수 있기 때문에 일반 어너테이션 이면서 메타 어너테이션이 될 수 있다.
 - 메타 어너테이션으로만 사용하고 싶으면 자바 기본 메타 어너테이션 처럼 `@Target(ElementType.ANNOTATION_TYPE)` 으로 선언하면 된다.
 
-```Java
+{% highlight java %}
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -43,11 +43,11 @@ public class Springcl2Application {
 public @interface SpringBootApplication {
   ...
 }
-```
+{% endhighlight %}
 
 
 ## Step 2. Implementation CommandLineRunner
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application implements CommandLineRunner {
   public static void main(String[] args) {
@@ -61,13 +61,13 @@ public class Springcl2Application implements CommandLineRunner {
     System.out.println("run()");
   }
 }
-```
+{% endhighlight %}
 
 1. `run()` 출력
 2. `main()` 출력
 
 ## Step 3. CommandLineRunner @Bean 등록 with Lamda Expression
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) {
@@ -83,13 +83,13 @@ public class Springcl2Application {
     };
   }
 }
-```
+{% endhighlight %}
 
 1. `runner()` 출력
 2. `main()` 출력
 
 ## Step 4. CommandLineRunner @Component 등록
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) {
@@ -106,13 +106,13 @@ public class Springcl2Application {
     }
   }
 }
-```
+{% endhighlight %}
 
 1. `runnerMyRunner#run()` 출력
 2. `main()` 출력
 
 ## Step 5. InitializingBean @Bean 등록 with Lamda Expression
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) {
@@ -128,13 +128,13 @@ public class Springcl2Application {
       };
     }
 }
-```
+{% endhighlight %}
 
 1. `afterPropertiesSet()` 출력
 2. `main()` 출력
 
 ## Step 6. try-with-resources
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) {
@@ -144,13 +144,13 @@ public class Springcl2Application {
     System.out.println("main()");
   }
 }
-```
+{% endhighlight %}
 
 1. `Something` 출력
 2. `main()` 출력
 
 ## Step 7. try-with-resources with Lamda Expression
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) throws Exception {
@@ -161,14 +161,14 @@ public class Springcl2Application {
     System.out.println("main()");
   }
 }
-```
+{% endhighlight %}
 
 1. `Something` 출력
 2. `Auto close` 출력
 3. `main()` 출력
 
 ## Step 8. Runtime.addShutdownHook
-```Java
+{% highlight java %}
 @SpringBootApplication
 public class Springcl2Application {
   public static void main(String[] args) {
@@ -185,7 +185,7 @@ public class Springcl2Application {
     System.out.println("main()");
   }
 }
-```
+{% endhighlight %}
 
 1. `Something` 출력
 2. `Auto close` 출력

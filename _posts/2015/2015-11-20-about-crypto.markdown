@@ -31,14 +31,14 @@ tags:
 
 # 암호화 인터페이스
 
-```java
+{% highlight java %}
 public class Crypto {
   // 암호화
   String encrypt(String plain);
   // 복호화
   String decrypt(String cipher);
 }
-```
+{% endhighlight %}
 
 일반적으로 대부분의 개발자들은 개발 시 암/복호화를 위해서 위와 같은 인터페이스가 필요할 것입니다.
 
@@ -77,7 +77,7 @@ public class Crypto {
 ## 암호화 인터페이스 구현
 
 #### 암호화 알고리즘, 모드, 패딩
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
 
   // 알고리즘/모드/패딩
@@ -91,7 +91,7 @@ public class AES256Crypto implements Crypto {
   }
   ...
 }
-```
+{% endhighlight %}
 
 기본적으로 알고리즘, 모드, 패딩이 필요합니다.
 
@@ -105,7 +105,7 @@ public class AES256Crypto implements Crypto {
 > [Padding와 암호화 모드][a55c5334]  
 
 #### 암호화 키, key size
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
   // 알고리즘/모드/패딩
   private static final String algorithm = "AES/CBC/PKCS5Padding";
@@ -127,7 +127,7 @@ public class AES256Crypto implements Crypto {
   }
   ...
 }
-```
+{% endhighlight %}
 
 256 bit 암호화 방식이기 때문에 키 입력에 대한 유효성을 추가하였습니다. - 아직은 논란이 있는 코드입니다.
 key size가 암호화 알고리즘의 bit 수를 가르치는 것과 동일하게 됩니다.
@@ -136,7 +136,7 @@ key size가 암호화 알고리즘의 bit 수를 가르치는 것과 동일하�
 
 
 #### 초기화 벡터, block size
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
   // 알고리즘/모드/패딩
   private static final String algorithm = "AES/CBC/PKCS5Padding";
@@ -164,7 +164,7 @@ public class AES256Crypto implements Crypto {
   }
   ...
 }
-```
+{% endhighlight %}
 
 `AES`의 block size는 128 bit 고정이기 때문에 별 다른 변화가 없습니다.
 
@@ -176,14 +176,14 @@ iv의 경우 더 강력한 암호화를 위해서는 암호화 요청 시 마다
 
 
 #### 암호문 인코딩
-```java
+{% highlight java %}
 public interface Encoder {
   // string -> bytes
   byte[] encode(String str);
   // bytes -> string
   String decode(byte[] bytes);
 }
-```
+{% endhighlight %}
 
 갑자기 새로운 인터페이스가 추가되었습니다.
 암호문을 인코딩 하기 위해서는 위와 같은 인터페이스가 필요하기 때문입니다.
@@ -201,7 +201,7 @@ public interface Encoder {
 예제는 `Base64` 방식으로 진행하겠습니다.
 
 #### 암호문 Base 64 인코딩 구현
-```java
+{% highlight java %}
 public class Base64Encoder implements Encoder {
   // base64는 아스키 코드 내로 표현가능한 인코딩 방식
   private static final String ASCII = "US-ASCII";
@@ -215,7 +215,7 @@ public class Base64Encoder implements Encoder {
     return new String(Base64.decodeBase64(bytes), ASCII);
   }
 }
-```
+{% endhighlight %}
 
 편의상 `Exception` 핸들링은 제외하였습니다.
 
@@ -226,7 +226,7 @@ public class Base64Encoder implements Encoder {
 > 참고 : [위키백과-base64][a1942bdd]
 
 #### 암호문 구현체에 암호문 인코더 주입
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
   // 알고리즘/모드/패딩
   private static final String algorithm = "AES/CBC/PKCS5Padding";
@@ -256,33 +256,33 @@ public class AES256Crypto implements Crypto {
   }
   ...
 }
-```
+{% endhighlight %}
 
 객체 변수로 `charset` 항목이 `UTF-8`로 추가되었습니다.
 그리고 `encoder` 객체도 default로 생성된 상태입니다.
 
 **입력받은 plain은 문자열 이기 때문에 문자인코딩 방식을 통해서 byte로 변환하겠습니다.**
 
-```java
+{% highlight java %}
 // 문자인코딩 방식을 통한 string -> byte 변환
 plain.getBytes(charset)
-```
+{% endhighlight %}
 Java에서는 기본적으로 `String#getBytes(String charset)` 메소드가 있기 때문에 이것을 이용해서 bytes로 변환하였습니다.
 
 **암호화 한 후 bytes 로 반환된 값을 문자열로 출력해야하는데 이럴 경우에는 바이트 인코딩 방식이 필요합니다.**
 위에서 미리 선언해 둔 Encoder인터페이스를 통해서 변환하겠습니다.
 
-```java
+{% highlight java %}
 // encoder.encode를 통한 byte -> string 변환
 encoder.encode(encrypted);
-```
+{% endhighlight %}
 
 **이렇게 해서 1차적으로 암호화 부분 구현이 완료되었습니다.**
 
 *키 관련된 부분은 우선 무시하겠습니다. 그냥 봐도 좀 이상하지만 다음에 수정하겠습니다.*
 
 #### 키 인코더 구현
-```java
+{% highlight java %}
 public class StringEncoder implements Encoder {
   // 문자인코딩
   private final String charset;
@@ -299,7 +299,7 @@ public class StringEncoder implements Encoder {
     return new String(bytes, charset);
   }
 }
-```
+{% endhighlight %}
 
 갑자기 매우 단순한 키 인코더 구현체가 나와서 당황스러울 듯 합니다.
 하지만 키 인코딩의 경우 문자인코딩, 바이트인코딩 방식 둘 다 가능하기 때문에 위와 같이
@@ -313,7 +313,7 @@ public class StringEncoder implements Encoder {
 *중요한 점은 위 인코더는 문자인코딩 방식이기 때문에 암호문 인코더로 사용하면 정상적인 암/복호화가 불가능 하게 됩니다.**
 
 #### 암호문 구현체에 키 인코더 주입 후 변경
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
   // 알고리즘/모드/패딩
   private static final String algorithm = "AES/CBC/PKCS5Padding";
@@ -343,7 +343,7 @@ public class AES256Crypto implements Crypto {
   }
   ...
 }
-```
+{% endhighlight %}
 
 `keyEncoder`를 이용해서 암호화 키와 초기화 벡터를 bytes로 성공적으로 변환하였습니다.
 여기에서 `keyEncoder`의 경우 `ASCII` charset을 기반으로 생성하였는데, 대부분의 경우 암호화 키를
@@ -355,7 +355,7 @@ public class AES256Crypto implements Crypto {
 
 #### 복호화 메소드 구현
 
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
   // 알고리즘/모드/패딩
   private static final String algorithm = "AES/CBC/PKCS5Padding";
@@ -385,7 +385,7 @@ public class AES256Crypto implements Crypto {
     return new String(c.doFinal(encrypted), charset);
   }
 }
-```
+{% endhighlight %}
 
 암호화와는 반대로 진행하는 것을 확인할 수 있습니다.
 
@@ -407,7 +407,7 @@ public class AES256Crypto implements Crypto {
 *구현체에 중복코드가 많아서 약간의 리펙토링을 진행하고 전체코드를 보겠습니다.*
 
 #### AES256Crypt 리펙토링
-```java
+{% highlight java %}
 public class AES256Crypto implements Crypto {
   public static final int KEY_SIZE = 256;
   public static final int BLOCK_SIZE = 128;
@@ -460,10 +460,10 @@ public class AES256Crypto implements Crypto {
     return new String(c.doFinal(encrypted), charset);
   }
 }
-```
+{% endhighlight %}
 
 #### 사용 예시
-```java
+{% highlight java %}
 public static Example {
   // 암호화 키
   static final String key = "12345678901234567890123456789012";
@@ -490,7 +490,7 @@ public static Example {
     assert plain.equals(plain2);
   }
 }
-```
+{% endhighlight %}
 
 # 결론
 
