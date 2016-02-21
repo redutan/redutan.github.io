@@ -1,10 +1,10 @@
 ---
-layout: "post"
-title: "Effective Java 2/E - Chatper 03 모든 객체의 공통 메서드"
-date: "2016-02-21 20:15"
+layout: post
+title: Effective Java 2/E - Chatper 03 모든 객체의 공통 메서드
+date: '2016-02-21 22:06'
 tags:
-    - book
-    - Effective-java
+  - book
+  - Effective-java
 ---
 
 # Role 08 - `equals`를 재정의할 때는 일반규약을 따르라
@@ -158,3 +158,121 @@ public int hashCode() {
 **`toString`를 재정의 하는 가장 큰 이유는 객체를 문자열로 모두 표현해서 한 번에 확인할 수 있다는 것이다** - *Debugging에 큰 도움이 된다.*
 
 기본적으로 toString을 재정의하는 것이 귀찮다면 Lombok([https://projectlombok.org/features/ToString.html](https://projectlombok.org/features/ToString.html))을 사용하는 것을 추천한다.
+
+# Role 11 - `clone`을 재정의할 때는 신중하라
+
+`Cloneable` `clone`를 허용(구현된)한다는 사실을 알리려고 고안된 믹스인(mixin) 인터페이스이다. - *확장과 인터페이스가 분리됨을 의미? 또는 marked interface?*
+위에 설명했다시피 특이하게도 구현할 메소드는 존재하지 않는다. 그저 **`protected`로 선언된 `Object`의 `clone` 메서드가 어떻게 동작할지 정한다.**
+
+> `Cloneable`의 경우 인터페이스를 굉장히 괴상하게 이용한 사례로, 따라하면 곤란하다.
+
+### `clone`(복사) 메서드 일반규약
+
+- `x.clone() != x`
+- `x.clone().getClass() == x.getClass()`
+- `x.clone.equals(x)`
+- 어떤 생성자도 호출하지 않는다.
+- **`super.clone()`를 반드시 호출한다.**
+
+**`Cloneable`인터페이스의 책임 : `public clone` 메서드를 제공한다.**
+
+{% highlight java %}
+@Override
+// Object 대신 PhoneNumber을 써도 된다 - 아래 공변반환형 참고
+public PhoneNumber clone() {
+    try {
+        // super.clone() 라는 라이브러가 제공하는 기능을 적극 사용한다.
+        return (PhoneNumber) super.clone();
+    } catch (CloneNotSupportedException e) {
+        throw new AssertionError(); //수행될 리 없음.
+    }
+}
+{% endhighlight %}
+
+> 공변반환형(convariant return type) : 재정의 메서드의 반환값 자료형은 재정의 되는 메서드의 반환값 자료형의 하위클래스가 될 수 있다.
+
+### `clone`의 shallow copy와 deep copy
+
+> 객체의 복사 [https://en.wikipedia.org/wiki/Object_copying](https://en.wikipedia.org/wiki/Object_copying)
+
+**실질적으로 `clone`는 deep copy를 지원해야한다.**
+shallow copy(단순하게 `super.clone()`)가 될 경우 일부 상태(속성)를 공유하게 되므로 문제가 생긴다.
+*A라는 객체를 복사해서 B라는 객체를 만들었는데 A의 특정속성 (call by reference 기반 속성)을 수정하면 B도 수정되는 이슈*
+
+**즉, 원본과 복사본 상이의 불변식(invariant)의 깨진다.**
+
+복잡한 `clone`를 재정의 하는 것 보다는 **복사 생성자(copy constructor)나 복사 팩터리(copy factory)를 제공하는 것** 이 더 낫다.
+- 복사 생성자 : `public Yum(Yum yum);`
+- 복사 팩터리 : `public static Yum newInstance(Yum yum);`
+
+> 또한 불변객체의 경우 실질적으로 복제를 허용하는 것 논리적으로 오류가 생긴다 : 복사본과 원본을 논리적으로 구별할 수 없음.
+
+### 복사 생성자, 복사 팩터리의 장점
+
+1. `clone`를 재정의 하지 않아도 됨
+2. `final`필드(불변객체)와 충돌없음
+3. 인터페이스 활용가능 : `TreeSet.clone()` VS `new TreeSet(Set set)`
+
+## 결론
+
+** `Cloneable`을 계승하는 인터페이스는 만들지 않는다.
+** 계승을 목적으로 설계하는 클래스는 Cloneble([규칙 17](#))을 구현하지 말아야한다.
+** 계승 목적으로 클래스를 설계할 때는 올바르게 동작하는 `protected clone` 메서드를 제공하지 않으면 하위 클래스에서 `Cloneable`을 구현할 수 없다.
+** 즉, clone를 쓰는 경우는 배열을 복사할 때 빼고 사용할 일이 거의 없을 것이다. - **너무나도 단점이 많다.**
+
+# Role 12 - `Compareable` 구현을 고려하라.
+
+{% highlight java %}
+public interface Comparable<T> {
+    /*
+    `this`가 인자(t)보다 작으면 음수
+    `this`가 인자(t)와 같으면 0
+    `this`가 인자(t)보다 크면 양수
+    */
+    int compareTo(T t);
+}
+{% endhighlight %}
+
+**`Comparable` 인터페이스**
+- 말 그대로 비교를 통한 객체간 검색, 정렬, 최대/최소 계산
+- `Object` 메서드에 대한 재정의가 아니지만 그래도 중요한 이야기다.
+- 사용예시
+    - `TreeSet`, `TreeMap` - `final int compare(Object k1, Object k2)`
+    - `Arrays`, `Collections` - `public static <T extends Comparable<? super T>> void sort(List<T> list)`
+
+**알파벳 순서나 값의 크기, 또는 시간적 선후관계처럼 명확한 자연적 순서를 따르는 값 클래스를 구현할 때는 `Comparable` 인터페이스를 구현한 것을 반디시 고려해 봐야 한다.**
+
+### `compareTo` 구현 일반규약
+- **반사성**
+- **대칭성** : 모든 x와 y에 대해 `sgn(x.compareTo(y)) == -sgn(y.compareTo(x))`
+    - 만약 `sgn(x.compareTo(y))`이 예외를 발생시킨다면 `sgn(y.compareTo(x))`도 예외가 발생해야한다.
+- **추이성** : `(x.compareTo(y)) > 0 && y.compareTo(z) > 0)` -> `x.compareTo(z) > 0`
+- `x.compareTo(y) == 0`이면 `sgn(x.xompareTo(z)) == sgn(y.compareTo(z))`
+- **동치성(강력한권고)** : `(x.compareTo(y) == 0) == (x.equals(y))`
+    - *만약 위 조건이 만족하지 않을 경우 반드시 javadoc에 명시해야한다.*
+
+### `compareTo`의 문제점
+- `equals` 재정의와 마찬가지로 계승을 이용하면 이슈가 발생한다. 고로 구성을 사용해서 해결하는 것을 추천
+
+### Example code
+{% highlight java %}
+public int compareTo(PhoneNumber pn) {
+    // 지역번호비교
+    if (areaCode < pn.areaCode)
+        return -1;
+    if (areaCode > pn.areaCode)
+        return 1;
+    // 지역번호가 같으니 국번비교
+    if (prefix < pn.prefix)
+        return -1;
+    if (prefix > pn.prefix)
+        return 1;
+    // 지역번호와 국번이 같으므로 회선번호 비교
+    if (lineNumber < pn.lineNumber)
+        return -1;
+    if (lineNumber > pn.lineNumber)
+        return 1;
+
+    return 0;   // 모든 필드가 일치
+}
+{% endhighlight %}
