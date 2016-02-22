@@ -205,5 +205,134 @@ public final class Complex {
 - 항상 값마다 별도의 객체를 생성해야한다.
     - 가능한 기본타입(primitive)로 제공한다.
     - 가변 헬퍼 클래스 제공 - ex) `String`(불변)과 `StringBuilder`(가변)
+- 방어복사 기법이 요구됨
 
-### 구현상세
+### 유의사항
+
+불변객체는 *정적 팩터리 생성자* 를 이용하면 좋은 점이 많다
+- 상속불가
+- 객체 자체 캐싱기능 추가 가능
+
+일부 non-final 객체를 내부에 설정해서 응용해도 된다 (캐시 등)
+- 모든 필드가 final 일 필요는 없다.
+
+**직렬화(Serialization) 구현 시 주의해야한다**
+- [규칙76에서 자세히 설명](#)
+
+## 결론
+- **변경 가능한 클래스로 만들 타당한 이유가 없다면, 반드시 변경 불가능 클래스로 만들어야 한다.**
+- **변경 불가능한 클래스로 만들 수 없다면, 변경 가능성을 최대한 제한하라.**
+- **특별한 이유가 없다면 모든 필드는 final로 선언하라.**
+- **초기화 메서드(재초기화포함)를 제공하지 마라.**
+
+# Role 16 - 계승(상속)하는 대신 구성하라 (중요)
+
+**계승은 캡슐화 원칙을 위반한다.**
+- 상위클래스에 의존적이기 때문에 만약 상위클래스가 변화하면 하위클래스가 망가질 수 있다.
+- *상위클래스의 하위클래스가 강결합 상태이고, 즉 상위 클래스가 캡슐화가 되지 않는 다는 것*
+
+### 간단한 해결방법 (구성)
+- 계승하지 않고 객체에 private 필드 하나를 두는 것
+
+*example* 포장클래스를 통한 구성
+{% highlight java %}
+// ForwardingSet은 Set을 포장한 Wrapper class
+public class InstrumentedSet<E> extends ForwardingSet<E> {
+    private int addCount = 0;
+
+    public InstrumentedSet(Set<E> s) {
+        super(s);
+    }
+
+    @Override
+    public boolean add(E e) {
+        addCount++;
+        return super.add(e);
+    }
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        addCount += c.size();
+        return super.addAll(c);
+    }
+    public int getAddCount() {
+        return addCount;
+    }
+}
+{% endhighlight %}
+
+**계승은 하위 클래스가 상위 클래스의 하위 자료형(subtype)이 확실한 경우에만 바람직하다**
+즉 `IS-A` 관계가 성립할 때만 계승해야한다.
+- `IS-A` 의 관계는 클래스와 객체의 관계이고 `IS KIND OF`가 더 적절한 거 같다.
+
+### 계승을 사용한 안좋은 예
+- `Properties`와 `HashMap` : `Properties#getProperty`와 `HashMap#get` 이 상호 접근을 허용한다.
+
+## 결론
+
+가능하면 **계승** 을 하지 않고 **구성** 을 사용하자. *포장 클래스 구현에 인터페이스가 있다면 더욱 그렇다.*
+
+# Role 17 - 계승을 위한 설계와 문서를 갖추거나, 그럴 수 없다면 계승을 금지하라
+
+### 규칙 세부사항
+1. **재정의 가능 메서드를 내부적으로 어떻게 사용하는지(self-use) 반드시 문서에 남기라는 것이다.**
+    2. 재정의 가능 메서드 : public, protected의 일반(non final)메서드
+    3. 어떤 메서드가 어떤 다른 메서드나 클래스에 의존하고 있고, 어떻게 작동되는지 상세하게 서술한다.
+2. **클래스 내부 동작에 개입할 수 있는 훅(hooks)을 신중하게 고른 protected 메서드 형태로 제공해야한다.**
+3. **계승을 위해 설계한 클래스를 테스트할 유일한 방법은 하위클래스를 직접 만들어 보는 것이다.**
+    4. 적절하게 테스트케이스를 만들어서 다양한 케이스로 테스트를 해보는 것 뿐이다. : 3개는 만들어보자.
+5. *생성자* 는 직접적이건 간접적이건 **재정의 가능 메서드를 호출해서는 안된다는 것이다.**
+
+*example*
+
+{% highlight java %}
+public class Super {
+    // 생성자가 재정의 가능 메서드를 호출하는 잘못된 사례
+    public Super() {
+        overrideMe();
+    }
+    public void overrideMe() {
+    }
+}
+
+public final class Sub extends Super {
+    private final Date date; // 생성자가 초기화하는 final필드
+
+    Sub() {
+        // super(); 을 자동으로 호출한다.
+        date = new Date();
+    }
+
+    // 상위 클래스 생성자가 호출하게 되는 재정의 메서드
+    @Override
+    public void overrideMe() {
+        System.out.println(date);
+    }
+
+    public static void main(String[] args) {
+        Sub su = new Sub();
+        sub.overrideMe();
+        // 과연 생각한대로 date가 정상으로 출력되는가??
+    }
+}
+{% endhighlight %}
+
+
+`Cloneable`나 `Serializable`와 같은 인터페이스를 구현한다면 계승을 사용하지 않는 것이 낫다.
+- 너무 과도한 책임이 졔약이 생긴다.
+
+## 결론
+
+**계승을 위한 클래스를 설계하면 클래스에 상당한 제약이 가해진다.**
+**계승에 맞도록 철저하게 설계하고, 문서화하지 않은 클래스에 대한 하위클래스를 만들지 않는 것이다.**
+*final* 로 클래스를 만들던지, public 생성자를 제공하지 않으면 된다.
+**계승을 할 수없게 막았다면 구성을 통해 확장하면 된다.**
+
+### 계승을 위한 안전한 구현
+
+*클래스 내부적으로 재정의 가능 메서드를 사용하는 경우(self-use)를 완전히 제거하는 방법*
+
+1. 재정의 가능 메서드의 내부 코드를 private로 선언된 도움 메서드 안으로 옮긴다.
+2. 각각의 재정의 가능 메서드가 해당 메서드를 호출하게 한다.
+3. 재정의 가능 메서드를 호출하는 내부 코드는 전부 해당 private 도움 메서드 호출로 바꾼다.
+
+# Role 18 - 추상 클래스 대신 인터페이스를 사용하라.
