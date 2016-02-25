@@ -133,7 +133,7 @@ class Figure {
         }
     }
 }
-{% endhighlight $}
+{% endhighlight %}
 
 **태그 기반 클래스는 너저분한데다 오류 발생가능성이 높고, 효율적이지도 않다. 그거 클래스 계층을 모아서 분기로 처리한 것 뿐이다.**
 
@@ -165,7 +165,7 @@ class Rectangle extends Figure {
 
     double area() { return length * width; }
 }
-{% endhighlight $}
+{% endhighlight %}
 
 **장점**
 
