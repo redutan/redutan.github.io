@@ -1,7 +1,7 @@
 ---
-layout: "post"
-title: "Effective Java 2/E - Chatper 03 모든 객체의 공통 메서드"
-date: "2016-02-21 23:23"
+layout: post
+title: Effective Java 2/E - Chatper 04 클래스와 인터페이스 (1)
+date: '2016-02-26 01:36'
 tags:
   - book
   - effective-java2
@@ -334,5 +334,3 @@ public final class Sub extends Super {
 1. 재정의 가능 메서드의 내부 코드를 private로 선언된 도움 메서드 안으로 옮긴다.
 2. 각각의 재정의 가능 메서드가 해당 메서드를 호출하게 한다.
 3. 재정의 가능 메서드를 호출하는 내부 코드는 전부 해당 private 도움 메서드 호출로 바꾼다.
-
-# Role 18 - 추상 클래스 대신 인터페이스를 사용하라.
