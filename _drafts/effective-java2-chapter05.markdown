@@ -1,0 +1,108 @@
+---
+layout: "post"
+title: "Effective Java 2/E - Chatper 05 제네릭"
+date: "2016-02-28 18:31"
+tags:
+  - book
+  - effective-java2
+---
+
+> 간단/명료 하게 작성하도록 하자.
+
+# Role 23 - 새 코드에는 무인자 제네릭 자료형을 사용하지 마라
+
+타입 선언부에 형인자(Type parameter)가 포함되어 있으면 제네릭 타입이라 부른다.
+
+마찬가지로 메소드 선언부에 Type parameter이 포함되어 있으면 제네릭 메서드라 부른다.
+
+**용어정리**
+
+- Type parameter : 형인자 - `< >`
+    - Formal type parameter : 형식 형인자 - `<T>`
+    - Actual type parameter : 실 형인자 - `<String>`
+- Parameterized type : 형인자 자료형 - `List<T>`
+- Raw type : 무인자 자료형 - `List`
+- Unbounded wildcard type : 비한정적 와일드카드 자료형 - `List<?>`
+- Bounded wildcard type : 한정적 와일드카드 자료형 - `List<? extends String>`
+- Bound type parameter : 한정적 형인자 - `<E extends String>`
+
+### 목적
+
+*형인자 선언을 통해서 컴파일 타임에 Type safety(형 안정성)을 확보하기 위함*
+
+**고로 무인자 자료형(Raw type)을 쓰면 형 안정성이 사라지고, 제네릭의 장점 중 하나인 표현력(expressiveness) 측면에서 손해를 보게 된다.**
+
+### `List`, `List<Object>`, `List<?>` 구분
+
+- `List` : 모든 타입 추가 가능 *안전하지 않음*
+- `List<Object>` : 모든 타입 추가 가능
+    - 하지만 `List<String>`와 호환되지 않음 - 캐스팅 불가능
+- `List<?>` : 비한정적 와일드카드 자료형(unbounded wildcard type)
+    - null 이외에 어떤 원소도 넣을 수 없음(어떤 자료형이 있는 건데 어떤 자료형이 담긴지는 알 수가 없음)
+- `List<T extends String>` : 한정적 와일드카드 자료형(bounded wildcard type)
+    - String 포함 String 상속 받는 타입 호환
+    - `List<String>`와 호환됨 - 캐스팅 가능
+
+### `instalceof` 사용법
+
+{% highlight java %}
+// instalceof 연산자에는 무인자 자료형을 써도 OK
+if (o instanceof Set) {         // 무인자 자료형
+    Set<?> m = (Set<?>) o;      // 와일드카드 자료형
+}
+{% endhighlight %}
+
+# Role 24 - 무점검 경고(unchecked warning)를 제거하라.
+
+*example : 무점검 경고*
+{% highlight java %}
+Set<Lark> exaltation = new HashSet();
+
+/* 컴파일경고
+    ???.java:4: warning: [unchecked] unchecked conversion
+    found : HashSet, required: Set<Lark>
+    Set<Lark> exaltation = new HashSet();
+*/
+{% endhighlight %}
+
+**모든 무점검 경고는, 절대로 무시하지 말아야한다. 가능한 없애야한다.**
+
+- Type safety
+- No `ClassCastException`
+
+*단, 제거할 없는 경고 메세지는 형 안정성이 확실할 때문 `@SupressWarnings("unchecked")` 어노테이션을 사용해 억제하기 바란다.*
+가능하면 **작은 범위에 적용하라.**
+그리고 해당 경고를 억제한 이유를 주석으로 표현하라.
+
+# Role 25 - 배열 대신 리스트를 써라
+
+**배열과 리스트(Collection)의 차이**
+
+- 배열 : 공변 자료형(covariant)
+    - `Sub extends Super`이면 `Sub[] extends Super[]`가 만족됨
+- 리스트 : 불변 자료형(invariant)
+    - `Sub extends Super`이면 `List<Sub> extends List<Super>`이 **만족하지 않음**
+
+*하지만 취약한 것은 배열이다.* 역시 불변식이 좋음
+
+### 리스트의 장점
+
+**1. 컴파일 시 타입안정성 확보**
+
+{% highlight java %}
+// 실행 시 예외 발생 (컴파일 성공)
+Object[] objectArray = new Long[1];
+objectArray[0] = "I don't fit in";  // ArrayStoreException 발생
+
+// 컴파일 되지 않음
+List<Object> ol = new ArrayList<Long>();    // 자료형 불일치
+ol.add("I don't fit in");
+{% endhighlight %}
+
+**2. 배열은 실체화(reification) 자료형**
+
+간단히 말해서 객체를 생성하면서 초기화 까지 가능한 자료형이라는 뜻. 하지만 `List`는 안됨
+
+*example*
+
+`String strs = new String[] {"str1", "str2"}`
