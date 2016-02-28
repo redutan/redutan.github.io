@@ -1,7 +1,7 @@
 ---
-layout: "post"
-title: "Effective Java 2/E - Chatper 04 클래스와 인터페이스 (2)"
-date: "2016-02-26 01:35"
+layout: post
+title: Effective Java 2/E - Chatper 04 클래스와 인터페이스 (2)
+date: '2016-02-28 14:18'
 tags:
   - book
   - effective-java2
@@ -189,3 +189,140 @@ class Share extends Rectangle {
 **태그 기반 클래스 사용은 피해야한다.**
 
 # Role 21 - 전략을 표현하고 싶을 때는 함수 객체를 사용하라.
+
+**함수객체**
+
+- 함수 성격의 하나뿐인 메서드를 가진 객체
+- 대부분 상태가 없음 (stateless)
+
+*example*
+{% highlight java %}
+class StringLengthComparator {
+    public int compare(String s1, String s2) {
+        return s1.length() - s2.length();
+    }
+}
+{% endhighlight %}
+
+*example : 함수 객체 전략 인터페이스*
+{% highlight java %}
+// 전략 인터페이스
+public interface Comparator<T> {
+    public int compare(T t1, T t2);
+}
+
+// 구상클래스
+class StringLengthComparator implements Comparator<String> {
+    ...
+}
+{% endhighlight %}
+
+만약 전략 인터페이스를 익명 클래스로 사용하면 의미없는 객체가 반복될 수 있으므로 **정적인 필드(`private static final`)를 고려해보자**
+
+*example : 익명 클래스*
+{% highlight java %}
+Array.sort(stringArray, new Comparator<String>() {
+   public int compare(String s1, String s2) {
+       return s1.length() - s2.length();
+   }
+});
+{% endhighlight %}
+
+*example : 전략 정적 클래스*
+{% highlight java %}
+// 실행 가능한 전략들을 외부에 공개하는 클래스
+class Host {
+    private static class StrLenCmp implements Comparator<String>, Serializable {
+        public int compare(String s1, String s2) {
+            return s1.length() - s2.length();
+        }
+    }
+
+    // 이 비교자는 직렬화가 가능
+    public static final Comparator<String> STRING_LENGTH_COMPARATOR =
+            new StrLenCmp();
+    // 다른 전략들...
+}
+{% endhighlight %}
+
+## 결론
+
+- **함수 객체의 주된 용도는 전략 패턴(Strategy pattern)을 구현하는 것**
+- **전략을 표현하는 인터페이스를 선언하고, 실행 가능 전략 클래스를 구현한다.**
+- **만약 전략 클래스가 반복적으로 사용된다면 `private static` 맴버 클래스로 전략을 표현한 다음, `public static final` 필드를 통해서 외부에 공개하는 것이 바람직하다.**
+    - *그냥 바로 `public static final` 필드를 통해서 구현 + 외부 공개까지 한 번에 하는 것이 더 낫지 않은가?*
+
+# Role 22 - 맴버 클래스는 가능하면 `static`으로 선언하라.
+
+중첩 클래스(nested class)의 4가지 종류
+
+### 정적 맴버 클래스 (static member class)
+
+**클래스 안에 선언된 일반 클래스**
+
+*example* : `Calculator.Operation`
+
+### 비-정적 맴버 클래스 (nonstatic member class)
+
+**outer class의 객체를 참조할 수 있음 - *[1]this한정구문(qualified this)구문*을 통해서**
+
+*example*
+{% highlight java %}
+// 비-정적 맴버 클래스의 전형적인 용례
+public class MySet<E> extends AbstractSet<E> {
+    // ...
+    public Interator<E> iterator() {
+        return new MyItefator();
+    }
+
+    private class MyIterator implements iterator<E> {
+        // ...
+    }
+}
+{% endhighlight %}
+
+*exampe* : `Map.keySet`, `Map.entrySet`
+
+**바깥 클래스 객체에 접근할 필요가 없으면 정적 맴버 클래스로 만들자**
+
+비정적 맴버 클래스가 되면 해당 객체는 내부적으로 바깥 객체에 대한 참조를 유지하게 되므로, 각종 시간 공간 요구량이 늘어나게 되면 GC가 힘들어진다.
+
+### 익명 클래스 (anonymous class)
+
+- 이름이 없다
+- 바깥 클래스의 맴버도 아니다.
+- 사용하는 순간에 선언하고 객체를 만든다.
+- 코드 어디에서나 사용할 수 있다.
+- 비-정적(nonstatic context)안에서 사용될 때는 바깥 객체를 갖는다.
+- 정적 문맥(static context) 안에서 사용된다 해도 static 맴버를 가진 수는 없다.
+- 여러 인터페이스를 구현하는 익명 클래스는 선언할 수 없다.
+- **표현식 중간에 등장하므로, 10줄 이하로 짧게 작성되어야 가독성이 좋아진다.**
+- **함수 객체를 정의할 때 특히 많이 쓰인다.**
+
+### 지역 클래스 (inner class)
+
+- 지역 변수로 클래스를 선언한 것이다.
+
+*[1]this한정구문(qualified this)*
+
+this한정구문은 바깥 객체를 참조하기 위해서 this 앞에 바깥 객체의 자료형의 이름을 붙이는 것을 말한다.
+{% highlight java %}
+class Envelope {
+    void x() {
+        System.out.println("Hello");
+    }
+    class Enclosure {
+        void x() {
+            Envelope.this.x();  // 한정됨
+        }
+    }
+}
+{% endhighlight %}
+
+## 결론
+
+1. 맴버클래스 : 중첩 클래스를 메서드 밖에서 사용할 수 있어야 하거나, 메서드 안에 놓기에는 너무 길 경우
+    2. 비-정적 맴버 클래스 : 바깥 객체에 대한 참조를 가져야하는 경우
+    3. 정적 맴버 클래스 : 바깥 객체에 대한 참조가 필요없는 경우
+4. 익명 클래스 : 중첩 클래스가 특정한 메서드에 속해야 하고, 오직 한 곳에서만 객체를 생성하며, 해당 중첩 클래스의 특성을 규정하는 자료형이 이미 있다면(인터페이스, 추상클래스) 사용
+5. 지역 클래스 : 익명 클래스를 이용하지 않을 경우
