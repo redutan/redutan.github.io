@@ -106,3 +106,10 @@ ol.add("I don't fit in");
 *example*
 
 `String strs = new String[] {"str1", "str2"}`
+
+**이해안됨 - 실체 불가능 자료형**
+
+`E`, `List<E>`, `List<String>`와 같은 자료형은 실체화 불가능(non-refiable) 자료형으로 알려져 있다.
+쉽게 말하자만, 프로그램이 실행될 때 해당 자료형을 표현하는 정보의 양이 컴파일 시점에 필요한 정보의 양보다 적은 자료형이 **실체화 불가능 자료형** 이다.
+
+> 실행시점(runtime)에 해당 자료형의 모든 정보를 이용할 수 없는 자료형(a type this is not completely available at runtime)이라는 뜻이라는데 명확하게 이해가 안된다.
