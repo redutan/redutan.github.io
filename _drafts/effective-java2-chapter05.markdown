@@ -79,9 +79,10 @@ Set<Lark> exaltation = new HashSet();
 **배열과 리스트(Collection)의 차이**
 
 - 배열 : 공변 자료형(covariant)
-    - `Sub extends Super`이면 `Sub[] extends Super[]`가 만족됨
+    - `Sub extends Super`이면 `Super[]` -> `Sub[]`으로 형변환 가능
 - 리스트 : 불변 자료형(invariant)
-    - `Sub extends Super`이면 `List<Sub> extends List<Super>`이 **만족하지 않음**
+    - `Sub extends Super`이면 `List<Super>` -> `List<Sub>`으로 형변환 **불가능**
+    - **하지만** `List<Super>` -> `List<? extends Sub>`으로 형변환 가능
 
 *하지만 취약한 것은 배열이다.* 역시 불변식이 좋음
 
