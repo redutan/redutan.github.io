@@ -113,3 +113,93 @@ ol.add("I don't fit in");
 쉽게 말하자만, 프로그램이 실행될 때 해당 자료형을 표현하는 정보의 양이 컴파일 시점에 필요한 정보의 양보다 적은 자료형이 **실체화 불가능 자료형** 이다.
 
 > 실행시점(runtime)에 해당 자료형의 모든 정보를 이용할 수 없는 자료형(a type this is not completely available at runtime)이라는 뜻이라는데 명확하게 이해가 안된다.
+
+## 결론
+
+| 구분 | Type | 실체화 | 형안정성 |
+|-----|------|------|--------|
+| 배열 | 공변자료형 | 가능 | 실행타임에 보장 |
+| 제네릭 | 불변자료형 | 불가능 | 컴파일타임에 보장 |
+
+**배열과 제네릭을 뒤섞어 쓰다가 컴파일 오류나 경고메시지를 만나게되면, 배열을 리스트로 바꿔야겠다는 생각이 본능적으로 들어야 한다.**
+
+# Role 26 - 가능하면 제네릭 자료형으로 만들 것
+
+*example*
+{% highlight java %}
+// 제네릭 사용해 작성한 최초 Stack 클래스 - 컴파일 되지 않는다.
+public class Stack<E> {
+    private E[] elements;
+    private int size = 0;
+    private static final int DEFAULT_INITIAL_CAPACITY = 16;
+
+    public Stack() {
+        elements = new E[DEFAULT_INITIAL_CAPACITY];
+        // 컴파일오류
+        // Stack.java:8: generic array creation
+        //     elements = new E[DEFAULT_INITIAL_CAPACITY];
+    }
+
+    public void pusht(E e) {
+        ensureCapacity();
+        elements[size++] = e;
+    }
+
+    public E pop() {
+        if (size = 0)
+            throw new EmptyStackException();
+        E result = elements[--size];
+        elements[size] = null;  // 만기 참조 제거
+        return result;
+    }
+    ...
+}
+{% endhighlight %}
+
+### 배열을 사용하는 제네릭 자료형을 구현할 때 실체화 불가능한 자료형(E)으로 배열을 생성할 수 없는 경우 해결책
+
+**1. 제네릭 배열을 만들 수 없다는 조건을 우회하는 것이다.**
+
+배열 객체 생성 시 `Object` 배열을 만들어서 제네릭 배열 자료형으로 형변환(cast)하는 방법
+
+*example*
+{% highlight java %}
+// elements 배열에는 push(E)를 통해 전달된 E 형의 객체만 저장된다.
+// 이 정도면 형 안정성은 보장할 수 있지만, 배열의 실행시간 자료형은 E[]가 아니라 항상 Object[] 이다.
+@SuppressWarnings("unchecked")
+public Stack() {
+    elements = (E[]) new Object[DEFAULT_INITIAL_CAPACITY];
+}
+{% endhighlight %}
+
+**2. 배열의 자료형을 E[]에서 Object[]로 바꾸는 것이다.**
+
+*example*
+{% highlight java %}
+private E[] elements;
+...
+public Stack() {
+    elements = (E[]) new Object[DEFAULT_INITIAL_CAPACITY];
+}
+...
+public E pop() {
+    if (size = 0)
+        throw new EmptyStackException();
+    // 자료형이 E인 원소만 push하므로, 아래의 형변환은 안전하다.
+    @SuppressWarnings("unchecked") E result = elements[--size];
+    elements[size] = null;  // 만기 참조 제거
+    return result;
+}
+{% endhighlight %}
+
+**제네릭 배열 해결책 정리**
+
+1. 무점검 형변환(unchecked cast) 경고 억제의 위험성은 스칼라(scala) 자료형 보다 배열 자료형이 더 크기 때문에, 두번째 해법이 더 낫다고 볼 수 있다.
+2. 하지만 현실적으로 배열을 사용하는 코드가 여러군데라면 배열 생성 시 첫번째 방법으로는 E[]으로 한번만 형변환을 하면되지만, 두번째 방법으로는 코드 여기저기에서 E로 형변환을 해야하므로
+**첫번째 방법이 더 낫다**
+
+## 결론
+
+**가능하면 하위호환성을 유지하면서 제네릭 자료형으로 리팩터링하라.**
+
+# Role 27 - 가능하면 제네릭 메서드로 만들 것
