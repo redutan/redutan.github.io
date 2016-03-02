@@ -96,5 +96,5 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 ## 결론
 
 - **API에는 와일드카드 자료형을 사용해서 유연성을 높여라 - 필수다**
-- **PESC**
+- **PECS**
 - `Comparable`, `Comparator`는 모두 소비자이다 - `<? super T>`
