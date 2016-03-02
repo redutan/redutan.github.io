@@ -1,7 +1,7 @@
 ---
-layout: "post"
-title: "Effective Java 2/E - Chatper 05 제네릭"
-date: "2016-02-28 18:31"
+layout: post
+title: Effective Java 2/E - Chatper 05 제네릭
+date: '2016-03-03 00:41'
 tags:
   - book
   - effective-java2
@@ -204,3 +204,17 @@ public E pop() {
 **가능하면 하위호환성을 유지하면서 제네릭 자료형으로 리팩터링하라.**
 
 # Role 27 - 가능하면 제네릭 메서드로 만들 것
+
+## 패턴
+- 일반적인 사용
+- 제네릭 정적 팩터리 메서드 (1.6 이하)
+- 제네릭 싱글턴 팩터리 패턴
+    - `Collections.emptyList()`
+- 재귀적 자료형 한정(recursive type bound)
+    - `<T extends Compareable<T>> T max(List<T> list)`
+
+## 결론
+
+**제네릭 메서드는 클라이언트의 cast 비용을 줄이고 타입안정성도 높다.**
+
+**시간 날 때 기존 메서드를 제네릭 메서드로 확장해 놓으면 기존 클라이언트 코드를 깨지 않고도 새 사용자에게 더 좋은 API를 제공할 수 있다.**
