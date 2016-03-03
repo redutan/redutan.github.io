@@ -1,7 +1,7 @@
 ---
-layout: "post"
-title: "Effective Java 2/E - Chatper 05 제네릭 (2)"
-date: "2016-03-03 00:43"
+layout: post
+title: Effective Java 2/E - Chatper 05 제네릭 (2)
+date: '2016-03-03 23:50'
 tags:
   - book
   - effective-java2
@@ -98,3 +98,47 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 - **API에는 와일드카드 자료형을 사용해서 유연성을 높여라 - 필수다**
 - **PECS**
 - `Comparable`, `Comparator`는 모두 소비자이다 - `<? super T>`
+
+# Role 29 - 형 안전 다형성 컨테이너를 쓰면 어떨지 따져보라
+
+*example*
+{% highlight java %}
+// 형 안전 다형성(heterogeneous)컨테이너 패턴
+public class Favorites {
+    Map<Class<?>, Object> favroites = new HashMap<Class<?>, Object>();
+
+    public <T> void putFavorite(Class<T> type, T instance) {
+        if (type == null)
+            throw new NullPointerException("Type is null");
+        // before 타입안정성 사라짐
+        // favorites.put(type, instance);
+        // after 보완코드
+        favorites.put(type, type.cast(instance));
+    }
+
+    public <T> T getFavorite(Class<T> type) {
+        // 타입안정성 복구 - 동적 형변환
+        return type.cast(favorites.get(type));
+    }
+}
+{% endhighlight %}
+
+**형 안전 다형성 컨테이너 패턴의 문제점**
+
+1. `Class`(raw type)를 인자로 넘기면 형이 지정되지 않았기 때문에 형 안정성이 깨질 수 있음
+    2. `favorites.put(type, type.cast(instance));` 로 커버
+2. 실체화 불가능 자료형에는 쓰일 수 없음. `List<String>.class`는 존재할 수 없음
+    3. 실질적으로 완벽한 솔루션은 없음
+    4. 외부 라이브러리에 `ParameterizedType`과 같은 헬퍼가 있긴 하나 라이브러리 별로 종속적임
+
+### `asSubClass`
+
+실행시점에 특정한 Class객체를 인자로 주어진 하위클래스의 Class객체로 형변환 해준다.
+
+- 성공하면 Class 객체 반환
+- 형변환이 불가능하면 `ClassCastException` 발생
+
+## 결론
+
+**컨테이너 대신 키를 제네릭으로 만들면 형인자 개수가 고정되는 제약없는 형 안전 다형성 컨테이를 만들 수 있다.**
+**그런경우 Class 객체(자료형 토큰)를 키로 쓰면되며, `Column<T>`와 같이 직접 구현할 수도 있다.**
