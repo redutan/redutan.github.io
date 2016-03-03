@@ -1,5 +1,5 @@
-title:            Java.NET loper
-description:      MJ's devlog
+title:            DevOOOOOOOOP
+description:      MJ's DevOOOOOOOOP blog
 # put your disqus here
 disqus_shortname: redutan
 reading_time:     true # if true, shows the estimated reading time for a post
@@ -39,7 +39,7 @@ owner:
   name:           MJ
   site:           http://redutan.github.io
   avatar:         images/avatar.jpg
-  bio:            "Backend 개발자 사람입니다. 최근에는 어플리케이션의 복잡성을 다루는 DDD에 참 관심이 많습니다."
+  bio:            "Backend 개발자 사람입니다. 최근에는 어플리케이션의 복잡성을 다루는 DDD에 관심이 많습니다."
   email:          redutan@gmail.com
   # Social networking links used in footer. Update and remove as you like.
   twitter:
@@ -55,13 +55,15 @@ owner:
 
 # Twitter account associated with the site if different from owner/author twitter account.
 # Used in Twitter cards.
-twitter: redutan
+twitter:
 
 social:
   - title: "github"
     url: "https://github.com/redutan"
   - title: "linkedin"
     url: "https://br.linkedin.com/in/redutan"
+  - title: "facebook"
+    url: "https://fb.com/redutan"
   # - title: "youtube"
   #   url: "https://www.youtube.com/channel/UCfnSek-9HPWOx5e2pH7VFgg"
 # Background image to be tiled on all pages
