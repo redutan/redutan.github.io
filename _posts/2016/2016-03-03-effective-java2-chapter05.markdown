@@ -43,10 +43,10 @@ tags:
     - String 포함 String 상속 받는 타입 호환
     - `List<String>`와 호환됨 - 캐스팅 가능
 
-### `instalceof` 사용법
+### `instanceof` 사용법
 
 {% highlight java %}
-// instalceof 연산자에는 무인자 자료형을 써도 OK
+// instanceof 연산자에는 무인자 자료형을 써도 OK
 if (o instanceof Set) {         // 무인자 자료형
     Set<?> m = (Set<?>) o;      // 와일드카드 자료형
 }
