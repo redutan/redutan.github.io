@@ -177,7 +177,7 @@ public Stack() {
 
 *example*
 {% highlight java %}
-private E[] elements;
+private Object[] elements;
 ...
 public Stack() {
     elements = (E[]) new Object[DEFAULT_INITIAL_CAPACITY];
