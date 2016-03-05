@@ -1,7 +1,7 @@
 ---
-layout: "post"
-title: "Effective Java 2/E - Chatper 06 Enum과 Annotation"
-date: "2016-03-03 23:52"
+layout: post
+title: Effective Java 2/E - Chatper 06 Enum과 Annotation (1)
+date: '2016-03-05 13:41'
 tags:
   - book
   - effective-java2
@@ -164,3 +164,54 @@ ordinal 값을 배열 첨자로 사용하는 것은 적절하지 않다. 값이 
 **대신 `EnumMap`를 써라**
 
 만약 구현해야하는 것이 다차원이라면 `EnumMap<?, EnumMap<?>>`과 같이 표현하면된다.
+
+# Role 34 - 확장 가능한 enum을 만들어야 한다면 인터페이스를 이용하라
+
+enum 자료형은 상속하기에는 적합하지 않을 뿐만 아니라, 계승도 불가능하다.
+
+**하지만 인터페이스 구현을 통한 확장은 가능하다.**
+
+하지만 상속을 통한 코드 공유가 불가능하므로 코드 중복이 발생할 수 있다.
+**이런 경우에는 `helper class`나 `static helper method`를 통해서 중복을 제거할 수 있다.**
+
+### 클라이언트
+
+**한정적 자료형 토큰**
+{% highlight java %}
+public static void main(String[] args) {
+    double x = Double.parseDouble(args[0]);
+    double y = Double.parseDouble(args[1]);
+    test(ExtendedOperation.class, x, y);
+}
+
+private static <T extends Enum<T> & Operation> void test(
+        Class<T> opSet, double x, double y) {
+    for (Operation op : opSet.getEnumConstants()) {
+        System.out.printf("%f %s %f = %f%n", x, op, op.apply(x, y));
+    }
+}
+{% endhighlight %}
+
+**한정적 와일드카드 자료형**
+{% highlight java %}
+public static void main(String[] args) {
+    double x = Double.parseDouble(args[0]);
+    double y = Double.parseDouble(args[1]);
+    test(Arrays.asList(ExtendedOperation.values()), x, y);
+}
+
+private static void test(
+        Collection< ? extends Operation> ops, double x, double y) {
+    for (Operation op : ops) {
+        System.out.printf("%f %s %f = %f%n", x, op, op.apply(x, y));
+    }
+}
+{% endhighlight %}
+
+1. 이렇게 하면 `EnumSet`나 `EnumMap`을 사용할 수 없기 때문에 여러 자료형을 정의하는 유연성이 확보가 안됨
+2. 위와 같은 유연성이 필요없다면 **한정적 와일드카드 자료형** 방식이 더 나음
+
+## 결론
+
+**계승 가능 enum 자료형은 만들 수 없지만, 인터페이스를 만들고 그 인터페이스를 구현하는 기본 자료형을 만들면
+계승 가능 enum 자료형을 흉내 낼 수 있다.**

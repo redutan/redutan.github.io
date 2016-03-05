@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Effective Java 2/E - Chatper 05 제네릭
+title: Effective Java 2/E - Chatper 05 제네릭 (1)
 date: '2016-03-03 00:41'
 tags:
   - book
