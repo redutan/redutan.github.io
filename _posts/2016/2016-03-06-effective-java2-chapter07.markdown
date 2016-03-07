@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Effective Java 2/E - Chatper 07 메서드
+title: Effective Java 2/E - Chatper 07 메서드 (1)
 date: '2016-03-06 23:59'
 tags:
   - book
