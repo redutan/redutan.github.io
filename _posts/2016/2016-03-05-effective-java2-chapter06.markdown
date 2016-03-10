@@ -7,7 +7,7 @@ tags:
   - effective-java2
 ---
 
-# Role 30 - int 상수 대신 enum을 사용하라
+# Rule 30 - int 상수 대신 enum을 사용하라
 
 *example*
 {% highlight java %}
@@ -98,7 +98,7 @@ enum PayrollDay {
 - **분기(if, switch) 대신 상수 별 메서드를 구현하라.**
 - **상수 별로 공통 기능이 요구되면 정책 enum 패턴 사용을 고려하라.**
 
-# Role 31 - `ordinal` 대신 객체 필드를 사용하라.
+# Rule 31 - `ordinal` 대신 객체 필드를 사용하라.
 
 **enum 상수의 순서(ordinal)가 유지보수 하면서 변경될 수 있으므로 안전하지 않다.**
 `oridinal()`는 거의 사용할 일이 없다.
@@ -108,7 +108,7 @@ enum PayrollDay {
 
 **enum 상수에 연계되는 값은 객체 필드에 저장하자.**
 
-# Role 32 - 비트 필드(bit field) 대신 `EnumSet`을 사용하라
+# Rule 32 - 비트 필드(bit field) 대신 `EnumSet`을 사용하라
 
 *example 비트필드*
 {% highlight java %}
@@ -158,14 +158,14 @@ public class Text {
 *단점은 불변타입이 아니라는 것인데 `Collections.unmodifiableSet`로 포장하거나 Guava와 같은
 라이브러리를 이용하면 된다.*
 
-# Role 33 - `ordinal`을 배열 첨자로 사용하는 대신 `EnumMap`을 이용하라
+# Rule 33 - `ordinal`을 배열 첨자로 사용하는 대신 `EnumMap`을 이용하라
 
 ordinal 값을 배열 첨자로 사용하는 것은 적절하지 않다. 값이 변할 수 있을 뿐만 아니라, 타입 안정성도 보장 받지 못한다.
 **대신 `EnumMap`를 써라**
 
 만약 구현해야하는 것이 다차원이라면 `EnumMap<?, EnumMap<?>>`과 같이 표현하면된다.
 
-# Role 34 - 확장 가능한 enum을 만들어야 한다면 인터페이스를 이용하라
+# Rule 34 - 확장 가능한 enum을 만들어야 한다면 인터페이스를 이용하라
 
 enum 자료형은 상속하기에는 적합하지 않을 뿐만 아니라, 계승도 불가능하다.
 

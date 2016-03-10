@@ -7,7 +7,7 @@ tags:
     - effective-java2
 ---
 
-# Role 01 - 사용자 대신 정적 팩터리 메서드를 사용할 수 없는지 생각해보라
+# Rule 01 - 사용자 대신 정적 팩터리 메서드를 사용할 수 없는지 생각해보라
 
 **장점**
 
@@ -96,7 +96,7 @@ class Services {
 
 > 정적 팩터리 메서드와 public 생성자는 용도가 다르며, 그 차이와 장단점을 이해하는 것이 중요하다. 정적 팩터리 메서드가 효과적인 경우가 많으니, 정적 팩터리 메서드를 고려해 보지도 않고 무조건 public 생성자를 만드는 것은 삼가기 바란다.
 
-# Role 02 - 생성자 인자가 많을 때는 `Builder` 패턴 적용을 고려하라.
+# Rule 02 - 생성자 인자가 많을 때는 `Builder` 패턴 적용을 고려하라.
 
 **생성자 인자가 많을 경우** 점층적 생성자 패턴(Telescoping constructor pattern)은 잘 동작하지만 인자 수가 늘어나면 클라이언트 코드를 작성하기가 어려워지고, 무엇보다 읽기 어려운 코드가 되고 만다.
 
@@ -186,7 +186,7 @@ public class NutritionFacts3 {
 빌더를 구현하는 것이 귀찮다면 Lombok([https://projectlombok.org/features/Builder.html](https://projectlombok.org/features/Builder.html))을 사용하는 것을 추천한다.
 
 
-# Role 03 - `private` 생성자나 `enum` 자료형은 싱글턴 패턴을 따르도록 설계하라
+# Rule 03 - `private` 생성자나 `enum` 자료형은 싱글턴 패턴을 따르도록 설계하라
 
 > 해당 규칙은 잘 이해가 안됨.
 본인이 이해한 내용은 **싱글턴 패턴을 구현 시에는 private 생성자나 enum자료형으로 설계하라** 로 이해함.
@@ -207,7 +207,7 @@ public class NutritionFacts3 {
 - reflection 방어
 
 
-# Role 04 - 객체 생성을 막을 때는 `private` 생성자를 사용하라
+# Rule 04 - 객체 생성을 막을 때는 `private` 생성자를 사용하라
 
 - 정적 메서드나 필드만 필요한 경우 (하지만 대부분의 경우 객체지향적이지 않으므로 필요할 때만 사용한다.)
 - 일종의 유틸리티 클래스 (ex: `java.lang.Math`, `java.util.Arrays`)
@@ -282,7 +282,7 @@ Pooling 기법도 객체의 생성 비용이 너무 크지 않다면 사용하�
 
 추가로 **무작정 객체를 재사용할 것이 아니라, 조건에 따라서 새로운 객체를 사용할 때를 구분해야한다.**
 
-# Role 06 - 유효기간이 지난 객체 참조는 폐기하라
+# Rule 06 - 유효기간이 지난 객체 참조는 폐기하라
 
 메모리 누수가 어디서 생기는가?
 
@@ -337,7 +337,7 @@ public class Stack {
 - `Callback`를 등록하고 사용하는 클라이언트가 명시적으로 `Callback`을 명시적으로 제거하지 않는 경우가 있다.
 - 해결 방안은 `Callback` 참조를 WeakReference로 가지는 것이다. (위 `WeakHashMap`을 이용하는 것과 같은 방식이다.)
 
-# Role 07 - 종료자 사용을 피하라
+# Rule 07 - 종료자 사용을 피하라
 
 **종료자(finalizer)는 예측 불가능하며(GC알고리즘대로), 대체로 위험하고, 일반적으로 불필요하다.**
 

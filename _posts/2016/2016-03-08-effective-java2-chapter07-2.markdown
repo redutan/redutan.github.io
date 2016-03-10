@@ -7,7 +7,7 @@ tags:
   - effective-java2
 ---
 
-# Role 42 - varargs는 신중히 사용하라
+# Rule 42 - varargs는 신중히 사용하라
 
 가변 인자 메서드(variable arity method)
 
@@ -33,7 +33,7 @@ System.out.println(Arrays.toString(myArray));
 
 *타입이 다르면 빌더패턴이 더 나을 듯*
 
-# Role 43 - null 대신 빈 배열이나 컬렉션을 반환하라
+# Rule 43 - null 대신 빈 배열이나 컬렉션을 반환하라
 
 **null대신 빈배열이나 컬렉션을 반환하라**
 
@@ -66,7 +66,7 @@ public List<Cheese> getCheeseList() {
 }
 {% endhighlight %}
 
-# Role 44 - 모든 API 요소에 문서화 주석을 달라
+# Rule 44 - 모든 API 요소에 문서화 주석을 달라
 
 **좋은 API 문서를 만들려면 API에 포함된 모든 클래스, 인터페이스, 생성자, 메서드, 그리고 필드 선언에
 문서화 주석을 달아야한다**

@@ -7,7 +7,7 @@ tags:
   - effective-java2
 ---
 
-# Role 08 - `equals`를 재정의할 때는 일반규약을 따르라
+# Rule 08 - `equals`를 재정의할 때는 일반규약을 따르라
 
 **equals 메서드를 재정의 하지 않아도 되는 경우**
 
@@ -110,7 +110,7 @@ public class ColorPoint {
 - **너무 머리 쓰지 마라**
 - **equals 메서드의 인자타입을 `Object`에서 다른 것으로 바꾸지마라** : *`override`가 되지 않고 `overloading` 됨*
 
-# Role 09 - `equals`를 재정의할 때는 반드시 `hashCode`도 재정의하라
+# Rule 09 - `equals`를 재정의할 때는 반드시 `hashCode`도 재정의하라
 
 ### `hashCode` 일반규약
 
@@ -146,7 +146,7 @@ public int hashCode() {
 
 **추가로 성능을 개선하려고 객체의 중요 부분을 해시 코드 계산 과정에서 생략하면 안 된다는 것이다.**
 
-# Role 10 - `toString`은 항상 재정의하라.
+# Rule 10 - `toString`은 항상 재정의하라.
 
 - **`toString`을 잘만들어 놓으면 클래스를 좀 더 쾌적하게 사용할 수 있다.**
 - **가능하다면 `toString` 메서드는 객체 내의 중요정보를 전부 담아 반환해야한다.**
@@ -159,7 +159,7 @@ public int hashCode() {
 
 기본적으로 toString을 재정의하는 것이 귀찮다면 Lombok([https://projectlombok.org/features/ToString.html](https://projectlombok.org/features/ToString.html))을 사용하는 것을 추천한다.
 
-# Role 11 - `clone`을 재정의할 때는 신중하라
+# Rule 11 - `clone`을 재정의할 때는 신중하라
 
 `Cloneable` `clone`를 허용(구현된)한다는 사실을 알리려고 고안된 믹스인(mixin) 인터페이스이다. - *어떤 선택적 기능을 제공한다는 사실을 선언하는 인터페이스(여기서는 복제)*
 위에 설명했다시피 특이하게도 구현할 메소드는 존재하지 않는다. 그저 **`protected`로 선언된 `Object`의 `clone` 메서드가 어떻게 동작할지 정한다.**
@@ -220,7 +220,7 @@ shallow copy(단순하게 `super.clone()`)가 될 경우 일부 상태(속성)�
 ** 계승 목적으로 클래스를 설계할 때는 올바르게 동작하는 `protected clone` 메서드를 제공하지 않으면 하위 클래스에서 `Cloneable`을 구현할 수 없다.
 ** 즉, clone를 쓰는 경우는 배열을 복사할 때 빼고 사용할 일이 거의 없을 것이다. - **너무나도 단점이 많다.**
 
-# Role 12 - `Compareable` 구현을 고려하라.
+# Rule 12 - `Compareable` 구현을 고려하라.
 
 {% highlight java %}
 public interface Comparable<T> {

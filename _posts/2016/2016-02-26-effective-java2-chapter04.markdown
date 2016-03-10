@@ -7,7 +7,7 @@ tags:
   - effective-java2
 ---
 
-# Role 13 - 클래스와 맴버의 접근 권한은 최소화하라
+# Rule 13 - 클래스와 맴버의 접근 권한은 최소화하라
 
 중요한 것은 외부로 제공되는 인터페이스이지, 내부 구현이 아니다.
 
@@ -76,7 +76,7 @@ public static final Thing[] values() {
 - **`public static final` 필드를 제외한 어떤 필드도 public으로 선언하지 마라.**
 - **`public static final` 필드가 참조하는 객체는 불변객체로 만들라.**
 
-# Role 14 - public 클래스 안에는 public 필드를 두지 말고 접근자메서드(Setter)를 사용하라.
+# Rule 14 - public 클래스 안에는 public 필드를 두지 말고 접근자메서드(Setter)를 사용하라.
 
 {% highlight java %}
 // 이런 저급한 클래스는 절대로 public으로 선언하지 말 것
@@ -125,7 +125,7 @@ class Point {
 **가능하면 public 클래스의 필드는 외부로 공개하지 않는다.**
 **package 클래스, private 중첩 클래스의 필드는 외부로 공개하는 것이 나을 수도 있다.**
 
-# Role 15 - 변경가능성을 최소화하라
+# Rule 15 - 변경가능성을 최소화하라
 
 **불변객체(값객체)를 사용하라.**
 
@@ -240,7 +240,7 @@ public final class Complex {
 - **특별한 이유가 없다면 모든 필드는 final로 선언하라.**
 - **초기화 메서드(재초기화포함)를 제공하지 마라.**
 
-# Role 16 - 계승(상속)하는 대신 구성하라 (중요)
+# Rule 16 - 계승(상속)하는 대신 구성하라 (중요)
 
 **계승은 캡슐화 원칙을 위반한다.**
 
@@ -290,7 +290,7 @@ public class InstrumentedSet<E> extends ForwardingSet<E> {
 
 가능하면 **계승** 을 하지 않고 **구성** 을 사용하자. *포장 클래스 구현에 인터페이스가 있다면 더욱 그렇다.*
 
-# Role 17 - 계승을 위한 설계와 문서를 갖추거나, 그럴 수 없다면 계승을 금지하라
+# Rule 17 - 계승을 위한 설계와 문서를 갖추거나, 그럴 수 없다면 계승을 금지하라
 
 ### 규칙 세부사항
 

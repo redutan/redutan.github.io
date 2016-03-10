@@ -7,7 +7,7 @@ tags:
   - effective-java2
 ---
 
-# Role 28 - 한정적 와일드카드를 써서 API 유연성을 높여라
+# Rule 28 - 한정적 와일드카드를 써서 API 유연성을 높여라
 
 ### 전제
 
@@ -99,7 +99,7 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
 - **PECS**
 - `Comparable`, `Comparator`는 모두 소비자이다 - `<? super T>`
 
-# Role 29 - 형 안전 다형성 컨테이너를 쓰면 어떨지 따져보라
+# Rule 29 - 형 안전 다형성 컨테이너를 쓰면 어떨지 따져보라
 
 *example*
 {% highlight java %}

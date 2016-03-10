@@ -7,7 +7,7 @@ tags:
   - effective-java2
 ---
 
-# Role 45 - 지역 변수의 유효범위를 최소화하라
+# Rule 45 - 지역 변수의 유효범위를 최소화하라
 
 ### 지역변수는 처음 사용할 때 선언하라
 
@@ -51,7 +51,7 @@ while(i.hasNext()) {                // 버그 i2를 써야하는데 i를 씀
 
 각 기능(책임) 별로 쪼개서(메서드 분리, 클래스 분리 등) 구현한다.
 
-# Role 46 - for 문보다는 for-each 문을 사용하라
+# Rule 46 - for 문보다는 for-each 문을 사용하라
 
 ### for-each 문을 사용할 수 없는 경우
 
@@ -62,7 +62,7 @@ while(i.hasNext()) {                // 버그 i2를 써야하는데 i를 씀
 3. 병렬순회(parallel iteration)
     4. 여러 컬렉션을 병렬적으로 순회하는 경우
 
-# Role 47 - 어떤 라이브러리가 있는지 파악하고, 적절히 활용하라
+# Rule 47 - 어떤 라이브러리가 있는지 파악하고, 적절히 활용하라
 
 ### 장점
 
@@ -83,7 +83,7 @@ while(i.hasNext()) {                // 버그 i2를 써야하는데 i를 씀
 
 **바퀴를 다시 발명하지 말라(don't reinvent the whell)**
 
-# Role 48 - 정확한 답이 필요하다면 float와 double은 피하라
+# Rule 48 - 정확한 답이 필요하다면 float와 double은 피하라
 
 이진 부동 소수점 연산(binary floating-point arithmetic)
 
@@ -127,7 +127,7 @@ System.out.println(1.00 - 9 * .10)
     - 십진수 18자리 이하는 `long`
     - 그 이상엔 `BigDecimal`
 
-# Role 49 - 객체화 된 기본 자료형 대신 기본 자료형을 이용하라
+# Rule 49 - 객체화 된 기본 자료형 대신 기본 자료형을 이용하라
 
 ### 기본설명
 
@@ -188,7 +188,7 @@ NullPointerException이 발생*
 - **autoboxing, auto-unboxing는 성능이슈가 크다**
 - **auto-unboxing 시 `NullPointerException`를 주의하라**
 
-# Role 50 - 다른 자료형이 적절하다면 문자열 사용은 피하라
+# Rule 50 - 다른 자료형이 적절하다면 문자열 사용은 피하라
 
 문자열은 텍스트 표현과 처리에 적합한 자료형이다.
 
