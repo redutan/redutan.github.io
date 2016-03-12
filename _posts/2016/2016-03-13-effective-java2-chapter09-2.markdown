@@ -1,7 +1,7 @@
 ---
-layout: "post"
+layout: post
 title: Effective Java 2/E - Chatper 09 예외 (2)
-date: "2016-03-11 00:33"
+date: '2016-03-12 00:21'
 tags:
   - book
   - effective-java2
