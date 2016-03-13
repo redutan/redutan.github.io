@@ -1,7 +1,7 @@
 ---
-layout: "post"
+layout: post
 title: Effective Java 2/E - Chatper 10 병행성 (2)
-date: "2016-03-13 22:42"
+date: '2016-03-13 23:55'
 tags:
   - book
   - effective-java2
