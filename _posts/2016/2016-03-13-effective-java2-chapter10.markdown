@@ -289,7 +289,7 @@ public static String intern(String s) {
 // ConcurrentMap으로 구현한 병행 정규화 맵 - 더 빠르다!
 public static String intern(String s) {
     String result = map.get(s);
-    if (null == null) {
+    if (result == null) {
         result = map.putInAbsent(s, s);
         if (result == null)
             result = s;
