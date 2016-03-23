@@ -48,7 +48,7 @@ tag:
 
 ## 에디터
 
-- `⌥⏎` : 오류 해결 솔루션 제시 - **강추**
+- `⌥⏎` : Quick fix - 오류 해결 솔루션 제시 **강추**
 - `⌘⇧↑`, `⌘⇧↓` : 선택된 코드 영역 위, 아래로 이동
 - `⌘ Del` : 한 줄 삭제
 - `⌘⇧]` : 에디터 탭 기준 오른쪽으로 이동
@@ -56,6 +56,7 @@ tag:
 - `⌥↑` : 커서 기준으로 단위 영역(단어, 영역, 문장, 메서드 등) 선택 - **강추**
 - `⌘ F12` : 현재 클래스 필드, 메서드 등 목록 노출 - lombok 사용할 시 편함
 - `⌘N` : 각종 코드 생성 (getter, setter, override, DI 등)
+- `⌃⌥O` : Auto import
 - `⌥⇥` : 스플릿(화면분할) 상태에서 화면 간 이동
     - Split Vertical 단축키를 지정하고 쓰면 더 좋음 - 저는 `⌃⌥V`로 지정
 
@@ -88,6 +89,7 @@ tag:
     - 커밋 확인 후 `⌃⏎`를 치면 됨
     - 만약 review 여부를 물으면 Commit 버튼을 `⇥`으로 포커싱 후 `Space`를 입력
 - `⌥⇧N` : Task 추가 - `⌘9` 와 연계하면 작업관리 시 편함
+- `⌥⇧C` : Recent Changes
 
 ## Multiline
 
@@ -111,3 +113,4 @@ tag:
 - `psfs` : `public static final String`
 - `psfi` : `public static final int`
 - `psvm` : `public static void main(String[] args)`
+- `thr` : `throw new`
