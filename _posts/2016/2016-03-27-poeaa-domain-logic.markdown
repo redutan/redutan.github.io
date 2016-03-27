@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "POEAA-도메인 논리 패턴"
+title: "POEAA 도메인 논리 패턴"
 date: "2016-03-27 14:57"
 tag:
     - POEAA
