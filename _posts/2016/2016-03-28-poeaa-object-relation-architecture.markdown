@@ -1,6 +1,6 @@
 ---
 layout: post
-title: POEAA 객체-관계형 구조 패턴
+title: POEAA 객체-관계형 구조 패턴 (1)
 date: '2016-03-28 21:27'
 tags:
   - book
@@ -31,7 +31,7 @@ _인메모리 객체와 데이터베이스 행 간의 식별자를 유지 관리
 
 _객체 간 연결과 테이블 간 외래 키 참조의 매핑_
 
-![](attach/2016/POEAA/ClassDiagram-ForeignkeyMapping.png)
+![외래 키 매핑](attach/2016/POEAA/ClassDiagram-ForeignkeyMapping.png)
 
 ## 고려사항
 
@@ -53,13 +53,13 @@ _객체 간 연결과 테이블 간 외래 키 참조의 매핑_
 
 **N:M**
 
-![](attach/2016/POEAA/ClassDiagram-NM.png)
+![연관 테이블 매핑](attach/2016/POEAA/ClassDiagram-NM.png)
 
 # 의존 매핑
 
 _한 클래스가 자식 클래스의 데이터베이스 매핑을 수행하게 한다._
 
-![](attach/2016/POEAA/ClassDiagram-DependentMapping.png)
+![의존 매핑](attach/2016/POEAA/ClassDiagram-DependentMapping.png)
 
 예를들어
 

@@ -15,7 +15,7 @@ _데이터베이스 테이블에 대한 게이트웨이의 역할을 하는 객�
 
 ...
 
-![](attach/2016/POEAA/ClassDiagram-DataSet.png)
+![테이블 데이터 게이트웨이](attach/2016/POEAA/ClassDiagram-DataSet.png)
 
 그림 : 데이터 집합 기반 게이트웨이와 지원 데이터 홀더의 클래스 다이어그램
 
@@ -23,7 +23,7 @@ _데이터베이스 테이블에 대한 게이트웨이의 역할을 하는 객�
 
 _데이터 원본의 단일 레코드에 대한 게이트웨이 역할을 하는 객체. 행마다 인스턴스 하나가 사용된다._
 
-![](attach/2016/POEAA/ClassDiagram-RowDataGateway.png)
+![행 데이터 게이트웨이](attach/2016/POEAA/ClassDiagram-RowDataGateway.png)
 
 **활성 레코드와 차이는 도메인 논리가 포함되어 있으면 활설레코드이며, 없으면 행 데이터 게이트웨이이다.**
 
@@ -32,7 +32,7 @@ _데이터 원본의 단일 레코드에 대한 게이트웨이 역할을 하는
 _데이터베이스 테이블이나 뷰의 행을 래핑하고, 데이터베이스 접근을 캡슐화하며, 해당 데이터에 대한 도메인 논리를
 추가하는 객체_
 
-![](attach/2016/POEAA/ClassDiagram-ActiveRecord.png)
+![합성 레코드](attach/2016/POEAA/ClassDiagram-ActiveRecord.png)
 
 **테이블 모듈에 어울림**
 
@@ -44,7 +44,7 @@ _데이터베이스 테이블이나 뷰의 행을 래핑하고, 데이터베이�
 
 _객체와 데이터베이스 사이에서 둘 사이는 물론 매퍼 자체에 대한 독립성을 유지하면서 데이터를 옮기는 매퍼의 한 계층_
 
-![](attach/2016/POEAA/ClassDiagram-DataMapper.png)
+![데이터 매퍼](attach/2016/POEAA/ClassDiagram-DataMapper.png)
 
 - 식별자 맵, 레지스트리
 - 분리 인터페이스
