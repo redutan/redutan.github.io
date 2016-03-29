@@ -23,7 +23,7 @@ _데이터베이스 테이블에 대한 게이트웨이의 역할을 하는 객�
 
 _데이터 원본의 단일 레코드에 대한 게이트웨이 역할을 하는 객체. 행마다 인스턴스 하나가 사용된다._
 
-![행 데이터 게이트웨이](attach/2016/POEAA/ClassDiagram-RowDataGateway.png)
+![행 데이터 게이트웨이](/attach/2016/POEAA/ClassDiagram-RowDataGateway.png)
 
 **활성 레코드와 차이는 도메인 논리가 포함되어 있으면 활설레코드이며, 없으면 행 데이터 게이트웨이이다.**
 
