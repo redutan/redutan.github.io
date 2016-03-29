@@ -11,7 +11,7 @@ tags:
 
 _한 객체를 다른 객체의 테이블에 있는 여러 필드로 매핑한다_
 
-![포함 값](attach/2016/POEAA/ClassDiagram-EmbeddedValue.png)
+![포함 값](/attach/2016/POEAA/ClassDiagram-EmbeddedValue.png)
 
 객체지향에서는 여러 작은 객체를 사용하는 것이 합리적이지만, 데이터베이스 테이블은 여러 작은 객체를
 저장하는 데 적합하지 않다.
@@ -26,7 +26,7 @@ _의존 매핑_ 에서 의존자가 주로 1:1 관계로 값객체가 되는 특
 
 # 직렬화 LOB(Serialized LOB)
 
-![직렬화 LOB](attach/2016/POEAA/ClassDiagram-SerializedLob.png)
+![직렬화 LOB](/attach/2016/POEAA/ClassDiagram-SerializedLob.png)
 
 ## 구현방법
 
