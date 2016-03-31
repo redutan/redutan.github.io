@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Anti-OOP : 분기절(switch)을 최소화하라'
+title: 'Anti-OOP : if 를 피하고 싶어서'
 date: '2016-03-31 21:32'
 tags:
   - OOP
