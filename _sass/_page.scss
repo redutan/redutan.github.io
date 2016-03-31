@@ -28,6 +28,13 @@ body {
 			border-bottom-style: solid;
 		}
 	}
+	table, tr, th, td {
+    	border: 1px gray solid;
+		border-collapse: collapse;
+	}
+	table thead {
+		background-color: darkgray
+	}
 }
 
 .entry-date {
