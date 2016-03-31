@@ -581,6 +581,6 @@ Entity 안에 있기 때문에 객체지향의 근본인 **연관된 상태와 �
 - DDD with JPA 짱짱맨????
 - **객체지향적 프로그래밍을 통해서 분기문을 없애는 노력을 기울이면 유연하고 응집력 있는 코드를 얻음**
 
-## 예제모드 github
+## 테스트 가능한 예제코드
 
 [https://github.com/redutan/anti-oop.git](https://github.com/redutan/anti-oop.git)
