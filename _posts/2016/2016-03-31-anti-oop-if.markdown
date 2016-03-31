@@ -69,7 +69,7 @@ public class PaymentService {
         if ("NAVER".equals(discountCode)) {   // 네이버검색 할인
             paymentAmt = productAmt * 0.9;
         } else if ("DANAWA".equals(discountCode)) { // 다나와검색 할인
-            paymentAmt = product * 0.85;
+            paymentAmt = productAmt * 0.85;
         } else if ("FANCAFE".equals(discountCode)) {  // 팬카페인입 할인
             if (productAmt < 1000)  // 할인쿠폰 금액보다 적은경우
                 paymentAmt = 0;
