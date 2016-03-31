@@ -39,7 +39,7 @@ public class PaymentService {
     public Discount getDiscount(...) {
         // 상품금액
         long productAmt = ...;
-        // 할인정책 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
+        // 할인코드 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
         String discountCode = ...;
 
         // 할인금액
@@ -61,7 +61,7 @@ public class PaymentService {
     public void payment(...) {
         // 상품금액
         long productAmt = ...;
-        // 할인정책 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
+        // 할인코드 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
         String discountCode = ...;
 
         // 결제금액
@@ -95,7 +95,7 @@ public class PaymentService {
     public Discount getDiscount(...) {
         // 상품금액
         long productAmt = ...;
-        // 할인정책 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
+        // 할인코드 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
         String discountCode = ...;
 
         // 할인금액
@@ -107,7 +107,7 @@ public class PaymentService {
     public void payment(...) {
         // 상품금액
         long productAmt = ...;
-        // 할인정책 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
+        // 할인코드 (NAVER:네이버검색-10%, DANAWA:다나와검색-15% FANCAFE:팬카페-1000원)
         String discountCode = ...;
 
         // 결제금액
@@ -167,14 +167,14 @@ _두 관계를 더 구제척으로 톺아보면 쇼핑몰 도메인 상 할인�
 {% highlight java %}
 public interface Discountable {
     /** 할인없음 */
-    public static final Discountable NONE = new DiscountPolicy() {
+    Discountable NONE = new Discountable() {
         @Override
         public long getDiscountAmt(long originAmt) {
             return 0;
         }
     };
 
-    long getDiscountedAmt(long originAmt);
+    long getDiscountAmt(long originAmt);
 }
 
 class NaverDiscountPolicy implements Discountable {
@@ -192,7 +192,7 @@ class DanawaDiscountPolicy implements Discountable {
 }
 
 class FancafeDiscountPolicy implements Discountable {
-    private int discountAmt = 1000L;
+    private long discountAmt = 1000L;
 
     @Override
     public long getDiscountAmt(long originAmt) {
@@ -364,34 +364,30 @@ public enum DiscountPolicy implements Discountable {
     NAVER(10, 0L) {
         @Override
         public long getDiscountAmt(long originAmt) {
-            return originAmt * discountRate / 100;
+            return originAmt * this.discountRate / 100;
         }
     },
     /** 다나와 할인 */
     DANAWA(15, 0L) {
         @Override
         public long getDiscountAmt(long originAmt) {
-            return originAmt * discountRate / 100;
+            return originAmt * this.discountRate / 100;
         }
     },
     /** 팬카페 할인 */
     FANCAFE(0, 1000L) {
         @Override
         public long getDiscountAmt(long originAmt) {
-            if (originAmt < discountAmt)
+            if (originAmt < this.discountAmt)
                 return originAmt;
-            return discountAmt;
+            return this.discountAmt;
         }
     }
     ;
     private final int discountRate;
     private final long discountAmt;
 
-    DiscountPolicy() {
-        this(0, 0L);
-    }
-
-    DiscountPolicy(int discountRate, int discountAmt) {
+    DiscountPolicy(int discountRate, long discountAmt) {
         this.discountRate = discountRate;
         this.discountAmt = discountAmt;
     }
@@ -464,9 +460,8 @@ public class RateDiscounter extends AbstractDiscounter {
 
     @Override
     public long getDiscountAmt(long originAmt) {
-        return originAmt * discountRate / 100;
+        return originAmt * rate / 100;
     }
-    ...
 }
 
 /** 금액할인 */
@@ -474,15 +469,14 @@ public class RateDiscounter extends AbstractDiscounter {
 @DiscriminatorValue("AMT")
 public class AmtDiscounter extends AbstractDiscounter {
     @Column
-    private long discountAmt;
+    private long amt;
 
     @Override
     public long getDiscountAmt(long originAmt) {
-        if (originAmt < discountAmt)
+        if (originAmt < amt)
             return originAmt;
-        return discountAmt;
+        return amt;
     }
-    ...
 }
 {% endhighlight %}
 
@@ -501,14 +495,28 @@ _*가 표기된 칼럼은 값이 Unique하다_
 <br/>
 
 {% highlight java %}
+@Repository
+public interface DiscounterRepository extends
+        JpaRepository<AbstractDiscounter, Long> {
+    /**
+     * 할인코드로 할인 조회
+     */
+    AbstractDiscounter findByCode(String code);
+}
+{% endhighlight %}
+
+{% highlight java %}
 @Component
-public class SimpleDiscounterFactory {
-    @Autowire
+class SimpleDiscounterFactory {
+    @Autowired
     DiscounterRepository discounterRepository;
 
     @Override
-    Discountable getDiscounter(String discountName) {
-        Discountable discouter = discounterRepository.findByCode(discountCode);
+    public Discountable getDiscounter(String discountCode) {
+        if (discountCode == null)
+            return Discountable.NONE;
+        AbstractDiscounter discounter =
+                discounterRepository.findByCode(discountCode);
         return discounter == null ? Discountable.NONE : discounter;
     }
 }
@@ -572,3 +580,7 @@ Entity 안에 있기 때문에 객체지향의 근본인 **연관된 상태와 �
 
 - DDD with JPA 짱짱맨????
 - **객체지향적 프로그래밍을 통해서 분기문을 없애는 노력을 기울이면 유연하고 응집력 있는 코드를 얻음*
+
+## 예제모드 github
+
+[https://github.com/redutan/anti-oop.git](https://github.com/redutan/anti-oop.git)
