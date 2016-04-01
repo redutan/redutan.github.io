@@ -482,6 +482,8 @@ public class AmtDiscounter extends AbstractDiscounter {
 
 ## 실제 테이블에 저장된 데이타
 
+JPA의 상속관계매핑 전략 중 기본이 되는 단일 테이블 전략(`SINGLE_TABLE`)를 이용하였습니다.
+
 **Discounter 테이블**
 
 | *id | dtype | *code | name | rate | amt |
