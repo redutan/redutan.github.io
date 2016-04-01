@@ -132,7 +132,7 @@ public class PaymentService {
     ...
 {% endhighlight %}
 
-위와 같인 `getDiscountAmt` 메소드 추출만 하는 것만으로 코드의 중복이 제거되고 깔끔해졌습니다.
+위와 같이 `getDiscountAmt` 메소드 추출만 하는 것만으로 코드의 중복이 제거되고 깔끔해졌습니다.
 
 하지만 우리의 목표는 여기가 아닙니다. 위와 같은 메소드 추출은 기존 절차적 프로그래밍에서 가능한 리팩터링
 기법입니다. 여기에서 중요한 것은 `getDiscountAmt` 즉 **할인에 관한 정책 분기를 결제 서비스
@@ -507,7 +507,7 @@ public interface DiscounterRepository<T extends AbstractDiscounter>
 @Component
 class SimpleDiscounterFactory {
     @Autowired
-    DiscounterRepository discounterRepository;
+    DiscounterRepository<AbstractDiscounter> discounterRepository;
 
     @Override
     public Discountable getDiscounter(String discountCode) {
@@ -521,6 +521,7 @@ class SimpleDiscounterFactory {
 {% endhighlight %}
 
 {% highlight java %}
+@Service
 public class PaymentService {
     @Autowired
     DiscounterFactory discounterFactory;
