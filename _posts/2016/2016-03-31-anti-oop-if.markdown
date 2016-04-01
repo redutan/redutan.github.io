@@ -496,13 +496,10 @@ _*가 표기된 칼럼은 값이 Unique하다_
 
 {% highlight java %}
 @Repository
-public interface DiscounterRepository extends
-        JpaRepository<AbstractDiscounter, Long> {
-    /**
-     * 할인코드로 할인 조회
-     */
-    AbstractDiscounter findByCode(String code);
-}
+public interface DiscounterRepository<T extends AbstractDiscounter>
+        extends JpaRepository<T, Long> {
+    /** 할인코드로 할인 조회 */
+    T findByCode(String code);
 {% endhighlight %}
 
 {% highlight java %}
