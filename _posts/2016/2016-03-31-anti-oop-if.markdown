@@ -320,7 +320,7 @@ public class SimpleDiscounterFactory {
 
 실제로 분기문을 최소화 하기 위해서 가장 많이 사용되는 패턴이 바로 이 **추상 팩토리 패턴** 입니다.
 또한 추상 팩토리 패턴을 사용하면서 코드 중복을 없애기 위해 90% 이상 **템플릿 메소드 패턴** 을 병행해서
-사용하게 되니 두 패턴은 거의 같이 사용하게 된다고 봐도 무방하다. _위 예제는 템플릿 메소드 패턴을 적용할
+사용하게 되니 두 패턴은 거의 같이 사용하게 되는 편입니다. _위 예제는 템플릿 메소드 패턴을 적용할
 필요가 없어서 사용하지 않았습니다._
 
 _참고로 템플릿 메소드 패턴은 자바에서 귀중한 상속(`extends`)을 사용하기 때문에 주의를 요합니다._
@@ -340,9 +340,9 @@ _참고로 템플릿 메소드 패턴은 자바에서 귀중한 상속(`extends`
 
 이 정도 리팩터링 해도 객체지향적이다 라고 말할 수 있습니다. 만약 새로운 할인 정책이 추가되면 `PaymentService`와
 같은 클라이언트들은 변경할 필요 없이 `Discountable`를 확장하여 새로운 할인정책 구상클래스를 추가하고,
-`SimpleDiscounterFactory`에 `else if` 하나만 추가하면 기능 확장이 가능한 것이다.
+`SimpleDiscounterFactory`에 `else if` 하나만 추가하면 기능 확장이 가능한 것입니다.
 
-지금까지 위에서 설명한 것이 바로 `OCP`이다.
+지금까지 위에서 설명한 것이 바로 `OCP`입니다.
 
 **(`PaymentService`) 변경(수정)에는 닫혀 있고, 확장(할인정책 추가/변경)에는 열려 있다.**
 
@@ -495,6 +495,7 @@ _*가 표기된 칼럼은 값이 Unique하다_
 <br/>
 
 {% highlight java %}
+/** 다형성 Repository */
 @Repository
 public interface DiscounterRepository<T extends AbstractDiscounter>
         extends JpaRepository<T, Long> {
