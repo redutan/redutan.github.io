@@ -500,6 +500,7 @@ public interface DiscounterRepository<T extends AbstractDiscounter>
         extends JpaRepository<T, Long> {
     /** 할인코드로 할인 조회 */
     T findByCode(String code);
+}
 {% endhighlight %}
 
 {% highlight java %}
