@@ -501,22 +501,32 @@ public interface DiscounterRepository<T extends AbstractDiscounter>
         extends JpaRepository<T, Long> {
     /** 할인코드로 할인 조회 */
     T findByCode(String code);
+}
+{% endhighlight %}
 
-    /** 할인정책을 조회한다. 만약 없으면 기본정책(할인없음) 반환 */
-    default T findByCodeOrDefault(String code) {
-        if (code == null)
+{% highlight java %}
+@Component
+public class SimpleDiscounterFactory implements DiscounterFactory {
+    @Autowired
+    private DiscounterRepository<AbstractDiscounter> discounterRepository;
+
+    @Override
+    public Discountable getDiscounter(String discountCode) {
+        if (discountCode == null)
             return Discountable.NONE;
-        T discounter = this.findByCode(code);
+        AbstractDiscounter discounter = discounterRepository.findByCode(discountCode);
         return discounter == null ? Discountable.NONE : discounter;
     }
 }
 {% endhighlight %}
 
+예제 흐름 상 Factory를 남겨두었으나 `PaymentService`에서 바로 `DiscounterRepository`를 주입받아서 쓰는 것이 의미 상 더 명확합니다.
+
 {% highlight java %}
 @Service
 public class PaymentService {
     @Autowired
-    DiscounterRepository<AbstractDiscounter> discounterRepository;
+    DiscounterFactory discounterFactory;
     // 실시간 할인내역 확인
     public Discount getDiscount(...) {
         ...
@@ -528,7 +538,7 @@ public class PaymentService {
     }
 
     private Discountable getDiscounter(String discountCode) {
-        return discounterRepository.findByCodeOrDefault(discountCode);
+        return discounterFactory.getDiscounter(discountCode);
     }
     ...
 {% endhighlight %}
@@ -567,6 +577,109 @@ Java8, 스프링 프레임워크와 JPA를 사용한다는 가정으로 예제�
 전혀 코드 변경 없이 정책 확장이 가능하게 되는 것입니다. 그리고 해당 할인금액을 조회하는 행위(메소드)도
 Entity 안에 있기 때문에 객체지향의 근본인 **연관된 상태와 행위가 가지는 객체**가 되어서 더욱 **응집력**이 높아집니다.
 
+# Bonus Step 3-2. With Mybatis
+
+현재 현업에서는 아직도 Mybatis 같은 SQL매퍼를 이용하거나,jdbc기반으로 사용하는 곳이 많습니다.
+반환타입으로 `Map`가 아닌 DTO를 사용하신다면 이용할 수 있는 예제도 보너스로 준비해 보았습니다.
+
+불행하게도 Mybatis를 사용할 경우 상속관계를 표현할려면 상당한 추가 작업이 요구되는데, 대부분의 경우 그런 과정을
+사용하지 않고 Data 기반으로 구현하기 때문에 Step 3 예제와는 다른 방식으로 분기처리를 풀어보겠습니다.
+
+기본적으로 테이블 구조는 동일하게 가겠습니다. _어짜피 상속을 표현하기 힘들기 때문에 대부분 단일 테이블 형태를 사용합니다._
+
+**Discounter 테이블**
+
+| *id | dtype | *code | name | rate | amt |
+|----:|:-------:|:------:|:------:|------:|-----:|
+| 1 | RATE | NAVER | 네이버 | 10 | 0 |
+| 2 | RATE | DANAWA | 다나와 | 15 | 0 |
+| 3 | AMT | FANCAFE | 팬카페 | 0 | 1000 |
+
+테이블과 연관된 DTO를 하나 생성하고 Discounter 인터페이스를 구현하게 합니다.
+Mybatis Dao 구현 코드는 생략하겠습니다.
+
+{% highlight java %}
+@Data
+public class DiscounterDto implements Discountable {
+    public Long id;
+    public String dtype;
+    public String code;
+    public String name;
+    public int rate;
+    public long amt;
+
+    @Override
+    public long getDiscountAmt(long originAmt) {
+        if ("RATE".equals(dtype)) {
+            return originAmt * rate / 100;
+        } else if ("AMT".equals(dtype)) {
+            if (originAmt < amt)
+                return originAmt;
+            return amt;
+        } else {
+            return 0;
+        }
+    }
+}
+{% endhighlight %}
+
+Mybatis를 사용할 경우 대부분 객체의 상태(속성)만 관리를 하고 연관되는 행위는 다른 컴포넌트나 Service 계층에서
+직접 핸들링하는 경우가 많습니다. 하지만 생각을 전환해서 이렇게 DTO(하지만 실질적으로는 Entity 성격이 강함) 내에 두는 것이 좋다고 봅니다.
+하지만 **if절이 또 여기에서 생기네요.**
+
+## enum 정책 패턴으로 리팩터링
+
+{% highlight java %}
+enum DiscountType {
+    /** 할인율 */
+    RATE {
+        @Override
+        public long getDiscountAmt(DiscounterDto dto, long originAmt) {
+            return originAmt * dto.getRate() / 100;
+        }
+    },
+    /** 금액할인 */
+    AMT {
+        @Override
+        public long getDiscountAmt(DiscounterDto dto, long originAmt) {
+            if (originAmt < dto.amt)
+                return originAmt;
+            return dto.amt;
+        }
+    },
+    /** 할인금액 반환(위임받음) */
+    abstract long getDiscountAmt(DiscounterDto dto, long originAmt);
+}
+{% endhighlight %}
+
+{% highlight java %}
+@Data
+public class DiscounterDto implements Discountable {
+    public Long id;
+    // myabtis도 커스텀컨버터를 이용해서 String - enum 간 변환이 가능하다.
+    public DiscountType dtype;
+    public String code;
+    public String name;
+    public int rate;
+    public long amt;
+
+    @Override
+    public long getDiscountAmt(long originAmt) {
+        return dtype.getDiscountAmt(this, originAmt);
+    }
+}
+{% endhighlight %}
+
+다시 강조하지만 **객체의 상태는 동적이지만 객체의 행위는 정적**입니다. 행위에 인자가 동적이어서 행위를 통해서
+객체의 상태가 행위의 반환이 변경될 뿐이지 행위 자체는 정적이라고 보시면 됩니다.
+간단하게 예를 들어서 `A + B = C` 일 때 A, B, C와 같은 값은 변하지만 + 즉, 더하기 연산은 변하지 않습니다.
+
+이러한 정적인 영역인 할인계산 부분을 enum 정책으로 관리하고 계산하는 로직에 DTO에서 위임하면 됩니다.
+
+중요한 것은 **비록 ORM을 사용하지 않더라도 도메인 로직을 객체 내에 담자 라는 것입니다.**
+
+이렇게 구성하면 추후 새로운 정책 추가/변경, 모델(테이블스키마)이 변경되더라도 어느정도의 유연성은 확보할 수 있습니다.
+
 # 결론
 
 궁긍적으로 분기문을 없앨 수는 없습니다. 특히 유효성 체크와 같은 분기문은 계속 유지되어야 합니다.
@@ -583,7 +696,9 @@ Entity 안에 있기 때문에 객체지향의 근본인 **연관된 상태와 �
 
 ## Added 2016-04-03
 
-몇몇분들이 피드백 주신 내용이 있었습니다 - 정말 고맙습니다.
+1. Mybatis 기반 샘플코드도 추가하였습니다.
+
+2. 몇몇분들이 피드백 주신 내용이 있었습니다 - 정말 고맙습니다.
 
 하마터면 제가 잘못된 지식을 알려드릴 뻔 했습니다. 추상 팩토리 부분을 Simple Factory로 수정하였으며,
 중간에 나온 OCP 는 만족되지 않아서 enum 기반으로 만족할 수 있다고 변경하였습니다. - enum 상수 추가를
