@@ -145,7 +145,7 @@ _두 관계를 더 구제척으로 톺아보면 쇼핑몰 도메인 상 할인�
 발생하게 됩니다. if-else도 같이 중복되겠죠.
 
 여기에서부터 **추상화 시각** 이 필요합니다. 추상화 시각을 바탕으로 추상화할 영역을 추출해야합니다.
-추상화를 시도할 시 **책임(역할)을 기반으로 분리할 도메인 로직의 핵심을 집어내야합니다.** 현재 예재에서 분리할
+추상화를 시도할 시 **책임(역할)을 기반으로 분리할 도메인 로직의 핵심을 집어내야합니다.** 현재 예제에서 분리할
 도메인 로직은 바로 **할인** 입니다. 할인 로직의 핵심은 바로 할인금액을 구하는 것이라고 할 수 있죠.
 즉 `getDiscountAmt` 가 분리할 핵심적인 행위(메소드)가 되며, 추상화 시키면(interface) 되는 것입니다.
 
@@ -233,7 +233,6 @@ public class PaymentService {
         ...
     }
 
-    // 팩토리 메서드
     private Discountable getDiscounter(String discountCode) {
         if ("NAVER".equals(discountCode)) {   // 네이버검색 할인
             return new NaverDiscountPolicy();
@@ -256,9 +255,9 @@ public class PaymentService {
 이번에도 이전과 마찬가지로 인터페이스 추출을 시도할 건데 여기에서 분리할 것은 바로 **할인 정책 생성**
 입니다.
 
-생성 패턴 중 가장 대중적인 **추상 팩토리 패턴** 을 사용하겠습니다.
+가장 간단한 Factory를 사용하겠습니다.
 
-# Step 2-2. 추상 팩토리 패턴
+# Step 2-2. Simple Factory
 
 {% highlight java %}
 /** 할인 생성 팩토리 */
@@ -302,7 +301,7 @@ public class SimpleDiscounterFactory {
 
 이제야 깔끔하게 역할이 분리되었으며, 추상화를 바탕으로 유연함의 기틀이 마련되었습니다.
 
-## 추상 팩토리 정리
+## 리팩토링 후 정리
 
 ### 역할(책임)
 
@@ -310,7 +309,7 @@ public class SimpleDiscounterFactory {
 - 할인 : `Discountable`
 - 할인생성 : `DiscounterFactory`
 
-### 유연성확보
+### 유연성확보(기존과 동일)
 
 **`DIP`를 통해서 강결합의 구상클래스가 아니라 유연한 인터페이스를 바탕으로 객체 의존성 확보**
 
@@ -318,10 +317,8 @@ public class SimpleDiscounterFactory {
 
 ![Factory](/attach/2016/POEAA/ClassDiagram-AntiOOP-Factory.png)
 
-실제로 분기문을 최소화 하기 위해서 가장 많이 사용되는 패턴이 바로 이 **추상 팩토리 패턴** 입니다.
-또한 추상 팩토리 패턴을 사용하면서 코드 중복을 없애기 위해 90% 이상 **템플릿 메소드 패턴** 을 병행해서
-사용하게 되니 두 패턴은 거의 같이 사용하게 되는 편입니다. _위 예제는 템플릿 메소드 패턴을 적용할
-필요가 없어서 사용하지 않았습니다._
+위 패턴을 사용하면 코드 중복을 없애기 위해 90% 이상 **템플릿 메소드 패턴** 을 병행해서 사용하게 됩니다.
+_위 예제는 템플릿 메소드 패턴을 적용할 필요가 없어서 사용하지 않았습니다._
 
 _참고로 템플릿 메소드 패턴은 자바에서 귀중한 상속(`extends`)을 사용하기 때문에 주의를 요합니다._
 주류적인 행위에 대한 것이 아니면 해당 패턴을 사용하는 것보다는 헬퍼클래스 [구성을 통한 위임][e726d400] 을 이용하는 것을 추천
@@ -329,11 +326,10 @@ _참고로 템플릿 메소드 패턴은 자바에서 귀중한 상속(`extends`
 
   [e726d400]: http://redutan.github.io/2016/02/26/effective-java2-chapter04#rule-16------ "Rule 16 - 계승(상속)하는 대신 구성하라"
 
-> 추상 팩토리 패턴 : [https://en.wikipedia.org/wiki/Abstract_factory_pattern][25ced73b]
+> Simple Factory 패턴 : [http://www.hanbit.co.kr/network/view.html?bi_id=593][8668626b]
+> Template method 패턴 : [https://en.wikipedia.org/wiki/Template_method_pattern][878df5f5]
 
-> 템플릿 메소드 패턴 : [https://en.wikipedia.org/wiki/Template_method_pattern][878df5f5]
-
-  [25ced73b]: https://en.wikipedia.org/wiki/Abstract_factory_pattern "Abstract factory pattern"
+  [8668626b]: http://www.hanbit.co.kr/network/view.html?bi_id=593 "Simple factory pattern"
   [878df5f5]: https://en.wikipedia.org/wiki/Template_method_pattern "Template method pattern"
 
 ## 결론
@@ -342,18 +338,17 @@ _참고로 템플릿 메소드 패턴은 자바에서 귀중한 상속(`extends`
 같은 클라이언트들은 변경할 필요 없이 `Discountable`를 확장하여 새로운 할인정책 구상클래스를 추가하고,
 `SimpleDiscounterFactory`에 `else if` 하나만 추가하면 기능 확장이 가능한 것입니다.
 
-지금까지 위에서 설명한 것이 바로 `OCP`입니다.
+하지만 `OCP`를 만족하지는 못했습니다. 비록 `PaymentService`에 대해서 변경은 없지만
+이미 구현된 `SimpleDiscounterFactory` 에서 변경이 발생하기 때문입니다. (`else-if` 추가해야함)
 
-**(`PaymentService`) 변경(수정)에는 닫혀 있고, 확장(할인정책 추가/변경)에는 열려 있다.**
-
-단순히 분기문을 객체지향적으로 처리하고자 한 시도에서 SOLID 중 가장 중요한 원칙 중 하나인 `OCP`를 이해하게
-되었습니다.
+다른 방법으로 가능할 것 같으나, 필자의 시간과 능력이 그것까지 가기에는 아직 무리여서 다음 스텝에서 `OCP`를
+확인하시면 좋을 것 같습니다.
 
 ## 또다른 시선
 
 잠깐 다른 방향으로 리팩터링을 해보는 것도 알아보겠습니다.
 
-만약 다루는 속성(데이타)이 정적이라면 추상 팩터리 패턴 대신 enum을 사용하는 것을 고려해봐도 좋습니다.
+만약 다루는 속성(데이타)이 정적이라면 Simple Factory 대신 enum을 사용하는 것을 고려해봐도 좋습니다.
 
 # enum 기반 리팩터링
 
@@ -421,8 +416,11 @@ public class PaymentService {
 {% endhighlight %}
 
 위와 같이 enum 별로 할인 인터페이스를 구현하게 만들어서 깔끔한 코드를 만들 수 있습니다.
-이전의 추상 팩토리 패턴과는 달리 분기문 자체가 아예 필요없고, 확장도 enum 상수를 하나 구현하면 되므로,
+이전의 Simple Factory과는 달리 분기문 자체가 아예 필요없고, 확장도 enum 상수를 하나 구현하면 되므로,
 더 나아보입니다.
+
+거기에다가 enum 상수 추가 만으로도 그 외에 코드 변경 없이 확장(신규 할인정책 추가)이 가능하므로 `OCP`를 만족한다고 볼 수
+있습니다.
 
 하지만 위에서도 언급했다시피 데이타가 정적 즉 변화할 가능성이 없는 객체를 다룰 경우에만 사용하는 것이 좋습니다.
 단점을 살펴보면
@@ -433,9 +431,9 @@ public class PaymentService {
 - 상속이나 확장이 일부 제한되기 때문에 유연성이 조금 떨어진다.
 
 만약 예를 들어서 네이버의 할인율이 10%인데 갑자기 15%로 변경될 경우 어플리케이션을 다시 배포해야 합니다.
-물론 위 추상 팩토리 패턴을 이용할 경우에도 마찬가지 입니다만, 조금 더 개선하면 유연하게 대응할 수 있습니다.
+물론 위 Simple Factory 패턴을 이용할 경우에도 마찬가지 입니다만, 조금 더 개선하면 유연하게 대응할 수 있습니다.
 
-다음 예재를 통해서 알아봅시다.
+다음 예제를 통해서 알아봅시다.
 
 # Step 3. 도메인 객체(Entity) 기반 리팩터링
 
@@ -503,21 +501,12 @@ public interface DiscounterRepository<T extends AbstractDiscounter>
         extends JpaRepository<T, Long> {
     /** 할인코드로 할인 조회 */
     T findByCode(String code);
-}
-{% endhighlight %}
 
-{% highlight java %}
-@Component
-class SimpleDiscounterFactory {
-    @Autowired
-    DiscounterRepository<AbstractDiscounter> discounterRepository;
-
-    @Override
-    public Discountable getDiscounter(String discountCode) {
-        if (discountCode == null)
+    /** 할인정책을 조회한다. 만약 없으면 기본정책(할인없음) 반환 */
+    default T findByCodeOrDefault(String code) {
+        if (code == null)
             return Discountable.NONE;
-        AbstractDiscounter discounter =
-                discounterRepository.findByCode(discountCode);
+        T discounter = this.findByCode(code);
         return discounter == null ? Discountable.NONE : discounter;
     }
 }
@@ -527,7 +516,7 @@ class SimpleDiscounterFactory {
 @Service
 public class PaymentService {
     @Autowired
-    DiscounterFactory discounterFactory;
+    DiscounterRepository<AbstractDiscounter> discounterRepository;
     // 실시간 할인내역 확인
     public Discount getDiscount(...) {
         ...
@@ -539,12 +528,12 @@ public class PaymentService {
     }
 
     private Discountable getDiscounter(String discountCode) {
-        return discounterFactory.getDiscounter(discountCode);
+        return discounterRepository.findByCodeOrDefault(discountCode);
     }
     ...
 {% endhighlight %}
 
-스프링 프레임워크와 JPA를 사용한다는 가정으로 예제코드를 표현했습니다.
+Java8, 스프링 프레임워크와 JPA를 사용한다는 가정으로 예제코드를 표현했습니다.
 
 ## with JPA
 
@@ -580,9 +569,23 @@ Entity 안에 있기 때문에 객체지향의 근본인 **연관된 상태와 �
 
 # 결론
 
+궁긍적으로 분기문을 없앨 수는 없습니다. 특히 유효성 체크와 같은 분기문은 계속 유지되어야 합니다.
+제가 위에서 말하는 것은 도메인 로직을 분기하는 분기문을 복수 번 반복하게 하는 것이 아니라 최소 1번 또는
+하나의 구상 클래스 내에서 복수 번 관리하게 되어서 같은 종류의 로직 분기문이 코드 곳곳에서 발생하는 것을
+방지하기 위해 노력하자 이며, 이를 위한 패턴과 리팩터링 과정을 보여주고 싶었습니다.
+
 - Domain model with JPA 짱짱맨????
-- **객체지향적 프로그래밍을 통해서 분기문을 없애는 노력을 기울이면 유연하고 응집력 있는 코드를 얻음**
+- **객체지향적 프로그래밍을 통해서 로직분기문을 최소화하는 노력을 기울이면 유연하고 응집력 있는 코드를 얻음**
 
 ## 테스트 가능한 예제코드
 
 [https://github.com/redutan/anti-oop.git](https://github.com/redutan/anti-oop.git)
+
+## Added 2016-04-03
+
+몇몇분들이 피드백 주신 내용이 있었습니다 - 정말 고맙습니다.
+
+하마터면 제가 잘못된 지식을 알려드릴 뻔 했습니다. 추상 팩토리 부분을 Simple Factory로 수정하였으며,
+중간에 나온 OCP 는 만족되지 않아서 enum 기반으로 만족할 수 있다고 변경하였습니다. - enum 상수 추가를
+클래스 변경이 아니라 구상체 추가로 판단하고 이렇게 진행하였습니다.
+그 외에 몇몇 오타, 내용 그리고 결론을 더 보강하였습니다.
