@@ -11,6 +11,8 @@ tags:
 
 _객체-관계형 매핑의 세부 정보를 메타데이터로 저장한다._
 
+![Meta data mapping](attach/2016/POEAA/ClassDiagram-MetaData.png)
+
 # 쿼리 객체
 
 _데이터베이스 쿼리를 나타내는 객체_
