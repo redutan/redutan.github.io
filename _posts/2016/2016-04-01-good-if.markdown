@@ -57,6 +57,7 @@ void compute() {
     if (client == null)
         return;
     Request current = client.getRequest();
+    if (current == null)
         return;
     // 실제 처리할 로직    
     processRequest(current);
