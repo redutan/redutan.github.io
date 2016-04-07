@@ -1,6 +1,6 @@
 ---
 layout: post
-title: POEAA : 객체-관계형 구조 패턴 (1)
+title: 'POEAA : 객체-관계형 구조 패턴 (1)'
 date: '2016-03-28 21:27'
 tags:
   - book

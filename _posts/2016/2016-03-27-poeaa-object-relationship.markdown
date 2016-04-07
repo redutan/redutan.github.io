@@ -1,6 +1,6 @@
 ---
 layout: post
-title: POEAA : 객체-관계형 동작 패턴
+title: "POEAA : 객체-관계형 동작 패턴"
 date: '2016-03-27 17:34'
 tags:
   - book

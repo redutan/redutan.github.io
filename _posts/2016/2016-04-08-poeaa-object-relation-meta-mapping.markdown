@@ -1,6 +1,6 @@
 ---
 layout: post
-title: POEAA : 객체-관계형 메타데이터 매핑 패턴
+title: "POEAA : 객체-관계형 메타데이터 매핑 패턴"
 date: '2016-04-08 00:30'
 tags:
   - book
