@@ -1,6 +1,6 @@
 ---
 layout: post
-title: POEAA 이야기
+title: POEAA : 이야기
 date: '2016-03-27 14:56'
 tags:
   - POEAA

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: POEAA-데이터 원본 아키텍처 패턴
+title: POEAA : 데이터 원본 아키텍처 패턴
 date: '2016-03-27 16:29'
 tags:
   - book
