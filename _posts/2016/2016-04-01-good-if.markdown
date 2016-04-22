@@ -152,6 +152,85 @@ if (hour < 12) {
 }
 {% endhighlight %}
 
+## 복잡한 분기 추출
+
+_기존_
+{% highlight java %}
+    if(request.user.id==document.owner_id){
+    //사용자가 이 문서를 수정할 수 있다.
+    }
+    ...
+    if(request.user.id!=document.owner_id){
+    //문서는 읽기 전용이다.
+    }
+{% endhighlight %}
+
+_개선_
+{% highlight java %}
+    final boolean isOwner = this.isOwner(request, document);
+    if(isOwner){
+    //사용자가 이 문서를 수정할 수 있다.
+    }
+    ...
+    if(!isOwner){
+    //문서는 읽기 전용이다.
+    }
+...
+private boolean isOwner(Request request, Document document) {
+    return request.user.id == document.owner_id;
+}
+{% endhighlight %}
+
+재사용 되거나, 혹여 재사용되지 않더라도 분기절내의 복잡한 내용을 메소드로 표현하게 되면 더 나은 가독성을 얻을 수 있다.
+
+## 드모르간 법칙
+
+_기존_
+{% highlight java %}
+if(!(existsFile && !isProtected))Error("...");
+{% endhighlight %}
+
+_개선_
+{% highlight java %}
+if(!existsFile || isProtected)Error("...");
+{% endhighlight %}
+
+괄호 중첩이 적을 수록 가독성에 좋다.
+
+## 복잡한 논리 가독성 향상
+
+_기존_
+{% highlight java %}
+public class Range {
+    private int begin;
+    private int end;
+    ...
+    // begin이나 end가 other에 속하는지 확인
+    private void overlapsWith(Range other){
+        return(begin>=other.begin&&begin<other.end)||
+                (end>other.begin&&end<=other.end)||
+                (begin<=other.begin&&end>=other.end);
+    }
+}
+{% endhighlight %}
+
+_개선_
+{% highlight java %}
+...
+    // begin이나 end가 other에 속하는지 확인
+    private void overlapsWith(Range other){
+        // 우리가 시작하기 전에 끝난다.
+        if (other.end <= begin) return false;
+        // 우리가 끝난 후에 시작한다.
+        if (other.begin >= end) return false;
+        // 겹친다.
+        return true;
+    }
+...
+{% endhighlight %}
+
+무리하게 한 라인으로 논리를 표현하지 않고 가독성 확보를 위해 적절하게 여러 라인으로 분리한다. - 보호절의 그것과 유사하다 -
+
 # 참고
 > - 구현패턴[켄트 백] - 보호절
-> - 읽기 좋은 코드가 좋은 코드다[더스틴 보즈웰, 트레버 파우커] - 7장
+> - 읽기 좋은 코드가 좋은 코드다[더스틴 보즈웰, 트레버 파우커]
