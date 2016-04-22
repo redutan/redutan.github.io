@@ -9,6 +9,8 @@ date: '2016-04-01 17:17'
 하지만 분기문을 적절하게 사용하지 못하면 가독성을 방해하고 유지보수 하기 힘든 코드로 만듭니다. 이와 관련해서
 특히 분기문을 통해서 유효성 처리를 하는 경우 적절한 분기처리 숙어(idiom)를 알려드리겠습니다.
 
+# 보호절 숙어
+
 ## 기존
 {% highlight java %}
 void initialize() {
@@ -77,7 +79,7 @@ void compute() {
 해당 지역(메서드, 루프 블록 등)을 벗어나게 하는 것입니다. 보통 return을 하거나 예외(Exception)를 발생시킵니다.
 
 
-# 그럼 loop 구문 내 분기는 어떻게 처리하면 될까요?
+## 그럼 loop 구문 내 분기는 어떻게 처리하면 될까요?
 
 {% highlight java %}
 while (line = reader.readline()) {
@@ -89,4 +91,67 @@ while (line = reader.readline()) {
 
 `continue`를 이용하면 유사하게 처리할 수 있습니다.
 
-> 참고 : 구현패턴[켄드 백] - 보호절
+# 가독성을 위한 if
+
+## 조건문에서 인수의 순서
+
+{% highlight java %}
+if (10 <= length)
+
+// 아래가 더 낫다.
+if (length >= 10)
+{% endhighlight %}
+
+**좌변에 유동적인 값이나 표현을 넣고, 우변에 상수와 같은 고정값 표현을 넣어야지 가독성이 좋음**
+
+## if/else 블록의 순서
+
+- 가능한 if에는 긍정의 조건을 넣어야지 가독성이 좋음.
+- 두 블록 중 간단한 블록을 먼저 if에 둠
+
+더 흥미롭고, 확실한 것을 if절에 먼저 보이게 한다.
+
+{% highlight java %}
+// 가능하면 긍정적인 조건 ex:hasAccount
+if (...) {
+    // 간단하고 긍정적인 내용
+} else {
+    /*
+     * 상대적으로 복잡함
+     * ...
+     * ...
+     */
+}
+{% endhighlight %}
+
+**단 보호절 숙어가 우선순위가 높음** if가 계층구조로 중첩될 거 같은데 부정의 조건을 넣어서 계층구조가 사라지면 이것이 더 낫다는 말임
+
+## 삼항연산자
+
+- 간단한 구문일 경우 : 삼항연산자
+- 복잡한 구문일 경우 : if/else
+
+삼항연산자는 코드 한 라인으로 적절한 가독성을 확보할 수 있을 때 사용하며,
+만약 한 라인으로 처리하기 복잡할 경우에는 if/else를 쓰는 것이 훨씬 유리하다.
+
+_삼항연산자가 유리한 경우_
+{% highlight java %}
+String timeType = hour < 12 ? "am" : "pm";
+{% endhighlight %}
+
+_if/else가 유리한 경우_
+{% highlight java %}
+String timeKor, timeEng;
+if (hour < 12) {
+    timeKor = "오전";
+    timeEng = "am"
+} else {
+    timeKor = "오후";
+    timeEng = "pm";
+    callPmCustomAction();
+}
+{% endhighlight %}
+
+# 참고
+> 구현패턴[켄트 백] - 보호절
+> 읽기 좋은 코드가 좋은 코드다[더스틴 보즈웰, 트레버 파우커] - 7장
