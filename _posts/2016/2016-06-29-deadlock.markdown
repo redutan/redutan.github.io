@@ -1,15 +1,18 @@
 ---
-layout: "post"
-title: "DeadLock"
-date: "2016-06-29 11:44"
-tag:
+layout: post
+title: DeadLock
+date: '2016-06-29 14:09'
+tag: null
 ---
 
 **정의**
 
 프로세스들이 더 이상 진행하지 못하고 영구적으로 block된 상태
 
-_예를들면 두 사람이 서로의 멱살을 잡으면서 서로 내 멱살이 필요하니 놓으라는 상태_
+_예를들면_
+
+1. 꽉 막힌 4거리 교차로
+2. 서로 멱살을 잡으면서 놓으라고 함
 
 # 데드락 발생 4조건
 
@@ -18,7 +21,7 @@ _예를들면 두 사람이 서로의 멱살을 잡으면서 서로 내 멱살�
 3. 선점 불가(No preemption)
 4. 순환 대기(Circular wait)
 
-위 4가지 조건을 모두 만족해야 데드락이 발생한다.
+위 4가지 조건을 모두 만족해야 데드락이 발생한다. 즉 4가지 중 하나라도 만족하지 못하면 데드락은 발생하지 않는다.
 
 # 데드락 발생조건 상세
 
@@ -70,12 +73,28 @@ _예를들면 데이터베이스 연결 풀, 쓰기용 파일 열기, 레코드 
 
 Ostrich algorithm : 데드락이 발생하면 시스템 재시작
 
+## 데드락 회피
+
+**순환 대기가 발생하지 않도록 자원의 할당 상태를 검사한다.**
+
+알고리즘
+
+- 자원 할당 그래프 알고리즘
+- [은행원 알고리즘](https://en.wikipedia.org/wiki/Banker%27s_algorithm)(Dijkstra)
+    - 프로세스가 자원을 요구할 때 시스템은 자원을 할당한 후에도 안정 상태로 남아있게 되는 지를 사전에 검사하여 교착상태의 발생을 회피하는 기법
+    - 대출 = 자원할당, 은행의 잔고 = 자원, 대출상환 = 자원해제
+    - *잠금과 대기 조건 깨기* 와 일부 비슷해 보인다.
+
 ## 데드락 감지
 
 프로세스를 모니터링해서 데드락을 유발하는 프로세스를 감지한다. 그 후
 
 1. 해당 프로세스를 죽인다.
 2. 데드락 상태였던 프로세스가 죽고난 자원을 풀어서 다른 프로세스에서 선점할 수 있게 열어둔다.
+
+**단점**
+
+CPU 사용율이 높아서 성능 하락
 
 ## 데드락 예방
 
@@ -96,19 +115,32 @@ Ostrich algorithm : 데드락이 발생하면 시스템 재시작
 
 **단점**
 
-- 기아(Starvation) :
-- 라이브락(Livelock) :
-
+- 기아(Starvation) : 한 프로세스가 계속해서 필요한 자원을 점유하지 못함
+- 라이브락(Livelock) : 여러 프로세스가 한꺼번에 잠금 단계로 진입하는 바람에 계속해서 자원을 점유했다 풀었다를 반복한다.
+    - _예를 들면 길을 가다 사람 2명이 서로 마주쳤는데 서로 똑같이 왼쪽 오른쪽 피하면서 갈 길을 못가는 상태_
+- 프로세스가 모든 자원을 할당받기 위해 오랜시간 대기상태에 있게 됨
+- CPU 사용율이 높아짐
 
 ### 선점 불가 조건 깨기
 
+**다른 프로세스로 부터 자원을 뺏어올 수 있게 한다.**
+하지만 모든 요청 관리의 난이도가 높음
+
 ### 순환 대기 조건 깨기
+
+모든 프로세스가 일정 **우선순위** 를 가지고 그 순서로 자원을 할당하면 데드락을 예방할 수 있음
+
+**단점**
+
+- 자원을 할당하는 순서와 자원을 사용하는 순서가 다를 수 있다. 그래서 대기시간이 길어질 수 있음
+- 때로는 순서에 따라 자원 할당하기가 어렵다.
 
 **참고**
 
-- 클린코드 : 로버트.C.마틴
+- 클린코드 - 로버트.C.마틴
 - [https://en.wikipedia.org/wiki/Deadlock](https://en.wikipedia.org/wiki/Deadlock)
-- [https://ko.wikipedia.org/wiki/%EA%B5%90%EC%B0%A9_%EC%83%81%ED%83%9C](https://ko.wikipedia.org/wiki/%EA%B5%90%EC%B0%A9_%EC%83%81%ED%83%9C)
+- [https://ko.wikipedia.org/wiki/교착_상태](https://ko.wikipedia.org/wiki/%EA%B5%90%EC%B0%A9_%EC%83%81%ED%83%9C)
 - [http://beginnersbook.com/2015/04/deadlock-in-dbms/](http://beginnersbook.com/2015/04/deadlock-in-dbms/)
 - [http://marsland.tistory.com/149](http://marsland.tistory.com/149)
 - [http://wonjayk.tistory.com/251](http://wonjayk.tistory.com/251)
+- [http://i-bada.blogspot.kr/2012/04/blog-post_9158.html](http://i-bada.blogspot.kr/2012/04/blog-post_9158.html)
