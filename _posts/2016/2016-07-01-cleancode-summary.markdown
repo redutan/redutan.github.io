@@ -1,10 +1,10 @@
 ---
-layout: "post"
-title: "클린코드 정리와 의문"
-date: "2016-06-03 14:29"
+layout: post
+title: 클린코드 정리와 의문
+date: '2016-07-01 17:33'
 tags:
-    - book
-    - clean-code
+  - book
+  - clean-code
 ---
 
 # 정리
