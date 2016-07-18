@@ -125,5 +125,5 @@ RefundServiceTest(long amount, long refundFee) {
 
 # 참조
 
-- https://github.com/junit-team/junit4/wiki/Parameterized-tests
+- [https://github.com/junit-team/junit4/wiki/Parameterized-tests](https://github.com/junit-team/junit4/wiki/Parameterized-tests)
 - [테스트주도개발 실천법과 도구[채수원]](http://www.hanbit.co.kr/store/books/look.php?p_code=B3818551654)
