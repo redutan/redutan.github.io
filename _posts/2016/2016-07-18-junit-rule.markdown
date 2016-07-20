@@ -26,7 +26,7 @@ Rule은 하나의 테스트 클래스 내에서 동작 방식을 재정의 하�
 
 **상속구조**
 
-![](/images/2016/07/스크린샷 2016-07-18 오후 5.38.21.png)
+![](/images/2016/07/junit-rule-inherit.png)
 
 ## `TemporaryFolder`
 
