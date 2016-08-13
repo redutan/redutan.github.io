@@ -1,10 +1,10 @@
 ---
-layout: "post"
-title: "리팩토링 정리(1)"
-date: "2016-08-13 13:36"
+layout: post
+title: 리팩토링 정리(1)
+date: '2016-08-13 15:18'
 tags:
-    - book
-    - refectoring
+  - book
+  - refectoring
 ---
 
 # 1장 맛보기 예제
