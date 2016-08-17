@@ -13,7 +13,7 @@ tags:
 
 ## 메서드 내용 직접 삽입(Inline Method)
 
-메서드 추출의 반대
+_메서드 추출_ 의 반대
 
 ## 임시변수 내용 직접 삽입(Inline Temp)
 
@@ -92,15 +92,35 @@ String foundPerson(Stirng[] people) {
 
 ## 클래스 추출(Extract Class)
 
+두 클래스가 처리해야할 기능이 하나의 클래스에 들어 있을 땐 _새 클래스를 만들고 기존 클래스의 관련 필드와 메서드를 새 클래스로 옮기자_
+
 ## 클래스 내용 직접 삽입(Inline Class)
+
+_클래스 추출_ 의 반대
 
 ## 대리 객체 은페(Hide Delegate)
 
+![Hide Delegate](/images/2016/08/hideDelegate.gif)
+
+출처 : http://kancsuki.sed.hu/sites/kancsuki.sed.hu/files/teaching/ovrt/10/catalog/hideDelegate.html
+
 ## 과잉 중개 메서드 제거(Remove Middle Man)
+
+_대리 객체 은페_ 의 반대
 
 ## 외래 클래스에 메서드 추가(Introduce Foreign Method)
 
+헬퍼메소드
+
 ## 국소적 상속확장 클래스 사용(Introduce Local Extension)
+
+사용 중인 서버 클래스에 여러 개의 메서드를 추가해야 하는데 클래스를 수정할 수 없을 땐 _새 클래스를 작성하고 그 안에 필요한 여러 개의 메서드를 작성하자. 이 상속확장 클래스를 원본 클래스의 하위 클래스나 래퍼 클래스로 만들자._
+
+![Introduce Local Extension](/images/2016/08/introduceLocalExtension.gif)    
+
+출처 : http://kancsuki.sed.hu/sites/kancsuki.sed.hu/files/teaching/ovrt/10/catalog/introduceLocalExtension.html
+
+**기존 메서드를 재정의 하면 문제가 생길 수 있으므로 그냥 메서드 추가만 하자**
 
 # 8장 데이터 체계화
 
