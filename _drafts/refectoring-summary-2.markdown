@@ -124,17 +124,60 @@ _대리 객체 은페_ 의 반대
 
 # 8장 데이터 체계화
 
+객체로 전환류의 리팩토링은 시작에 불과하다. **진정한 장점은 메서드 이동을 적용해서 새로 생긴 객체에 기능을 추가할 떼 얻게 된다.(응집력)**
+
 ## 필드 자체 캡슐화(Self Encapsulate Field)
+
+**객체 내부에서 필드 접근 시** 직접 필드에 접근에서 getter로 접근하는 리팩토링
 
 ## 데이터 값을 객체로 전환(Replace Data Value with Object)
 
+데이터 항목에 데이터나 추가 기능(메서드)을 더 추가해야 할 때는 _데이터 항목을 객체로 만들자._
+
 ## 값을 참조로 전환(Change Value to Reference)
+
+to Entity(가변)
 
 ## 참조를 값으로 전환(Change Reference to Value)
 
+to Value(불변)
+
+_`equals`와 `hashCode`를 구현한다._
+
+_값을 참조로 전환_ 반대
+
 ## 배열을 객체로 전환(Replace Array with Object)
 
+_before_
+{% highlight java %}
+String[] row = new String[3];
+row[0] = "Liverpool";
+row[1] = "15";
+{% endhighlight %}
+
+_after_
+{% highlight java %}
+Performance row = new Performance();
+row.setName("Liverpool");
+row.setWins("15");
+{% endhighlight %}
+
 ## 관측 데이터 복재(Duplicate Observed Data)
+
+도메인 데이터는 GUI 컨트롤 안에서만 사용 가능한데, 도메인 메서드가 그 데이터를 접근해야 할 땐
+_그 데이터를 도메인 객체로 복사하고, 양측의 데이터를 동기화하는 관측 인터페이스 observer를 작성하자._
+
+![Duplicate Observed Data](/images/2016/08/dupObservedData.gif)
+
+출처 : http://kancsuki.sed.hu/sites/kancsuki.sed.hu/files/teaching/ovrt/10/catalog/hideDelegate.html
+
+_옵저버 패턴_
+
+### 동기
+
+비즈니스 로직이 사용자 인터페이스 안에 들어 있는 2계층 방식으로 개발된 코드가 있다면 인터페이스에서 기능을 분리해야한다.(Anti Smart UI)
+
+
 
 ## 클래스의 단방향 연결을 양방향으로 전환(Change Unidirectional Association to Bidirectional)
 
