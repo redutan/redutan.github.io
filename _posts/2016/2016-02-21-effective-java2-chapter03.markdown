@@ -193,7 +193,7 @@ public PhoneNumber clone() {
 shallow copy(단순하게 `super.clone()`)가 될 경우 일부 상태(속성)를 공유하게 되므로 문제가 생긴다.
 *A라는 객체를 복사해서 B라는 객체를 만들었는데 A의 특정속성 (call by reference 기반 속성)을 수정하면 B도 수정되는 이슈*
 
-**즉, 복사본의 불변식(invariant)의 깨진다.**
+**즉, 복사본의 불변식(invariant)이 깨진다.**
 
 복잡한 `clone`를 재정의 하는 것 보다는 **복사 생성자(copy constructor)나 복사 팩터리(copy factory)를 제공하는 것** 이 더 낫다.
 - 복사 생성자 : `public Yum(Yum yum);`
