@@ -36,6 +36,8 @@ equals 메서드는 **동치 관계(equivalence relation)** 를 만족해야함
 하지만 애석하게도 **객체 생성 가능(instantiable) 클래스를 상속하여 새로운 속성을 추가하면서 `equals` 규약을 어기지 않을 방법은 없다.** *상속을 이용할 경우 동치관계는 깨짐*
 그 외에도 여러가지 우회법이 있지만 다 문제가 생긴다 (ex: `instanceof` 대신 `getClass`를 이용하는 경우)
 
+**일반적으로 대칭성(symmetric)을 만족시키지 못한 문제가 생긴다.** : `자식.equals(부모) = true` 이나 `부모.equals(자식) = false` 가 나올 확률이 큼
+
 하지만 위 문제를 해결할 수 있는 방법이 존재함. -> **상속 대신 구성(Composit)하라**
 
 {% highlight java %}
@@ -67,14 +69,6 @@ public class ColorPoint {
     }
 }
 {% endhighlight %}
-
-> 아래 내용 이해 안됨 (p.55)
-
-- abstract class Shape{ }
-- class Circle extends Shape { int radius; }
-- class Rectangle extends Shape { int length, width; }
-
-**위와 같은 구성에서 왜 Shape 객체의 equals 동치성 이슈가 생기지 않는지 이해가 안됨**
 
 **신뢰성이 보장되지 않는 자원(unreliable resource)들을 비교하는 equals를 구현하는 것은 삼가라**
 
@@ -114,7 +108,7 @@ public class ColorPoint {
 
 ### `hashCode` 일반규약
 
-- `hashCode`를 여러 번 호출해도 값은 동일하다.
+- `hashCode`를 여러 번 호출해도 값은 동일하다. **멱등성**
 - **`equals` 가 같다고 판정한 두 객체의 hashCode 값은 같아야한다. : hashCode를 재정의 하지 않을 경우 위반**
 - `equals` 가 다르다고 판정한 두 객체의 hashCode 값은 꼭 다를 필요는 없다
 
@@ -199,13 +193,13 @@ public PhoneNumber clone() {
 shallow copy(단순하게 `super.clone()`)가 될 경우 일부 상태(속성)를 공유하게 되므로 문제가 생긴다.
 *A라는 객체를 복사해서 B라는 객체를 만들었는데 A의 특정속성 (call by reference 기반 속성)을 수정하면 B도 수정되는 이슈*
 
-**즉, 원본과 복사본 상이의 불변식(invariant)의 깨진다.**
+**즉, 복사본의 불변식(invariant)의 깨진다.**
 
 복잡한 `clone`를 재정의 하는 것 보다는 **복사 생성자(copy constructor)나 복사 팩터리(copy factory)를 제공하는 것** 이 더 낫다.
 - 복사 생성자 : `public Yum(Yum yum);`
 - 복사 팩터리 : `public static Yum newInstance(Yum yum);`
 
-> 또한 불변객체의 경우 실질적으로 복제를 허용하는 것 논리적으로 오류가 생긴다 : 복사본과 원본을 논리적으로 구별할 수 없음.
+> 또한 불변객체의 경우 실질적으로 복제를 허용하는 것 논리적으로 오류가 생긴다 : 복사본과 원본을 논리적으로 구별할 수 없음. - 불변객체는 일반적으로 값객체들인데 어짜피 논리적으로 같아도 괜찮지 않는가? Deep Copy면 괜찮을 거 같음.
 
 ### 복사 생성자, 복사 팩터리의 장점
 
