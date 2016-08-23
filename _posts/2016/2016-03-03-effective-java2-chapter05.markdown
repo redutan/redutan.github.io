@@ -76,6 +76,8 @@ Set<Lark> exaltation = new HashSet();
 
 # Rule 25 - 배열 대신 리스트를 써라
 
+
+
 **배열과 리스트(Collection)의 차이**
 
 - 배열 : 공변 자료형(covariant)
@@ -90,6 +92,8 @@ Set<Lark> exaltation = new HashSet();
 
 **1. 컴파일 시 타입안정성 확보**
 
+    본 서적에서는 `reification`을 **실체화** 로 표현했으나 이것은 realization 이랑 헷갈리고 개인적으로 판단할 시 개념과도 맞지 않아서 **구체화** 로 표현함
+
 {% highlight java %}
 // 실행 시 예외 발생 (컴파일 성공)
 Object[] objectArray = new Long[1];
@@ -100,20 +104,23 @@ List<Object> ol = new ArrayList<Long>();    // 자료형 불일치
 ol.add("I don't fit in");
 {% endhighlight %}
 
-**2. 배열은 실체화(reification) 자료형**
+**2. 배열은 구체화(reification) 자료형**
 
-간단히 말해서 객체를 생성하면서 초기화 까지 가능한 자료형이라는 뜻. 하지만 `List`는 안됨
+배열의 자료형은 실행시간에 결정된다. 하지만 `List`는 안됨
 
 *example*
 
 `String strs = new String[] {"str1", "str2"}`
 
-**이해안됨 - 실체 불가능 자료형**
+**구체화 불가능 자료형(non-refiable types)**
 
-`E`, `List<E>`, `List<String>`와 같은 자료형은 실체화 불가능(non-refiable) 자료형으로 알려져 있다.
-쉽게 말하자만, 프로그램이 실행될 때 해당 자료형을 표현하는 정보의 양이 컴파일 시점에 필요한 정보의 양보다 적은 자료형이 **실체화 불가능 자료형** 이다.
+실행시점(runtime)에 해당 자료형의 모든 정보를 이용할 수 없는 자료형(a type this is not completely available at runtime)이라는 뜻이라는데 명확하게 이해가 안되었으나, **이제는 이해가 되는 거 같다.**
+선지식으로 Java가 Generic을 구현할 시 내부적으로 **타입제거(Type erasure)** 를 이용하는 것이다. `List<String>`의 경우 컴파일 시에는 `List<String>` 이지만 런타임 시에는 `List`가 된다.
+즉. 런타임 시에는 Parameterized type 정보인 `<String>`가 없어지는 타입제거(Type erasure)가 된 후이기 때문에 해당 제네릭 정보를 알 수 없고 이것이 바로 **타입의 모든 정보를 런타임 시에 알 수 없는 것이다.**
 
-> 실행시점(runtime)에 해당 자료형의 모든 정보를 이용할 수 없는 자료형(a type this is not completely available at runtime)이라는 뜻이라는데 명확하게 이해가 안된다.
+`E`, `List<E>`, `List<String>`와 같은 자료형은 구체화 불가능(non-refiable) 자료형으로 알려져 있다. - 반대로 primitive, non-generic 타입, raw 타입, 비한정 와일드카드형 타입(`<?>`)은 구체화 가능(refiable) 자료형이다.
+
+참고 : [https://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html](https://docs.oracle.com/javase/tutorial/java/generics/nonReifiableVarargsType.html)
 
 ## 결론
 
