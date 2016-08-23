@@ -81,10 +81,17 @@ Set<Lark> exaltation = new HashSet();
 **배열과 리스트(Collection)의 차이**
 
 - 배열 : 공변 자료형(covariant)
-    - `Sub extends Super`이면 `Super[]` -> `Sub[]`으로 형변환 가능
+    - `Sub extends Super`이면 `Super[] supers = new Sub[]` 가능
 - 리스트 : 불변 자료형(invariant)
-    - `Sub extends Super`이면 `List<Super>` -> `List<Sub>`으로 형변환 **불가능**
+    - `Sub extends Super`이면 `List<Super>` <-> `List<Sub>`간 형변환 **불가능**
     - **하지만** `List<Super>` -> `List<? extends Sub>`으로 형변환 가능
+
+> 이것 이외에도 반공변 자료형(contravariant)도 있음.
+>
+- contravariant : `Child extends Parent`이면 `Parent[] objs = new Child[]` 가능. `<T super Child>`
+- convariant : `<T extends Parent>`
+
+> 참고 : [https://msdn.microsoft.com/ko-kr/library/dd799517(v=vs.110).aspx](https://msdn.microsoft.com/ko-kr/library/dd799517(v=vs.110).aspx)
 
 *하지만 취약한 것은 배열이다.* 역시 불변식이 좋음
 
@@ -92,7 +99,7 @@ Set<Lark> exaltation = new HashSet();
 
 **1. 컴파일 시 타입안정성 확보**
 
-    본 서적에서는 `reification`을 **실체화** 로 표현했으나 이것은 realization 이랑 헷갈리고 개인적으로 판단할 시 개념과도 맞지 않아서 **구체화** 로 표현함
+_본 서적에서는 `reification`을 **실체화** 로 표현했으나 이것은 realization 이랑 헷갈리고 개인적으로 판단할 시 개념과도 맞지 않아서 **구체화** 로 표현함_
 
 {% highlight java %}
 // 실행 시 예외 발생 (컴파일 성공)
@@ -124,7 +131,7 @@ ol.add("I don't fit in");
 
 ## 결론
 
-| 구분 | Type | 실체화 | 형안정성 |
+| 구분 | Type | 구   체화 | 형안정성 |
 |-----|------|------|--------|
 | 배열 | 공변자료형 | 가능 | 실행타임에 보장 |
 | 제네릭 | 불변자료형 | 불가능 | 컴파일타임에 보장 |
