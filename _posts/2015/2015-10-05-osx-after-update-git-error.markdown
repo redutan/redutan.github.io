@@ -1,7 +1,7 @@
 ---
 layout: post
 title: OS X - OS 업데이트 후 git 등 오류 발생 시 솔루션
-date: '2015ㄷ-10-05 23:34'
+date: '2015-10-05 23:34'
 tags:
   - error
   - osx
