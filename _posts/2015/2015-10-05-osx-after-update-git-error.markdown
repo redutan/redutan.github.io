@@ -1,14 +1,16 @@
 ---
 layout: post
 title: OS X - OS 업데이트 후 git 등 오류 발생 시 솔루션
-date: '2015-10-05 23:34'
+date: '2015ㄷ-10-05 23:34'
 tags:
   - error
   - osx
   - git
 ---
 
-최근 `OS X El Capitan` 업데이트가 있었다.
+최근 `macOS Sierra` 업데이트가 있었다.
+
+*과거 `OS X El Capitan` 업데이트도 포함됨*
 
 _언제나 처럼 먼저 업데이트하면 골치아픈 일이 많이 생기네요 ㅠ_
 
