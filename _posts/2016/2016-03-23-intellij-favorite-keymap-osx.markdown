@@ -60,6 +60,7 @@ tag:
 - `⌃⌥O` : Auto import
 - `⌥⇥` : 스플릿(화면분할) 상태에서 화면 간 이동
     - Split Vertical 단축키를 지정하고 쓰면 더 좋음 - 저는 `⌃⌥V`로 지정
+- `⌥ F1` then `1` or `⏎` : 현재파일 Project View 에서 활성화 
 
 ## 실행
 
