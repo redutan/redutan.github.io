@@ -3,7 +3,7 @@ layout: post
 title: Seven Concurrency - Thread & Lock
 date: '2016-11-25 16:14'
 tags:
-  - books
+  - book
   - concurrency
 ---
 
