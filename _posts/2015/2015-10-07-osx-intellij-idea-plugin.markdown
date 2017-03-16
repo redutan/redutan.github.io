@@ -85,6 +85,10 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 
 `Eclipse Code Formatter`를 플러그인 검색을 통해서 설치
 
+*설정참조*
+
+![Eclipse Code Formatter Configuration](/images/2015/10/intellijPlugin_eclipseCodeFormatter.png)
+
 ## Markdown support
 
 - 마크다운 미리보기 등 지원
@@ -103,8 +107,3 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 ![Presentation Assistant](https://plugins.jetbrains.com/files/7345/screenshot_14337.png)
 
 *https://plugins.jetbrains.com/plugin/7345-presentation-assistant*
-
-
-*설정참조*
-
-![Eclipse Code Formatter Configuration](/images/2015/10/intellijPlugin_eclipseCodeFormatter.png)
