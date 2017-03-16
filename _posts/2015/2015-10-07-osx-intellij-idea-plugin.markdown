@@ -90,6 +90,21 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 - 마크다운 미리보기 등 지원
 - github를 사용하면 유용함
 
+# Save Action
+
+- 저장 시 Auto import, Reformat (`⌥⌘L`, `⌥⇧⌘L`) 을 자동화
+- Code style 설정 따라감.
+
+# Presentation Assistant
+
+- IDE 하단에 단축키를 노출시켜줌 (win, mac 둘 다)
+- 코딩 시연, 스터디, 강좌, 페어프로그래밍 등에 유용함
+
+![Presentation Assistant](https://plugins.jetbrains.com/files/7345/screenshot_14337.png)
+
+*https://plugins.jetbrains.com/plugin/7345-presentation-assistant*
+
+
 *설정참조*
 
 ![Eclipse Code Formatter Configuration](/images/2015/10/intellijPlugin_eclipseCodeFormatter.png)
