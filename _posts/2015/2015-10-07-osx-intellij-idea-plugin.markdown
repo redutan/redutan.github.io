@@ -106,4 +106,6 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 
 ![Presentation Assistant](https://plugins.jetbrains.com/files/7345/screenshot_14337.png)
 
-*https://plugins.jetbrains.com/plugin/7345-presentation-assistant*
+  [350179c4]: https://plugins.jetbrains.com/plugin/7345-presentation-assistant "Presentation Assistant"
+
+[https://plugins.jetbrains.com/plugin/7345-presentation-assistant][350179c4]
