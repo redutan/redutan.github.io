@@ -9,6 +9,179 @@ tags:
 
 # 정리
 
+## 1. 깨끗한코드
+
+**DSL은 무엇인가?**
+
+특정 문제 도메인, 특정 문제 표현 기법, 특정 문제 해결 기법에 사용할 목적으로 만든 프로그래밍 언어나 명세 언어를 의미한다.
+해당 분야 전문가들의 의사소통을 돕기 위해, 모호함을 없애며 표현력을 높인 특징이 있다.
+
+ - [https://martinfowler.com/bliki/DomainSpecificLanguage.html](https://martinfowler.com/bliki/DomainSpecificLanguage.html)
+ - [http://aeternum.egloos.com/tag/도메인특화언어](http://aeternum.egloos.com/tag/도메인특화언어)
+
+**르블랑의 법칙** : (나쁜 코드를 해결할) 나중은 결코 오지 않는다.
+
+![생산성 대비 시간 그래프](https://www.butterfly.com.au/sites/default/files/images/blog/cleancode/productivity-vs-time.png)
+
+*출처 : https://www.butterfly.com.au/blog/website-development/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer*
+
+나쁜코드의 책임은 **우리에게** 있다.
+
+**명언**
+
+- **명쾌한 추상화** !!!!
+- **한 가지를 제대로 한다** : SRP
+- **코드는 문학적** : Readability
+- **중복이 없다** : DRY
+
+코드를 작성하는 시간보다 읽는 시간이 훨씬 많다 : 고로 잘 읽을 줄 알아야한다.
+
+*보이스카우트 규칙*
+
+> 캠프장은 처음 왔을 때보다 더 깨끗하게 해놓고 떠나라.
+
+**연습해 연습!!**
+
+## 2. 의미 있는 이름
+
+### 의도를 분명히 밝혀라
+
+*before*
+
+{% highlight java %}
+public List<int[]> getThem() {
+    List<int[]> list1 = new ArrayList<>();
+    for (int[] x : theList)
+        if (x[0] == 4)
+            list1.add(x);
+    return list1;
+}
+{% endhighlight %}
+
+*after*
+
+{% highlight java %}
+public List<Cell> getFlaggedCells() {
+    List<Cell> flaggedCells = new ArrayList<>();
+    for (Cell cell : gameBoard)
+        if (cell.isFlagged())
+            flaggedCells.add(cell);
+    return flaggedCells;
+}
+{% endhighlight %}
+
+### 그릇된 정보를 피하라
+
+accountList -> accounts, accountGroup, brunchOfAccounts
+
+### 의미 있게 구분하라
+
+**NO!!!**
+
+- o1, o2, o3
+- clazz, klass, NameString, theName
+
+{% highlight java %}
+getActiveAccount();
+getActiveAccountDetail();
+getActiveAccountInfo();
+{% endhighlight %}
+
+### 발음하기 쉬운 이름을 사용하라
+
+`genymdhms` : `generateDateYearMonthDayHourMinuteSecond`
+
+*before*
+
+{% highlight java %}
+class DtaRcrd102 {
+    private Date genymdhms;
+    private Date modymdhms;
+    private final String pszqint = "102";
+}
+{% endhighlight %}
+
+*after*
+
+{% highlight java %}
+class Customer {
+  private Date generationTimestamp;
+  private Date modificationTimestamp;
+  private final String recordId = "102";
+}
+{% endhighlight %}
+
+### 검색하기 쉬운 이름을 사용하라
+
+### 인코딩을 피하라
+
+Anti *헝가리안 표기법*
+Anti *맴버변수 접두어* : `m_???`
+Anti *IFactory* + *Factory* : `Factory` + `DefaultFactory`
+
+- 동적언어는 어떻게 하지?
+
+### 자신의 기억력을 자랑하지 마라
+
+i, j, k 정도는 넘어가주자
+
+### 클래스 이름
+
+- 명사
+- Manager, Processor, Data, Info는 피하자???
+
+### 메서드 이름
+
+- 동사
+- 정적팩토리 메서드 좋음
+
+### 기발한 이름은 피하라
+
+### 한 개념에 한 단어를 사용하라
+
+`fetch` or `retrieve` or `get`
+
+**일관성 있는 어휘를 사용하자.**
+
+### 말장난을 하지 마라
+
+VS *한 개념에 한 단어를 사용하라*
+
+**개념이 달라진 부분에서는 일관된 단어가 아니라 다른 단어를 사용해야한다.**
+
+### 해법 영역에서 가져온 이름을 사용하라
+
+For Concrete Class
+
+`SimpleAdder`, `Accumulator`
+
+### 문제 영역에서 가져온 이름을 사용하라
+
+For Interface
+
+`Adder`
+
+### 의미 있는 맥락을 추가하라
+
+- 맥락이 이어진다면 prefix를 추가해보자
+  - `addrFirstName`, `addrLastName`, `addrState`
+- prefix보단 타입(Class)으로 구분하는 것이 더 낫다
+  - `class Address : firstName, lastName, state`
+
+### 불필요한 맥락을 없애라
+
+`GSDAccount, GSDAddress` VS `Account, Address`
+
+*인코딩을 없애라* 가 여기에 포함되는 것 같음
+
+## 3. 함수
+
+### 작게 만들어라!
+
+쉽게 읽히고 이해할 수 있어야 한다.
+
+### 한 가지만 해라!
+
 ## 시스템
 
 **'처음부터 올바르게' 시스템을 만들 수 있다는 믿음은 미신이다.**
