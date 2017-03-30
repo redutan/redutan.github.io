@@ -64,15 +64,8 @@ _DataSource Layer에서 레코드 집합과 잘 어울린다._
 
 # 서비스 계층 (Service Layer)
 
-- 일종의 "비즈니스 논리"
-    - 도메인 모델
-    - 트랜젝션 스트립트
-- 구현의 변형
-    - 도메인 파사드(domain facade)
-    - 작업 스크립트(operation script)
-- 원격 호출에 대한 고려
-    - Thin service
-    - Fat service
-- 서비스 및 작업 식별
-    - 유스케이스모델
-    - 사용자 인터페이스
+| 구분 | 도메인 모델 | 트랜잭션 스크립트 |
+|-----|----------|--------------|
+| 구현의 변형 | 도메인 파사드(Domain facade) | 작업 스크립트(Operation script) |
+| 호출에 대한 고려 | Thin service | Fat service |
+| 작업 식별 | 유스케이스 모델 | 사용자 인터페이스 |
