@@ -1,7 +1,7 @@
 ---
-layout: "post"
+layout: post
 title: 클린소프트웨어 Part 1. 애자일 개발(2)
-date: "2017-06-06 17:07"
+date: '2017-06-06 18:23'
 tags:
   - books
   - clean-software
