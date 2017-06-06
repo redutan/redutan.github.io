@@ -57,7 +57,7 @@ public void testMove() {
 
 * 단위테스트는 Mock object가 요구된다.
 
-![테스트를 위해 의사 객체를 사용하는 분리된 Payroll](https://www.plantuml.com/plantuml/img/TL7D3e8m3BxlANRK67m4B-hHn8E9vxfK9Gn6M0aXohixaSqovsxzsk-ddT9WhJn2tnYjHLuHDbTGABTtLCMvoLqj7qAwj-hUrOWlbc9Wi_korgP7z8CAj6er43fPDpfYjR7aoX8h-iFU0S45R52v8VbM46avD8Wfjioo3GyympqX2NfFyHDYpPYAt-Y4bYRaO5J1RRzeHELGi8pOBjTplWLdVRf1DYKu7masBFQukl_g68-NIVNZMoQRmVa5)
+![테스트를 위해 의사 객체를 사용하는 분리된 Payroll](https://www.plantuml.com/plantuml/img/XPB13i8W44Jl_GgE6bC_mOjwDF5Wudd5jJQbXHGQqsZ_NOg0W2HownjcTeTK06sWGY9wVXsegdb7dWNHXpAGaXnXx3bZXjITmlu65CdsZhGvzxN-jhVdithCn6YBfQ5JujktWl4HCJHHO7HWe52FiZR31PTAenOxzITj1mek8AFK2fMJez0XnLCn5ROaASjDM2tYpfQ5ReFYPwLru8nUz8HIMNBWj0d7VcbY3P4VcRZrNg-uHUZwg3us5nXVyME2jKrrzsEaF2sJqzEtp8f-yXi0)
 
 *테스트를 위해 의사 객체를 사용하는 분리된 Payroll*
 
@@ -97,7 +97,7 @@ public void testPayroll() {
 
 ### 인수 테스트의 예
 
-{% highlight %}
+{% highlight c %}
 AddEmp 1429 "Robert Martin" 3215.88
 Payday
 Verify Paycheck EmpId 1429 GrossPay 3215.88
@@ -142,4 +142,33 @@ XML 추출을 통해서
 
 # Chapter 5. 리팩토링
 
+> 외부 행위를 바꾸지 않으면서 내부 구조를 개선하는 방법으로. 소프트웨어 시스템을 변경하는 프로세스 - Martin Fowler
+
+* *긁어서 부스럼을 만들고 치우고 개선한다.*
+* 개발에 주의를 기울이고 최선을 다해야 한다. - 리팩토링으로 실현
+
+**모듈의 세 가지 기능**
+
+1. 실행 중 동작하는 기능 : 모듈의 존재 이유
+2. 변경 기능
+    3. 변경하기 어려운 모듈은 그것이 제대로 동작한다 하더라도 망가진 것이며, *리팩토링* 이 필요하다.
+3. 가독성
+    4. 가독성이 떨어지는 것도 *리팩토링* 이 필요하다.
+
+## 소수 생성기: 리팩토링의 간단한 예
+
+Skip - 주로 메소드 추출을 통한 리팩토링으로 가독성을 확보하는 것이 주 내용이다.
+
+## 결론
+
+* 리팩토링에 투자하는 시간은 가까운 미래의 수고에 비하면 극히 적은 것이다 : **효율성 큼**
+* 저녁식사 후 부엌을 청소하는 것과 비슷하다 : **부채 최소화**
+* 지속적으로 **코드의 깔끔함** 을 유지하는 것이 중요하다.
+
 # Chapter 6. 프로그래밍 에피소드
+
+[https://github.com/redutan/bowling-cleansoftware][b440c18b]
+
+위 github 링크를 커밋로그와 함께 참고
+
+  [b440c18b]: https://github.com/redutan/bowling-cleansoftware "볼링게임 github 링크"
