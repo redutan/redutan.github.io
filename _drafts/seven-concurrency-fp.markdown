@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "seven-concurrency-fp"
+title: "Seven Concurrency - Functional Programming"
 date: "2016-11-25 16:15"
 tags:
     - book
