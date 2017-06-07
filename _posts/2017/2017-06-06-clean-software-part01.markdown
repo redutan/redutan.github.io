@@ -36,6 +36,8 @@ tags:
 
 ## 원칙
 
+![애자일 12 원칙](https://images.projectmanagers.org/wp-content/uploads/2016/10/knowledge-train-12-agile-principles-pm.org_1-696x491.png)
+
 * **우리의 최고 가치는 유용한 소프트웨의 빠르고 지속적인 공개를 통해 고객을 만족시키는 것이다.**
     * 첫 공개본에서 기능하는 부분이 적을수록 최종 공개본의 품질이 높이진다. : ?? 하지만 애자일에는 위배되는 것 같다.
     * 자주 공개할 수록 최종 품질도 좋았다. - OK
