@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 클린소프트웨어 Part 2. 애자일 설계(2)
-date: '2017-06-08 12:13'
+date: '2017-06-10 17:59'
 tags:
   - books
   - clean-software
