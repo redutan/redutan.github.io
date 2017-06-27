@@ -76,3 +76,9 @@ interface Command {
 **재미있는 것은 말 그대로 명령이 계속 활성화된 상태로 진행된다는 점이다**
 
 # 템플릿 메서드 패턴
+
+![템플릿 메소드 패턴 클래스 다이어그램](https://dooray.com/plantuml/img/IqmgBYbAJ2vHICv9B2vMS8HodS6yQYu58D0kISqjo4aiIVLDBSd8Jz7G18ig5vScmGLgkI3QdVFpaejIIr8D5L8hIbBpKh0RY5Uh4IbQ0G00)
+
+상속을 통한 코드 재사용을 위한 패턴
+
+# 
