@@ -48,7 +48,7 @@ public inteface Command {
 * 커맨드 패턴의 응용
 * `ActiveObjectEngine`는 `Command`객체의 연결리스트
 * 엔진에 새로운 명령을 추가할 수도 있고
-* `run()`을 호출할 수도 있다. : 루프를 돌면서 명령들을 실행
+* `run()`을 호출할 수도 있다. - 루프를 돌면서 명령들을 실행
 
 {% highlight java %}
 class ActiveObjectEngine {
