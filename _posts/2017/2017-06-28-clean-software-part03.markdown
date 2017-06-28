@@ -1,7 +1,7 @@
 ---
-layout: "post"
+layout: post
 title: 클린소프트웨어 Part 3. 급여관리 사례 연구
-date: "2017-06-26 20:19"
+date: '2017-06-28 23:58'
 tags:
   - books
   - clean-software
