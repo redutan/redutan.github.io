@@ -155,7 +155,7 @@ public class Monostate {
 * 둘다 안티패턴인지라 가능한 사용 안 하는 것이 좋다.
 * 참고
   * [http://wiki.c2.com/?MonostatePattern](http://wiki.c2.com/?MonostatePattern)
-  * [http://wiki.c2.com/?SingletonsAreEvil](http://wiki.c2.com/?MonostatePattern)
+  * [http://wiki.c2.com/?SingletonsAreEvil](http://wiki.c2.com/?SingletonsAreEvil)
 
 # 널 오브젝트 패턴
 
