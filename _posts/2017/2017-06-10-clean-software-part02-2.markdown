@@ -5,6 +5,9 @@ date: '2017-06-10 17:59'
 tags:
   - books
   - clean-software
+  - LSP
+  - DIP
+  - ISP
 ---
 
 # 리스코프 치환 원칙(LSP)

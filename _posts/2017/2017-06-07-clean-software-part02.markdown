@@ -5,6 +5,9 @@ date: '2017-06-07 21:09'
 tags:
   - books
   - clean-software
+  - SOLID
+  - SRP
+  - OCP
 ---
 
 # 서론

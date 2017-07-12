@@ -5,6 +5,8 @@ date: '2017-06-06 17:06'
 tags:
   - books
   - clean-software
+  - agile
+  - XP
 ---
 
 # Chapter 1. 애자일 실천방법(practice)

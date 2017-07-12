@@ -5,6 +5,7 @@ date: '2017-06-06 18:23'
 tags:
   - books
   - clean-software
+  - refectoring
 ---
 
 # Chapter 4. 테스트
