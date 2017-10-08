@@ -212,7 +212,7 @@ public void event(int event) {
 
 **전이 테이블 + 스테이트 패턴** = 3차원 유한 상태 기계(THREE-LEVEL FINITE STATE MACHINE)
 
-![SMC](images/2017/10/smc-class-diagram.png)
+![SMC](/images/2017/10/smc-class-diagram.png)
 
 ### 상태 기계 컴파일러 장단점
 
