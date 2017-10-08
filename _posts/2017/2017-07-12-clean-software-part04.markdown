@@ -70,7 +70,7 @@ tags:
 
 ### 의존관계 순환이 생기는 경우
 
-![의존관계 순환이 생기는 패키지다이어그램](https://dooray.com/plantuml/img/AqXCpavCJrNmhNGiACZ9J4uioSpFuog0YuOa5cSN8_5TCXDpyjEBkL3KA-ZfsS7LGcce648zb0KLHzPjfV2cOyxRcJFURDZnPk46BW00)
+![의존관계 순환이 생기는 패키지다이어그램](/images/2017/07/circular-reference.png)
 
 * 릴리즈 시 서버 다운을 시키고 한 번에 모든 패키지의 버전을 다 올려서 배포
     * 실질적으로 하나의 큰 패키지 상태
@@ -83,13 +83,13 @@ tags:
 
 ### DIP 적용
 
-![DIP 적용](https://dooray.com/plantuml/img/AqXCpavCJrNmhNJ9JCp9JozMgEPI08BCl9BKehJ4v5I5YE3KehBK8h1eSavYSR5215SjLm5SdsD1GKvcSc99PduUL2z4LQH2Pcv1JcfkQbv9CToGMgu81LrTEpWVLRkUdXt28Lm0)
+![DIP 적용](/images/2017/07/apply-dip.png)
 
 *[RMI](https://en.wikipedia.org/wiki/Java_remote_method_invocation)의 그것과 유사하다.*
 
 ### 순환을 끊는 공통 패키지 생성
 
-![순환을 끊는 공통 패키지 생성](https://dooray.com/plantuml/img/AqXCpavCJrNmhNGiACZ9J4uioSpFuog0YuOa5cSN8_5TCXDpyjCH8eb-gUK143ONYXaAUdfsSFsOCgZwmAgWEc0sm5bWSHGD0000)
+![순환을 끊는 공통 패키지 생성](/images/2017/07/apply-common-package.png)
 
 ## 하향식 설계
 * `ISSUE` 패키지 구조는 하향식으로 설계할 수 없다?? - p.333
@@ -111,11 +111,11 @@ tags:
   - 세워진 동전을 넘어뜨리려면 일의 양이 적기 때문에 불안정적
   - 탁자를 넘어뜨리려면 상당한 노력이 필요하므로 안정적
 
-![X : 안정적인 패키지](https://dooray.com/plantuml/img/AqXCpavCJrLmv2g0ifpWB6SuAuBBKK5Fpmv8Eq5fPoWD0000)
+![X : 안정적인 패키지](/images/2017/07/independent-package.png)
 
 *X : 안정적인 패키지* : 독립적인 X
 
-![Y : 불안정한 패키지](https://dooray.com/plantuml/img/AqXCpavCJrM8v2g0iXpXB2SuovahKa5Fpmue1w6TeBGp5m00)
+![Y : 불안정한 패키지](/images/2017/07/dependent-packages.png)
 
 *Y : 불안정한 패키지* : 의존적인 Y
 
@@ -138,6 +138,8 @@ tags:
 
 *주계열 (붉은색) - A:추상성, I:불안정성*
 
+*출처 : [Alternative distance function for Stable Abstractions Principle](http://www.lexicalscope.com/blog/category/design)
+
 * `0,0` : 안정적이고 구체적 : 고통의 지역(Zone of Pain)
     * ex) DB, `StringUtils`
 * `1,1` : 의존성이 없고(불안정적) 추상적 : 쓸모없는 지역(Zone of Uselessness)
@@ -155,11 +157,11 @@ tags:
 
 ### Before
 
-![팩토리 적용 전](https://dooray.com/plantuml/img/Iyv9B2vMSCx9JCqhuShCAqajIajCJbK8paWiIELA1ai65vOc5gKgPEOMvAJc0fKLeyWwPnObvs2HXHYfeAjhXogWfsS7Cz5A8RaeDR44HGfg75mA0000)
+![팩토리 적용 전](/images/2017/07/before-factory.png)
 
 ### After
 
-![팩토리 적용 후](https://dooray.com/plantuml/img/Iyv9B2vMSCx9JCqhuShCAqajIajCJbK8paWiI7LBJ2x9BwfKgEPI00BjtCJirE32qiIYL0rDX8XpKMPo3aYabYiPR1QoLi_SWXo5J22HcWiq7rKEtJQOTh0D69gWiiwPHK3RC6KX7b3GrRN38G2p5CDrUdfsC3kj59ABKXDBKh4hWbeDLmG0)
+![팩토리 적용 후](/images/2017/07/after-factory.png)
 
 **주의사항**
 
@@ -245,13 +247,13 @@ class ShapeFactoryImpl implements ShapeFactory {
 
 ## 패키지 구조와 표기법
 
-![패키지 구조와 표기법](https://dooray.com/plantuml/img/VPEnJiCm48PtFuMVe8-0L0L6f8h00npEfR5m7Cjs4HLYgDXOMPYOEZB2Iz7o3YIj8PVOQRRaE___-UwF0N47I-G6rhPH2enHKe2NZUQFZBUFKE0SNnpnlCS4NblG3aJtDMzMLY1b-E0NO1tQkEg9cU0UsqhjqPOWa5FF_eJlrLnqX5Ybs_p--jW_Rtusdxltj_tBTlUw9T9X50Luk0M7gJcS1qR8HMrKiqPwgnfzrHHnUwr8ZTfV7l1GlFz-iaKdAYnM2YUryr0Gg_-Ha_g74x8COvzqoGPbiTUG9np9ScID6LWwZXpQ2rwXG6aypKfPIYKd6flta2ZTwFOzZNAqzr9WLe5T7dSN_GUpsHaDw5G9JIGRnBEZer2nSSYwcf2N9FlVU9AEzfMieNDZlm00)
+![패키지 구조와 표기법](/images/2017/07/packages-example.png)
 
 *급여 관리 패키지 다이어그램의 한 예 - p.355*
 
 ## 공통 폐쇄 원칙(CCP) 적용하기
 
-![공통 폐쇄 원칙(CCP) 적용](https://dooray.com/plantuml/img/XLGxRW8n4Ett57i2JX0XHH291Wa5Se31EmjMl6lBDb5Gb0AbIvicLIhAbCcb0hb339YiVxkudFVczsOy0iWzB30Ni9QSCH22KGAQyZf_odBp20Ebyia9lcxW8qXhZR84WlbCGgs0790fNqc2sNCcREmuQEFdHcmyD3vg0LAXzAgO6VFaQEvAPrifGCCS54OfRIz3YxTxqaemuntZl0BgwtDZg7oD67PNbfJHb5wsYC71cvPfJIrdIfPOh1WUm2G3nwYNl6ZFhTg7vNHN7QCehwynKEP4Fnb7d1MHSKWb4ksOOQwqD4aiFbX2lR2LklcR22sCd-_F_SlcT_Er-tZVlsvtRrkdPcMrKQafLrZhitZ-Bhj8PtpYpSVNPcGMZwqJ4xJjyAgY1k8r5gsaAJ2GD4b8wXSGkuHifoOwTluOhN00il2BH7MB1AdGxhTs5imJvgusfd3rRIYK3vIWgL0kiBrDnxchnJGjEL3delHw_SIvon8NyC2yHEdxLo5CP3-LP-utQnlOWtKBK5VmxFnRemAQBn51uJP716-a4HeUrek4gzv__mce4I41XaeaA9uSgTFj3Ffip_u0)
+![공통 폐쇄 원칙(CCP) 적용](/images/2017/07/packages-apply-ccp.png)
 
 *급여 관리 애플리케이션의 폐쇄된 패키지 계층 구조의 예 - p.357*
 

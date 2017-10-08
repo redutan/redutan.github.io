@@ -79,11 +79,11 @@ tags:
 
 > 한 클래스는 단 한가지의 변경 이유만을 가져야 한다.
 
-![하나 이상의 책임](https://www.plantuml.com/plantuml/img/Iyv9B2vMSCxFBIWjIIp9pCzBp75FpSzDBIcgT2meoCbC1Wjo9OEL1QKcboJcfUUaAbHpAG21TafHOhc69eITM9IQgA5ffP2INvgKayfL2zNZ7ke9OnKb5cG03Sn1DfYGpGgwkdPA4AEL4FPpOJCBh1JY8cAKWbs6y96k7OWF0000)
+![하나 이상의 책임](/images/2017/06/one-responsibility.png)
 
 *하나 이상의 책임*
 
-![분리된 책임](https://www.plantuml.com/plantuml/img/Iyv9B2vMSCxFBIWjIIp9pCzBp75FpSzDBIcgT2meoCbC1Wjo9OEL1QKcboJcfUUaAbHpAG21TafHOhc69bSjL1wgCpCPGs5YKMgYXgQLGaf-QL9EAa93g2UCLPHOa06qBGVPLaBEKj3LjSDYAHV2UjsSrBGIx8gmsGWsa0Wb87SZMM87uWC0)
+![분리된 책임](/images/2017/06/separate-responsibility.png)
 
 *분리된 책임*
 
@@ -124,11 +124,11 @@ tags:
 
 일반화(Generalization) 을 통한 추상화 : 인터페이스 or 추상클래스
 
-![Client는 개방 폐쇄 원칙에 어긋난다](https://www.plantuml.com/plantuml/img/Iyv9B2vMSCx9JCqhuKe6Su9JYyfIYxWWOWgwTZ010000)
+![Client는 개방 폐쇄 원칙에 어긋난다](/images/2017/06/ocp-not-open.png)
 
 *Client는 개방 폐쇄 원칙에 어긋난다.*
 
-![전략 패턴: Client는 개방 폐쇄 원칙을 따른다](https://www.plantuml.com/plantuml/img/Iyv9B2vMSCx9JCqhuShCAqajIajCJeKAUCBuNCbWPS6fHMMfHLmGIGLTEmnb40KAUgK5UZMOiW00)
+![전략 패턴: Client는 개방 폐쇄 원칙을 따른다](/images/2017/06/ocp-open.png)
 
 *전략 패턴: Client는 개방 폐쇄 원칙을 따른다.*
 

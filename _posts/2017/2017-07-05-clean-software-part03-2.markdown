@@ -9,9 +9,9 @@ tags:
 
 # 요구사항 및 설계
 
-* [markdown](https://github.com/redutan/cleansoftware-example/blob/master/payday.md)
+* [github README.md](https://github.com/redutan/cleansoftware-example/blob/master/README.md)
 
 # 구현
 
-* [github](https://github.com/redutan/cleansoftware-example/tree/master/src/main/java/payday)
+* [github src](https://github.com/redutan/cleansoftware-example/tree/master/src/main/java/payday)
 * 핵심테스트 : [PaydayTransactionTest](https://github.com/redutan/cleansoftware-example/blob/master/src/test/java/payday/PaydayTransactionTest.java)

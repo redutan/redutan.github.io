@@ -52,13 +52,13 @@ public void testMove() {
 
 ### 테스트 분리
 
-![결합된 Payroll 모델](https://www.plantuml.com/plantuml/img/Iyv9B2vM24YiBChFoU5A1lESCrAJiyEBCajIYnIgkHI0GBiSn0EBQsXorKBLkUOMvEHNfgR252KdvYINvYIMf0AD0oe3YnNa5vS0kRcfUILOTBeabYGc9HR3JKXFBO59mGqeHHQgvO8wLK5NrmxPeIZYC0rO1M5sSc4uGWz99m00)
+![결합된 Payroll 모델](/images/2017/06/payroll-model.png)
 
 *결합된 Payroll 모델*
 
 * 단위테스트는 Mock object가 요구된다.
 
-![테스트를 위해 의사 객체를 사용하는 분리된 Payroll](https://www.plantuml.com/plantuml/img/XPB13i8W44Jl_GgE6bC_mOjwDF5Wudd5jJQbXHGQqsZ_NOg0W2HownjcTeTK06sWGY9wVXsegdb7dWNHXpAGaXnXx3bZXjITmlu65CdsZhGvzxN-jhVdithCn6YBfQ5JujktWl4HCJHHO7HWe52FiZR31PTAenOxzITj1mek8AFK2fMJez0XnLCn5ROaASjDM2tYpfQ5ReFYPwLru8nUz8HIMNBWj0d7VcbY3P4VcRZrNg-uHUZwg3us5nXVyME2jKrrzsEaF2sJqzEtp8f-yXi0)
+![분리된 Payroll 모델](/images/2017/06/segration-payroll-model.png)
 
 *테스트를 위해 의사 객체를 사용하는 분리된 Payroll*
 

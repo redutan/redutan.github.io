@@ -24,7 +24,7 @@ tags:
 
 ### 문제
 
-![영속 집합 계층구조](https://www.plantuml.com/plantuml/img/IqmgBYbAJ2vHICv9B2vM24ujuOAm0bABYZEBIrBpIh29-ITbfIR3X4CoCejI0XABIYfHDQ7m57HB2tHhx1Gm9RHqYpBJCqfqxN0QX4DSGQ-qGCyEqrK0)
+![영속 집합 계층구조](/images/2017/06/persistence-aggragate.png)
 
 *영속 집합 계층구조*
 
@@ -34,7 +34,7 @@ tags:
 
 **LSP가 깨지는 메서드는 서브 클래스로 분리하고 문제 없는 메서드는 기반 클래스로 분리한다.**
 
-![LSP를 따르는 해결책](https://www.plantuml.com/plantuml/img/IqmgBYbAJ2vHICv9B2vMy4tDJKejSixFAqdCp4ijKgZcKW02xQ3KtFooL8qGpJeWW0Xvvddc0GMuQhaIKOq8JYs1QNDCIO4eWSW4f1OLPnQNfEQL4AF6FoahDRa4AXoIaLcK4f1OL5A9OWWNo23TqWBT6ZjqftEXsaQK8YtTeipqZ19TEvpsuH1Nq2ijqBF3T3m0)
+![LSP를 따르는 해결책](/images/2017/06/persistence-aggregate-with-lsp.png)
 
 *LSP를 따르는 해결책*
 
@@ -45,7 +45,7 @@ tags:
 * 인터페이스를 구현하는 추상클래스나 클래스를 생성 (Rectangle)
 * 그리고 해당 클래스를 **구성** 해서 인터페이스를 구현하면 됨 (Square)
 
-![더 나은 방법](https://www.plantuml.com/plantuml/img/oymhIIrAIqnELGZEI2n8LQZcKW02xVJK4iUYr4GDJQvQhkISnE9YXQ3Kv9B4lFGSk9BYr9Bmp9II3A0Q6DyZDJCzemH9Kt1XQM8HJXs9nN13mNeWBh3HqqDOXYG6COiBuGuRtPpKj19Tc0G0)
+![상속 보단 구성](/images/2017/06/composite.png)
 
 > 상속(LSP)이 제대로 가능한 경우는 템플릿 메소드 패턴을 이용한 경우인 것 같다. 그 외의 경우라면 그냥 구성하는 편이 나은 것 같다 - 필자생각
 
@@ -108,11 +108,11 @@ class Base {
 > 잘 구조화된 모든 객체 지향 아키텍처는 레이어를 분명하게 정의했다.
 > 여기서 각 레이어는 잘 정의되고 제어되는 인터페이스를 통해 일관된 서비스의 집합을 제공한다. - 부치(Booch)
 
-![미숙한 레이어](https://www.plantuml.com/plantuml/img/2yZFoKokz4ciJ2rIqDEpK_1DJSv8pCiipWKBSQ5omIf2Ip9pCaiWMhW0)
+![미숙한 레이어](/images/2017/06/inexperienced-layer.png)
 
 *미숙한 레이어*
 
-![역전된 레이어](https://www.plantuml.com/plantuml/img/AqXCpavCJrK8oC_9JAvKgEPI08BadCJYOgYGJs9bQX5OD3El9BKeBJ4PfZWujQWiCpdL4oRCLSjL03NDDpKv8p4lipWNnK2uA3OpuP9uZ0qjoSp9B45r9LGCOcGj5vAZ5NJjSBaKkx22JOsU7hehKRaWCt6x5ASCn6GKfm80)
+![역전된 레이어](/images/2017/06/reversed-layer.png)
 
 *역전된 레이어*
 
@@ -183,7 +183,7 @@ class Base {
 
 ### 다중 상속을 통한 분리
 
-![다중 상속을 통한 분리](https://www.plantuml.com/plantuml/img/Iyv9B2vM2CdCJItYoimhIIrAIqnEXV2TSp9JyqeKghaKW42x12YKNrgYeSbLovMOL5nIb9XSef0CrksIdr_4bGmtA0N4nwODRAg2hgwTWfA1dfwM4h8rN0YTUgK5UZLsE2HrYpBJCqfqWV9WMv5qwK6rS040)
+![다중 상속을 통한 분리](/images/2017/06/multiple-inheritance.png)
 
 일반적으로 많이 쓰이는 기법이다.
 
