@@ -5,8 +5,6 @@ date: '2017-10-08 15:59'
 tags:
   - books
   - clean-software
-  - composite
-  - observer
 ---
 
 # 컴포지트 패턴
