@@ -5,15 +5,7 @@ date: '2017-06-28 23:58'
 tags:
   - books
   - clean-software
-  - command
-  - template-method
-  - active-object
-  - strategy
-  - facade
-  - mediator
-  - singleton
-  - mono-state
-  - null-object
+  - design-pattern
 ---
 
 # 커맨드 패턴

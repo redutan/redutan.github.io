@@ -5,6 +5,7 @@ date: '2017-10-08 15:59'
 tags:
   - books
   - clean-software
+  - design-pattern
 ---
 
 # 컴포지트 패턴

@@ -5,6 +5,7 @@ date: '2017-10-08 16:26'
 tags:
   - books
   - clean-software
+  - design-pattern
 ---
 
 # 비지터 패턴

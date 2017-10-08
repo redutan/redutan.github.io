@@ -5,12 +5,7 @@ date: '2017-07-12 14:33'
 tags:
   - books
   - clean-software
-  - REP
-  - CRP
-  - CCP
-  - ADP
-  - SAP
-  - factory
+  - design-pattern
 ---
 
 # 패키지 설계의 원칙
