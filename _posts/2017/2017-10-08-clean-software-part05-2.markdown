@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 클린소프트웨어 Part 5. (2) 기상 관측기 사례 연구
+title: 클린소프트웨어 Part 5. 기상 관측기 사례 연구(2)
 date: '2017-10-08 16:08'
 tags:
   - books
