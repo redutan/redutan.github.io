@@ -8,7 +8,8 @@ tags:
   - git
 ---
 
-최근 `macOS Sierra` 업데이트가 있었다.
+`macOs High Sierra` 업데이트 시 발생 - 그냥 연례행사 인듯...
+`macOS Sierra` 업데이트 시 발생
 
 *과거 `OS X El Capitan` 업데이트도 포함됨*
 
