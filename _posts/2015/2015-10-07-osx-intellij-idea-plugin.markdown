@@ -125,3 +125,11 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 ![Key Promoter X animation](https://camo.githubusercontent.com/c5696e472c432542417a8c0cb795524b572b1c56/687474703a2f2f692e696d6775722e636f6d2f327a42644d54382e676966)
 
 [https://plugins.jetbrains.com/plugin/9792-key-promoter-x](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
+
+# Java Stream Debugger
+
+- 디버그 상황에서 Stream을 각 연산자 별로 모니터링
+
+![Java Stream Debugger](https://raw.githubusercontent.com/bibaev/static/master/flat_mode.png)
+
+[https://plugins.jetbrains.com/plugin/9696-java-stream-debugger](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger)
