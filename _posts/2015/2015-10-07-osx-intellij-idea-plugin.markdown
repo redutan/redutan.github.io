@@ -133,3 +133,11 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 ![Java Stream Debugger](https://raw.githubusercontent.com/bibaev/static/master/flat_mode.png)
 
 [https://plugins.jetbrains.com/plugin/9696-java-stream-debugger](https://plugins.jetbrains.com/plugin/9696-java-stream-debugger)
+
+# GsonFormat
+
+- json 문자열을 java 객체로 변환 - 이건 대박
+
+![GsonFormat animation](https://plugins.jetbrains.com/files/7654/screenshot_15729.png)
+
+[https://plugins.jetbrains.com/plugin/7654-gsonformat](https://plugins.jetbrains.com/plugin/7654-gsonformat)
