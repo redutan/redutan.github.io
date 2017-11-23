@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Intellij-IDEA 14 Plugin - OS X
+title: Intellij-IDEA Plugin - OS X
 date: '2015-10-07 15:13'
 tag:
   - intellij
@@ -109,3 +109,19 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
   [350179c4]: https://plugins.jetbrains.com/plugin/7345-presentation-assistant "Presentation Assistant"
 
 [https://plugins.jetbrains.com/plugin/7345-presentation-assistant][350179c4]
+
+# Nyan Progress Bar
+
+- 고양이 프로그래스 바
+
+![Nyan Progress Bar](https://pbs.twimg.com/media/DIaz0JxVwAEL9iT.jpg)
+
+[https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
+
+# Key Promoter X
+
+- 단축키 사용 유도 플러그인
+
+![Key Promoter X animation](https://camo.githubusercontent.com/c5696e472c432542417a8c0cb795524b572b1c56/687474703a2f2f692e696d6775722e636f6d2f327a42644d54382e676966)
+
+[https://plugins.jetbrains.com/plugin/9792-key-promoter-x](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
