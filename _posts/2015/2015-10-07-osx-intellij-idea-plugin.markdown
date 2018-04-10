@@ -141,3 +141,11 @@ Lombok를 IDE에서 사용하기 위해서 Lombok 환경설정에서 사용 옵�
 ![GsonFormat animation](https://plugins.jetbrains.com/files/7654/screenshot_15729.png)
 
 [https://plugins.jetbrains.com/plugin/7654-gsonformat](https://plugins.jetbrains.com/plugin/7654-gsonformat)
+
+# Rainbow Brackets
+
+- 각종 괄호류 들을 구분하기 쉽게 색깔 별로 분류
+
+![](https://github.com/izhangzhihao/intellij-rainbow-brackets/raw/IC-2017.2/screenshots/with-material-theme-ui.png)
+
+[https://plugins.jetbrains.com/plugin/10080-rainbow-brackets](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
