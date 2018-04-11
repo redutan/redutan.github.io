@@ -80,7 +80,7 @@ tags:
 
 **현재 파일 분석**
 
-mac : `Cmd + Opt + S`
+mac : `Cmd + Shift + S`
 or 
 
 ![SoanrLint Analyze Current](/images/2018/04/sonarlint-currentfile.png)
@@ -92,7 +92,7 @@ or
 
 ![SoanrLint IDEA Actio](/images/2018/04/sonarlint-action.png)
 
-*`Cmd + Opt + A`, `SonarLint`로 검색한 액션들
+*`Cmd + Shift + A`, `SonarLint`로 검색한 액션들
 
 ## Analyze Example
 
