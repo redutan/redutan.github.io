@@ -86,7 +86,7 @@ $ brew services start consul
 {% highlight yml %}
 spring:
   application:
-    name: consul-server
+    name: config-server
   cloud:
     consul:
       host: localhost # (1)
@@ -104,26 +104,26 @@ spring:
 {% highlight bash %}
 config/application.properties      # (1), (2)
 config/application-dev.properties  # (3)
-config/consul-service.yml          # (4)
-config/consul-service-dev.yml      # (5)
+config/config-server.yml          # (4)
+config/config-server-dev.yml      # (5)
 {% endhighlight %}
 
 1. 기본적으로 `config` 리소스로 시작합니다.
     * 커스터마이징 가능 : `spring.cloud.consul.config.prefix`
 2. `config/application.properties` : 기본적으로 모든 애플리케이션에 바인딩 될 구성
 3. `config/application-dev.properties` : 모든 애플리케이션에서 `dev` 프로필이 활성화 된 경우 바인딩 될 구성
-4. `config/consul-service.yml` : `consul-service` 애플리케이션에 바인딩 될 구성
-5. `config/consul-service-dev.yml` : `consul-service` 애플리케이션에 `dev` 프로필이 활성화 된 경우 바인딩 될 구성
+4. `config/config-server.yml` : `config-server` 애플리케이션에 바인딩 될 구성
+5. `config/config-server-dev.yml` : `config-server` 애플리케이션에 `dev` 프로필이 활성화 된 경우 바인딩 될 구성
     * `,`로 프로필을 구분하지만 커스터마이징 가능 : `spring.cloud.consul.config.profileSeparator`
 
 > `spring.cloud.consul.config.format=FILES` 구성을 통해서 `yml`, `properties` 형식을 혼용해서 사용할 수 있습니다.
 
-만약 위 구성에서 `consul-service` 애플리케이션에 `dev` 프로필이 활성화 된 경우 아래 처럼 구성이 로딩되며 **제일 마지막 구성으로 덮어쓰게** 된다
+만약 위 구성에서 `config-server` 애플리케이션에 `dev` 프로필이 활성화 된 경우 아래 처럼 구성이 로딩되며 **제일 마지막 구성으로 덮어쓰게** 된다
 
 1. `config/application.properties`
 2. `config/application-dev.properties`
-3. `config/consul-service.yml`
-4. `config/consul-service-dev.yml`
+3. `config/config-server.yml`
+4. `config/config-server-dev.yml`
 
 *Consul Web UI에서 구성하기*
 
@@ -131,10 +131,10 @@ config/consul-service-dev.yml      # (5)
 
 ### 구성 우선순위 예시
 
-`config/consul-service-dev.yml`
+`config/config-server-dev.yml`
 {% highlight yml %}
 message:
-  hello: "Hello Consul dev"
+  hello: "Hello ConfigServer dev"
 {% endhighlight %}
 
 *ConsulServiceAppliation.java*
@@ -145,7 +145,7 @@ CommandLineRunner init(@Value("${message.hello:Not found message!!}") String hel
 }
 {% endhighlight %}
 
-* 위 상황에서 `ConsulServiceAppliation`을 `dev` 프로필로 기동시키면 `Hello Consul dev` 로그를 확인할 수 있다.
+* 위 상황에서 `ConfigServerAppliation`을 `dev` 프로필로 기동시키면 `Hello ConfigServer dev` 로그를 확인할 수 있다.
 * 기존에 먼저 바인된 구성에 중복되는 키가 있으면 무조건 덮어쓰게 되며, 없으면 기존 구성을 그대로 사용합니다.
 
 ### properties VS yml
