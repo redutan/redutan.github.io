@@ -23,7 +23,7 @@ Consul은 인프라 전체에서 서비스를 발견하고 구성하는 도구�
 * Multi Datacenter : SPoF 예방
 
 [Consul](https://www.consul.io/)은 예전부터 spring-cloud 적용할 시 관심이 가던 컴포넌트 였었습니다. 
-하지만 config는 `config-server`(git or svn), discovery는 `eureka-server` 를 주로 이용했었기 때문에 상대적으로 관심이 멀었지요.
+하지만 config는 `Config Server`(git or svn), discovery는 `Eureka Server` 를 주로 이용했었기 때문에 상대적으로 관심이 멀었지요.
 
 그러던 중 팀을 옮기고 신규 프로젝트를 kickoff 함에 있어서 discovery와 config 서비스를 도입하면 어떠냐고 했다가 이에 관심을 가지는 `콤틴` 덕분에 *consul* 에도 관심이 생기기 시작했습니다.
 
@@ -146,7 +146,7 @@ CommandLineRunner init(@Value("${message.hello:Not found message!!}") String hel
 {% endhighlight %}
 
 * 위 상황에서 `ConsulServiceAppliation`을 `dev` 프로필로 기동시키면 `Hello Consul dev` 로그를 확인할 수 있다.
-* 기존에 먼저 바인된 구성에 중복되는 키가 있으면 무조건 덮어쓰게 되며, 없으면 기존 구성을 그대로 사용한다.
+* 기존에 먼저 바인된 구성에 중복되는 키가 있으면 무조건 덮어쓰게 되며, 없으면 기존 구성을 그대로 사용합니다.
 
 ### properties VS yml
 
@@ -159,11 +159,12 @@ CommandLineRunner init(@Value("${message.hello:Not found message!!}") String hel
 `Consul Configuration`는 `Zookeepr Configration`과 유사한 부분이 많습니다. 그리고 구성 서버로써 기본적인 기능은 모두 만족하는 것 같습니다.
 하지만 `Config Server`에 비하면 부족한 점이 보이는데요.
 
-**구성파일이 안전하지 못한 점**입니다.
+1. **구성파일이 안전하지 못하며**(구성파일을 실수로 삭제하면 복원불가)
+2. scale-out(수평확장) 시 **구성파일 동기화하기 힘듭니다.**(각 서버 간 KV Store를 동기화)
 
-`Config Server`의 경우 git과 같은 형상관리에 의존하기 때문에 혹여나 구성 파일을 지우는 실수를 해도 복원할 수 있는 반면, Free 라이선스 상 Consul은 KV Store 상 구성 키를 삭제하면 복원할 방도가 없습니다. (거기에다가 Delete key 버튼을 누를 시 confirm 창도 안뜨네요)
+`Config Server`의 경우 형상관리(ex:git)에 의존하기 때문에 삭제해도 복원이 쉬우며, 고가용성을 위해 쉽게 서버를 scale-out 할 수 있습니다.
 
-물론 Web UI만 제공되는 것이 아니라 cli도 제공되긴 하지만 *이는 확실히 운영 상에서 부담이 생길 수 밖에 없을 것 같습니다.*
+물론 *consul* Web UI만 제공되는 것이 아니라 cli도 제공되긴 하지만 이는 확실히 **운영 상에서 부담이 생길 수 밖에 없을 것 같습니다.**
 
 # Consul Discovery
 
@@ -171,6 +172,16 @@ CommandLineRunner init(@Value("${message.hello:Not found message!!}") String hel
 
 # Summary
 
+* `Consul Configuration`는 별로인 것 같습니다. `Config Server`가 여러모로(안전한 구성파일, 유연한 확장) 더 나은 것 같습니다.
+* `Consul Discovery`는 상당히 추천할만 합니다.
+
+## Reference
+
+* *github* : 
+* https://www.consul.io/
+* http://cloud.spring.io/spring-cloud-static/spring-cloud-consul/2.0.0.M7/single/spring-cloud-consul.html
+* https://cloud.spring.io/spring-cloud-static/spring-cloud.html
+* https://www.ibm.com/support/knowledgecenter/en/SS4GSP_6.1.0/com.ibm.udeploy.admin.doc/topics/ha_md_overview.html
 
 
 
