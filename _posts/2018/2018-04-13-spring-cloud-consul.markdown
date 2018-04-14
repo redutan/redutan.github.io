@@ -411,7 +411,7 @@ Response code: 200; Time: 21ms; Content length: 174 bytes
 
 # Summary
 
-한마디로 *consul*은 **유료 라이선스 쓴다면 적극 추천!!!!**
+한마디로 *consul*은 **유료 라이선스 쓴다면 추천**
 
 * `Consul Configuration`는 별로인 것 같습니다. `Config Server`가 여러모로 더 나은 것 같습니다.
     * 디렉토리 기반 Key-Value Store 기능은 너무 열악합니다. 그저 부가기능 정도의 느낌입니다.
