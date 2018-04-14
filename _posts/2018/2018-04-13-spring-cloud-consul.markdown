@@ -165,7 +165,25 @@ CommandLineRunner init(@Value("${message.hello:Not found message!!}") String hel
 
 `Config Server`의 경우 형상관리(ex:git)에 의존하기 때문에 삭제해도 복원이 쉬우며, 저장소가 분리되어 있고 분산되기 때문에 고가용성을 위해 쉽게 서버를 scale-out 할 수 있습니다.
 
-물론 *consul* Web UI만 제공되는 것이 아니라 cli도 제공되긴 하지만 확실히 **운영 상에서 부담이 생길 수 밖에 없을 것 같습니다.**
+> 하지만 **git2consul** 이라는 컴포넌트를 통해서 위 영속화 이슈를 해결할 수 있습니다. !!!
+
+### git2consul
+
+git2consul is a Consul community project that loads files from a git repository to individual keys into Consul
+
+```bash
+.gitignore
+application.yml
+bar.properties
+foo-development.properties
+foo-production.yml
+foo.properties
+master.ref
+```
+
+위와 같이 git 저장소 내용을 *consul*의 KV Store에서 로딩해서 사용할 수 있습니다.
+
+* [https://github.com/breser/git2consul](https://github.com/breser/git2consul)
 
 # Consul Discovery
 
