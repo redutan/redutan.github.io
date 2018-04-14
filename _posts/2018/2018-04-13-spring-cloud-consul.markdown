@@ -370,14 +370,13 @@ Response code: 200; Time: 21ms; Content length: 174 bytes
 
 마지막으로 Consul Discovery를 정리해보겠습니다. 
 
-* 기본적인 기능은 다른 서비스와 비교해서 전혀 문제가 없습니다. 오히려 더 나음 점도 있습니다.
+* 기본적인 기능은 다른 서비스와 비교해서 전혀 문제가 없습니다. 유료 라이선스 시 에는  오히려 더 나은 점이 많습니다.
     * [Consul vs. Other Software](https://www.consul.io/intro/vs/index.html) 참고
 * *consul*에서 Service Discovery Server를 직접 제공하기 때문에 `Eukara Server`에 애플리케이션 사용입장에서는 운영비용이 줄어듭니다.
 * 그렇다면 *consul* 자체에 대한 운영을 고민해야하는데, 고가용성을 위해서 *consul* 서버를 최소 2대 이상 구성해야할 것입니다.
 * 문제는 고가용성을 확보하기 위한 중앙화된 등록정보 영속화 기능이나, 등록정보 복제가 필요한데, Open Source 라이선스 상으로는 제공되지 않습니다.
     * 이 말은 서버 한대만 구성이 가능하며 SPoF가 될 수 있습니다. (다른 방법이 있을 수 있겠지만, 결국 커스터마이징 포인트가 되는 것 입니다.)
-    * 이를 해결하기 위해서는 최소 Pro 라이선스가 요구됩니다. [Enhanced read scalability](https://www.consul.io/docs/enterprise/read-scale/index.html)
-    * Zookeeper 앙상블과 유사한 기능인데, Zookeeper와는 비교되는 점입니다.
+    * 쉽게 해결하기 위해서는 최소 Pro 라이선스가 요구됩니다. [Enhanced read scalability](https://www.consul.io/docs/enterprise/read-scale/index.html)
 
 ### VS Zookeeper
 
@@ -392,17 +391,15 @@ Response code: 200; Time: 21ms; Content length: 174 bytes
     * 둘 다 WEB UI를 제공하며, spring-boot 상에서 Discovery Client 기능을 이용하는데, 무리가 없습니다.
 * 역시나 유로 라이선스가 아닌 이상에는 Eureka가 더 낫지 않나 싶습니다.
 
-
 # Summary
 
 한마디로 *consul*은 **유료 라이선스 쓴다면 적극 추천!!!!**
 
 * `Consul Configuration`는 별로인 것 같습니다. `Config Server`가 여러모로(안전한 구성파일, 유연한 확장) 더 나은 것 같습니다.
+    * 디렉토리 기반 Key-Value Store 기능은 너무 열악합니다. 그저 부가기능 정도의 느낌입니다.
 * `Consul Discovery`는 상당히 추천할만 합니다.
-    * 하지만 협업에서 운영할려면 최소 Pro 라이선스가 요구됩니다.
-    * 개인적으로는 `spring-cloud-netflix`에서 제공되는 `Eureka Server`가 기본적인 기능을 만족하면서 운영 비용을 낮출 수 있습니다.
-
-
+    * 하지만 운영 환경에서는 최소 Pro 라이선스가 요구됩니다.
+    * 개인적으로는 `spring-cloud-netflix`에서 제공되는 `Eureka Server`가 운영 환경을 만족하면서 간단하게 구성할 수 있는 것 같습니다.
 
 ## Reference
 
