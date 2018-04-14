@@ -403,12 +403,12 @@ Response code: 200; Time: 21ms; Content length: 174 bytes
 
 ## Reference
 
-*example github* : https://github.com/redutan/spring-boot2-consul
+*example github* : [https://github.com/redutan/spring-boot2-consul](https://github.com/redutan/spring-boot2-consul)
 
-* https://www.consul.io/
-* http://cloud.spring.io/spring-cloud-static/spring-cloud-consul/2.0.0.M7/single/spring-cloud-consul.html
-* https://cloud.spring.io/spring-cloud-static/spring-cloud.html
-* https://www.ibm.com/support/knowledgecenter/en/SS4GSP_6.1.0/com.ibm.udeploy.admin.doc/topics/ha_md_overview.html
+* [https://www.consul.io/](https://www.consul.io/)
+* [http://cloud.spring.io/spring-cloud-static/spring-cloud-consul/2.0.0.M7/single/spring-cloud-consul.html](http://cloud.spring.io/spring-cloud-static/spring-cloud-consul/2.0.0.M7/single/spring-cloud-consul.html)
+* [https://cloud.spring.io/spring-cloud-static/spring-cloud.html](http://cloud.spring.io/spring-cloud-static/spring-cloud-consul/2.0.0.M7/single/spring-cloud-consul.html)
+* [https://www.ibm.com/support/knowledgecenter/en/SS4GSP_6.1.0/com.ibm.udeploy.admin.doc/topics/ha_md_overview.html](https://www.ibm.com/support/knowledgecenter/en/SS4GSP_6.1.0/com.ibm.udeploy.admin.doc/topics/ha_md_overview.html)
 
 ## PlantUml
 
