@@ -413,11 +413,16 @@ Response code: 200; Time: 21ms; Content length: 174 bytes
 
 한마디로 *consul*은 **유료 라이선스 쓴다면 적극 추천!!!!**
 
-* `Consul Configuration`는 별로인 것 같습니다. `Config Server`가 여러모로(안전한 구성파일, 유연한 확장) 더 나은 것 같습니다.
+* `Consul Configuration`는 별로인 것 같습니다. `Config Server`가 여러모로 더 나은 것 같습니다.
     * 디렉토리 기반 Key-Value Store 기능은 너무 열악합니다. 그저 부가기능 정도의 느낌입니다.
+    * 물론 `git2consul`를 이용하면 가능하지만 `Config Server` 보다 구성이 훨씬 불편합니다.
 * `Consul Discovery`는 상당히 추천할만 합니다.
     * 하지만 운영 환경에서는 최소 Pro 라이선스가 요구됩니다.
     * 개인적으로는 `spring-cloud-netflix`에서 제공되는 `Eureka Server`가 운영 환경을 만족하면서 간단하게 구성할 수 있는 것 같습니다.
+
+*consul* 은 충분히 강력한 도구이지만, **사용할 기능 대비 구성의 복잡도가 높거나 운영 비용이 상대적으로 더 높은 것으로 판단**됩니다.
+
+> 사람들이 많이 쓰는 것은 그만한 이유가 있는 것 같습니다.
 
 ## Reference
 
