@@ -275,8 +275,8 @@ public abstract class AbstractSafePrefixContentHolder implements ContentHolder {
 # Summary
 
 * 불변식을 지킵니다.
-* 접근제어를 가능한 닫습니다.. : field는 `private`로
-* 가능한 변경을 최소화 합니다. : `final`
+* 접근제어는 가능한 닫습니다 : field는 `private`로
+* 가능한 변경을 최소화 합니다 : `final`
 * 불변을 이용하거나, 인터페이스를 통한 합성으로 변경해 봅니다.
 
 ## 예외
