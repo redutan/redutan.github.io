@@ -46,7 +46,7 @@ tags:
 ## 불변식(불변조건)
 
 클래스 불변식(Class Invariant)은 해당 클래스의 오브젝트가 가지는 제약사항을 말합니다.
-즉 불변식이 깨지만 해당 객체는 *유효하지 않다고 봐야하며*, 애플리케이션 내 클래스의 계약을 위배했으므로, *문제를 발생시킵니다.
+즉 불변식이 깨지면 해당 객체는 *유효하지 않다고 봐야하며*, 애플리케이션 내 클래스의 계약을 위배했으므로, *문제를 발생시킵니다.*
 
 예를 들어서 분수를 나타내는 클래스가 있다고 가정해 보겠습니다.
 
@@ -72,7 +72,7 @@ class 분수Test {
 ```
 
 * 내부 필드가 public이기 때문에 캡슐화를 통해서 불변식을 강제할 수가 없습니다.
-* 불변식이 깨지는 경우는 public 이외에 불변식 제약사항을 강제하는 메소드를 재정의함으로써도 깨질 수도 있습니다.
+* 불변식 제약사항을 강제하는 메소드를 재정의함으로써도 깨질 수도 있습니다.
 
 # LSP
 
@@ -81,7 +81,7 @@ class 분수Test {
 그냥 단순하게 기반 타입으로 치환만 된다는 것을 의미하지는 않습니다. 기반 타입의 행위들을 서브 타입의 행위들로 대치해도 문제가 없고, 불변식도 깨지지 않아야 함을 의미합니다.
 LSP를 자체를 설명하기 보다는 LSP가 위배되는 상황을 통해서 역으로 LSP를 알아보겠습니다.
 
-유명한 Rectangle(직사각형) - Square(정사각형) 예제롤 통해서 이를 확인해 보겠습니다.
+유명한 Rectangle(직사각형) - Square(정사각형) 예제를 통해서 이를 확인해 보겠습니다.
 
 ```java
 class Rectangle {
@@ -119,14 +119,16 @@ class Square extends Rectangle {
 
 위 정도면 충분히 LSP 를 만족한다고 보입니다. 과연 그럴까요? 
 먼저 `Square` 클래스의 불변식을 알아봅시다. 정사각형이기 때문에 길이와 높이가 같은 것이 불변식입니다.
-`Rectangle`는 어떤 불변식을 가질까요? 길이와 높이가 무조건 같이 변경되면 직사각형의 불변식이 위배됩니다.
+`Rectangle`는 어떤 불변식을 가질까요? 길이와 높이가 무조건 같이 변경되면 직사각형의 불변식이 위배됩니다. - 두 타입 간 *충돌이 발생하는 느낌도 있습니다.*
 
 즉, `Square`는 길이와 높이를 무조건 같이 변경하게 되지만, `Rectangle`는 길이와 높이가 같이 변경되면 예상치 못한 부수효과로 인해 불변식이 깨지게 됩니다.
-`Rectangle`의 불변식이 깨지게 됨과 동시에 상위 타입으로 치환되는 LSP도 위배하게 됩니다.
+`Rectangle`의 불변식이 깨지게 됨은 상위 타입으로 치환이 불가능하다로 연결되므로 LSP도 위배하게 됩니다.
 
 > 물론 불변식이 깨진다고 해서 무조건 LSP가 위배되는 것은 아닙니다.
 
 ## Solution
+
+먼저 상속을 유지한 상태에서 해결 방안을 알아보겠습니다.
 
 ```java
 class Retangle {
@@ -143,7 +145,7 @@ class Retangle {
     }
 }
 
-class Square {
+class Square extends Rectangle {
     public Square(int length) {
         super(length, length);
     }
@@ -152,14 +154,15 @@ class Square {
 
 ![](http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLWXAJIv9p4lFILMevb9GACzCASa0qXcfcUaP9K16K2f4LWCiemELq0JAfAUME1Qb9cfeSjL2ZGekB4qiIbL8hIX9pKj1CnaggP6JcfTUaW7Ium1K17G60000)
 
-위와 같이 불변(Immutable)을 이용하는 방법이 있습니다.
+부수효과는 가변메서드(Setter)에서 발생합니다. 그럼 애초에 원인이 되는 가변을 모두 제거해서 위와 같이 **불변(Immutable)을 통해서 문제를 해결**할 수 있습니다.
 
 ## Another Solution
 
-조금 더 가볼까요?
+다른 방법을 알아볼까요?
+애초에 이 애플리케이션 세계에서 사각형과 정사각형은 상속구조가 어울리지 않는 것 같습니다.
 
 ```java
-interface Shapre {
+interface Shape {
     int getArea();
 }
 
@@ -198,12 +201,14 @@ final class Square implements Shape {
 
 ![](http://www.plantuml.com/plantuml/png/TKyn3i8m3Dpz2eyjWWzqAZiJVO5fZoHI4fN45GFgtudQGbcOBD-TxyvjLaaw1KykAj9TUd1dPGI_YDb0pmbIrJHJxoLdlg9NYSQ3NHWz0gBcduEd6zIMQU6CLUAYN-NLmXmtOlVh7fEaFsQbcO4sQ-JDWtYJLnxHgAqBaA6NPVbYC-qTJuTFGBEvKOiub7VV)
 
-또는 합성(Composition)을 이용하는 방법도 있습니다.
+상속 보다는 합성(Composition) 원칙에 입각해서 위와 같이 수정하는 것도 한 방법입니다.
 
 * *실제로 중요한 것은 넓이를 구하는 행위이지 사각형이냐, 정사각형이냐는 그 다음 문제입니다.*
 * 또한 합성을 이용하면 Setter('setLength')가 있더라도 불변식이 깨지는 부수효과가 발생하지 않습니다.
 
 # Practice
+
+아래 다양한 예시를 통해서 더 안전한 상속을 구현하는 방법을 알아보겠습니다.
 
 ## 메서드 재정의
 
@@ -237,6 +242,7 @@ final class Square implements Shape {
 * 템플릿 패턴은 변하는 부분과 변하지 않는 부분의 관심사 분리가 중요합니다.
 * 변하는 부분은 다형성을 위해 열어두고 변하지 않는 부분은 불변 템플릿(final)으로 만듭니다.
 
+*Good Sample 중 일부 코드*
 ```java
 public abstract class AbstractSafePrefixContentHolder implements ContentHolder {
     // 가능한 필드는 닫고 불변화 시킨다. 접근이 필요할 때만 점진적으로 연다.
@@ -279,28 +285,6 @@ public abstract class AbstractSafePrefixContentHolder implements ContentHolder {
 * 상속의 위험성을 모두 파악한 상태에서 문서(javadoc)를 통해서 제약사항을 명시해서 언어로써 강제하는 것이 아니라 프로그래머가 스스로 제약사항을 지키게 하는 것도 한 방법입니다.
     * [http://redutan.github.io/2016/02/26/effective-java2-chapter04#rule-17---계승을-위한-설계와-문서를-갖추거나-그럴-수-없다면-계승을-금지하라](http://redutan.github.io/2016/02/26/effective-java2-chapter04#rule-17---%EA%B3%84%EC%8A%B9%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%A4%EA%B3%84%EC%99%80-%EB%AC%B8%EC%84%9C%EB%A5%BC-%EA%B0%96%EC%B6%94%EA%B1%B0%EB%82%98-%EA%B7%B8%EB%9F%B4-%EC%88%98-%EC%97%86%EB%8B%A4%EB%A9%B4-%EA%B3%84%EC%8A%B9%EC%9D%84-%EA%B8%88%EC%A7%80%ED%95%98%EB%9D%BC)
 * 그리고 특정 도메인(ex:환경설정)에서는 위 상속의 위험성을 무시할 수도 있습니다.
-
-## Good Sample
-
-```java
-public abstract class AbstractSafePrefixContentHolder implements ContentHolder {
-    // 가능한 필드는 닫고 불변화 시킨다. 접근이 필요할 때만 점진적으로 연다.
-    private final String content;
-
-    public AbstractSafePrefixContentHolder(String content) {
-        this.content = Objects.requireNonNull(content); // 여기에서 제약조건을 추가할 수 있다.
-    }
-
-    // 템플릿 : 재정의 불가능하게 final
-    @Override
-    public final String getContent() {
-        return getPrefix() + content;
-    }
-
-    // 다형성으로써 추상 메서드만 오픈시킨다.
-    abstract protected String getPrefix();
-}
-```
 
 # Reference
 
