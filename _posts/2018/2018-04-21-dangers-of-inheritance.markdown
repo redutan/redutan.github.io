@@ -121,8 +121,22 @@ class Square extends Rectangle {
 먼저 `Square` 클래스의 불변식을 알아봅시다. 정사각형이기 때문에 길이와 높이가 같은 것이 불변식입니다.
 `Rectangle`는 어떤 불변식을 가질까요? 길이와 높이가 무조건 같이 변경되면 직사각형의 불변식이 위배됩니다. - 두 타입 간 *충돌이 발생하는 느낌도 있습니다.*
 
+*`Rectangle` 불변식이 깨지는 테스트*
+
+```java
+@Test
+public void testRectanbleInvariant() {
+    Rectangle rectangle = new Square();
+    rectangle.setWidth(10);
+    rectangle.setHeight(5);
+
+    // 과연 답이 50이 나오는가? 25가 나와서 테스트는 실패하고, LSP가 만족되지 않음을 의미한다.
+    assertThat(rectangle.getArea(), is(50));
+}
+```
+
 즉, `Square`는 길이와 높이를 무조건 같이 변경하게 되지만, `Rectangle`는 길이와 높이가 같이 변경되면 예상치 못한 부수효과로 인해 불변식이 깨지게 됩니다.
-`Rectangle`의 불변식이 깨지게 됨은 상위 타입으로 치환이 불가능하다로 연결되므로 LSP도 위배하게 됩니다.
+`Rectangle`의 불변식이 깨지게 되어서 결국 LSP도 위배하게 됩니다. - 하지만 `Square`의 불변식은 유지됩니다.
 
 > 물론 불변식이 깨진다고 해서 무조건 LSP가 위배되는 것은 아닙니다.
 
@@ -216,10 +230,10 @@ final class Square implements Shape {
 
 ### Bad
 
-* base : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/override/BadSuperObject.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/override/BadSuperObject.java)
+* [BadSuperObject.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/override/BadSuperObject.java)
 
 ### Good 
-* [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/override/GoodSuperObject.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/override/GoodSuperObject.java)
+* [GoodSuperObject.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/override/GoodSuperObject.java)
 
 ## Support 타입
 
@@ -227,13 +241,13 @@ final class Square implements Shape {
 
 ### Bad
 
-* base : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/ProcessSupport.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/ProcessSupport.java)
-* sub : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/BadMainProcess.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/BadMainProcess.java)
+* base : [ProcessSupport.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/ProcessSupport.java)
+* sub : [BadMainProcess.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/BadMainProcess.java)
 
 ### Good
 
-* helper : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/ProcessHelper.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/ProcessHelper.java)
-* client : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/GoodMainProcess.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/GoodMainProcess.java)
+* helper : [ProcessHelper.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/ProcessHelper.java)
+* client : [GoodMainProcess.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/support/GoodMainProcess.java)
 
 ## Template
 
@@ -264,13 +278,13 @@ public abstract class AbstractSafePrefixContentHolder implements ContentHolder {
 
 ### Bad
 
-* base : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/AbstractPrefixContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/AbstractPrefixContentHolder.java)
-* sub : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/BadContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/BadContentHolder.java)
+* base : [AbstractPrefixContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/AbstractPrefixContentHolder.java)
+* sub : [BadContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/BadContentHolder.java)
 
 ### Good
 
-* base : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/AbstractSafePrefixContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/AbstractSafePrefixContentHolder.java)
-* sub : [https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/GoodContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/GoodContentHolder.java)
+* base : [AbstractSafePrefixContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/AbstractSafePrefixContentHolder.java)
+* sub : [GoodContentHolder.java](https://github.com/redutan/dangers-of-inheritance/blob/master/src/main/java/io/redutan/dangers/inheritance/template/GoodContentHolder.java)
 
 # Summary
 
@@ -283,7 +297,7 @@ public abstract class AbstractSafePrefixContentHolder implements ContentHolder {
 
 * 하지만 모든 경우에서 위 원칙을 지키는 것은 힘들수도 있습니다. 
 * 상속의 위험성을 모두 파악한 상태에서 문서(javadoc)를 통해서 제약사항을 명시해서 언어로써 강제하는 것이 아니라 프로그래머가 스스로 제약사항을 지키게 하는 것도 한 방법입니다.
-    * [http://redutan.github.io/2016/02/26/effective-java2-chapter04#rule-17---계승을-위한-설계와-문서를-갖추거나-그럴-수-없다면-계승을-금지하라](http://redutan.github.io/2016/02/26/effective-java2-chapter04#rule-17---%EA%B3%84%EC%8A%B9%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%A4%EA%B3%84%EC%99%80-%EB%AC%B8%EC%84%9C%EB%A5%BC-%EA%B0%96%EC%B6%94%EA%B1%B0%EB%82%98-%EA%B7%B8%EB%9F%B4-%EC%88%98-%EC%97%86%EB%8B%A4%EB%A9%B4-%EA%B3%84%EC%8A%B9%EC%9D%84-%EA%B8%88%EC%A7%80%ED%95%98%EB%9D%BC)
+    * [effective-java2-chapter04#rule-17---계승을-위한-설계와-문서를-갖추거나-그럴-수-없다면-계승을-금지하라](http://redutan.github.io/2016/02/26/effective-java2-chapter04#rule-17---%EA%B3%84%EC%8A%B9%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%84%A4%EA%B3%84%EC%99%80-%EB%AC%B8%EC%84%9C%EB%A5%BC-%EA%B0%96%EC%B6%94%EA%B1%B0%EB%82%98-%EA%B7%B8%EB%9F%B4-%EC%88%98-%EC%97%86%EB%8B%A4%EB%A9%B4-%EA%B3%84%EC%8A%B9%EC%9D%84-%EA%B8%88%EC%A7%80%ED%95%98%EB%9D%BC)
 * 그리고 특정 도메인(ex:환경설정)에서는 위 상속의 위험성을 무시할 수도 있습니다.
 
 # Reference
