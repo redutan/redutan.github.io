@@ -140,6 +140,8 @@ public void testRectanbleInvariant() {
 
 > 물론 불변식이 깨진다고 해서 무조건 LSP가 위배되는 것은 아닙니다.
 
+> 위 상황에서 `setWidth(int)`, `setHeight(int)`를 재정의 하지 않고 `setLength(int)`와 같은 메서드를 구현하는 방법도 존재하나 그런 경우에는 width, height가 각각 변경될 수 있으므로 `Square`의 불변식(width, height는 동시에 변경되어야함)이 깨질 수 있습니다.
+
 ## Solution
 
 먼저 상속을 유지한 상태에서 해결 방안을 알아보겠습니다.
