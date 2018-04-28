@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "IDDD 2장. 도메인, 서브도메인, 바운디드 컨텍스트"
-date: "2018-04-28 24:38"
+date: "2018-04-28 00:38"
 tags:
     - IDDD
     - DDD
