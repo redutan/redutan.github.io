@@ -131,7 +131,7 @@ Big ball of mud : 거대한 진흙공 - 빈약한 도메인으로 가득찬 모�
 
 아래 항목들도 바운디드 컨텍스트 경계 안에 있다.
 
-* Application Service : 보안 트랜젝션 관리 : 퍼사트
+* Application Service : 보안 트랜젝션 관리 : 퍼사드
 * UI
 * Api Client : API 통합
 
