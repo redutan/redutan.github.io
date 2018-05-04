@@ -64,6 +64,8 @@ tags:
 
 ![](http://josecuellar.net/wp-content/uploads/contextmap3.png)
 
+* 통합 전에 ACL를 통해서 변활할 시 최소한의 속성만 있으면 된다.
+
 **식별자와 액세스 컨텍스트의 통합**
 
 ![식별자 접근 부패방지 Sequence Diagram](http://www.plantuml.com/plantuml/png/XP51gi8m48RtEKMMkl02BgH5H5qemii5ncGU3hIJaamBzVH6IYabO1RP_6I-R_YdYW91-hPHO8K64DGtR9yO_aQsh-2PtXXK7kdTOVw8OI2BUgzR89RqfZnkjihX3sfcd41gZKsUgqCMah6s5cEyUw5_iY3akNRG2ORaZWjuqS-2Ca6L7McHYp6FOqF8aepdaobFBJMP01mR4F_TLlmKhYigqh9giXFqdKka39vrN26xTFGF)
