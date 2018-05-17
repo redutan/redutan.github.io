@@ -29,7 +29,8 @@ class Product {
 *after*
 ```java
 class Product {
-    static BusinessPriorityTotals businessPriorityTotals(Set<BacklogItem> aBacklogItems) {
+    static BusinessPriorityTotals businessPriorityTotals(
+            Set<BacklogItem> aBacklogItems) {
         // ...
     }
 }
@@ -136,8 +137,8 @@ package com.saasovation.collaboration.infra.services;
 
 class UserInRoleAdapter {
     <T extends Collaborator> T toCollaborator(
-        Tenant tenant, String identity, String role, 
-        Class<T> collaboratorClass);
+            Tenant tenant, String identity, String role, 
+            Class<T> collaboratorClass);
 }
 ```
 
@@ -148,8 +149,7 @@ package com.sasovation.collaboration.infra.services;
 
 class CollbaratorTransaltor {
     <T extends Collaborator> T toCollaboratorFrom(
-        String json,
-        Class<T> collaboratorClass);
+            String json, Class<T> collaboratorClass);
 }
 ```
 
