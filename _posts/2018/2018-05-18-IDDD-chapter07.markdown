@@ -44,7 +44,7 @@ class Product {
 > 하지만 그보다 먼저 도메인 서비스가 아닌 것은 무엇인가?
 
 * 도메인 서비스 : 도메인 로직이 있다.
-* 애플리케이션 서비스 : 도메인 로직이 없다. (보안, 변환, 트랜잭션 등)
+* 애플리케이션 서비스 : 도메인 로직이 없다. (보안, 트랜잭션 등)
 
 *정의*
 
@@ -83,7 +83,7 @@ interface AuthenticationService {
 ```java
 package com.saasovation.identityaccess.infra.services;   // !!
 
-class EncryptionAuthenticationService {
+class EncryptionAuthenticationService implements AuthenticationService {
     @Override
     UserDescriptor authenticate(
             @NonNull TenantId tenantId,
