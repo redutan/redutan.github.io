@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "IDDD 8장. 모듈"
+title: "IDDD 9장. 모듈"
 date: "2018-05-28 13:44"
 tags:
     - IDDD
