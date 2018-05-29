@@ -124,7 +124,7 @@ create table groups (
 
 ```sql
 insert into groups (
-    description, group_members, name, group_id
+    group_id, description, group_members, name
 ) values (
     ?, ?, ?, ?
 );
@@ -219,7 +219,7 @@ alter table group_members
 *Insert*
 
 ```sql
-insert into groups (description, name, group_id) values (?, ?, ?)
+insert into groups (group_id, description, name) values (?, ?, ?)
 insert into group_members (name, type, id) values (?, ?, ?)
 insert into group_members (name, type, id) values (?, ?, ?)
 update group_members set group_id=? where id=?  /* Update ?! */
@@ -277,7 +277,7 @@ alter table group_members
 *Insert*
 
 ```sql
-insert into groups (description, name, group_id) values (?, ?, ?);
+insert into groups (group_id, description, name) values (?, ?, ?);
 insert into group_members (group_id, name, type) values (?, ?, ?);
 insert into group_members (group_id, name, type) values (?, ?, ?);
 ```
