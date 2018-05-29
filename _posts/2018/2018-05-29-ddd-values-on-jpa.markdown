@@ -130,6 +130,12 @@ insert into groups (
 );
 ```
 
+*저장 후 테이블 조회 예시*
+
+| GROUP_ID | DESCRIPTION | GROUP_MEMBERS | NAME |
+|----------|-------------|---------------|-------|
+| 1 | 설명 | `[{"name":"하위그룹","type":"GROUP"},{"name":"회원1","type":"MEMBER"}]` | 이름 |
+
 ## Many Values Backed by a Database Entity 
 
 실질적으로는 *Entity처럼 DB 스키마를 구성*하나 실제 객체지향세계(ex:Java Application)에서는 **값 객체로 보이게 구현**
