@@ -296,7 +296,7 @@ public class Group {
 
 ## Summary
 
-![Total DB schema](https://github.com/redutan/ddd-value/raw/master/ddd-value-db-schema.png)
+![Total DB schema](https://github.com/redutan/ddd-values/raw/master/ddd-value-db-schema.png)
 
 1. Single Column
 2. Entity
@@ -304,7 +304,7 @@ public class Group {
 
 # Reference
 
-* 소스코드 : [https://github.com/redutan/ddd-value](https://github.com/redutan/ddd-value)
+* 소스코드 : [https://github.com/redutan/ddd-values](https://github.com/redutan/ddd-values)
 * [Implementing Domain-Driven Design. Vaughn Vernon](http://www.acornpub.co.kr/book/implement-ddd)
 * [자바 ORM 표준 JPA 프로그래밍. 김영한](http://acornpub.co.kr/book/jpa-programmig)
 * [http://kwonnam.pe.kr/wiki/java/jpa/elementcollection](http://kwonnam.pe.kr/wiki/java/jpa/elementcollection)
