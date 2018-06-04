@@ -43,7 +43,6 @@ interface DomainEvent {
 }
 ```
 
-
 *추가사항*
 
 * 멱등성
