@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "IDDD 10장. 애그리게잇"
-date: "2018-06-03 19:26"
+date: "2018-06-05 01:29"
 tags:
     - IDDD
     - DDD
@@ -300,4 +300,3 @@ public class Order {
 * 일관성 경계, 트랜잭션, 고정자가 중요
 * 객체 그래프 참조 VS ID 참조
 * 경계 외부에서는 **결과적 일관성**
-* 응집력있는 구현 : 데메테르 법칙, 묻지 말고 시켜라(command over query??)
