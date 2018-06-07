@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "IDDD 111장. 팩토리"
+title: "IDDD 11장. 팩토리"
 date: "2018-06-07 11:12"
 tags:
     - IDDD
