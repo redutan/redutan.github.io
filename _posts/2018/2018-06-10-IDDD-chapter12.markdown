@@ -8,7 +8,7 @@ tags:
     - BOOK
 ---
 
-> 전역(global) 액세스가 필요한 각 객체의 타입미다, 해당 타입의 모든 객체가 담긴 인메모리 컬렉션이란 허상을 제공하는 객체를 생성하자.
+> 전역(global) 액세스가 필요한 각 객체의 타입이다, 해당 타입의 모든 객체가 담긴 인메모리 컬렉션이란 허상을 제공하는 객체를 생성하자.
 > 잘 알려진 전역의 인터페이스를 통한 액세스를 설정하자.
 > 객체를 추가하거나 제거하는 메소드를 제공하자...
 > 일정 조건에 부합되는 특성을 갖는 객체를 선택해 완전히 인스턴스화된 객체나 여러 객체의 컬렉션으로 반환하는 메소드를 제공하자...
@@ -430,7 +430,9 @@ if (id.identifiesWarble()) {
 * 그렇게 된다면 Repository 계층에서 캡슐화 시켜서 하위 타입 별 분기 처리를 할 수 있을 것이다.
 
 ```java
+@Entity
 class ServiceProvider {
+    ...
     private ServiceType type;
 
     public void scheduleService(Date date, ServiceDescription description) {
