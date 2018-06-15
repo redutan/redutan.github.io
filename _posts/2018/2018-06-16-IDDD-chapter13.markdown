@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "IDDD 13장. 바운디드 컨텍스트 통합"
-date: "2018-06-14 21:25"
+date: "2018-06-16 00:04"
 tags:
     - IDDD
     - DDD
@@ -167,6 +167,8 @@ interface CollaboratorService  {
 
 ### 당신은 책임을 감당할 수 있는가
 
+외부 바운디드 컨텍스트에서 정보를 (이벤트를 통해서) 복제한 후 그것을 지속적으로 동기화한다. 즉, **데이트를 복사하는 복잡한 책임이 생긴다.**
+
 이벤트가 항상 순차적으로 구독자에게 온다는 보장이 없다. 고로 이벤트 처리 시 항상 *발생시각*을 확인해서 처리해야한다.
 
 
@@ -233,9 +235,84 @@ class Member {
 
 ### 장기 실행 프로세스와 책임의 회피
 
-TODO
+다른 바운디드 컨텍스트에게 데이터 생성 책임을 지게 하고, 단순하게 레코드 시스템이 그 고유한 정보를 처리하게 할 것이다. 
+즉, **책임을 네트워크 건너로 차버린다.**
+
+*제품을 생성하는 유스케이스를* 살펴본다
+
+1. 사용자는 제품 설명 정보를 제공한다.
+2. 사용자는 팀토론에 대한 의사를 표시한다.
+3. 사용자는 정의된 제품을 만들도록 요청한다.
+4. 시스템은 포럼과 **토론**이 들어간 제품을 만든다.
+
+**애자일 프로젝트 관리 컨텍스트에서**
+
+`ProjectService#newProductWithDiscussion(NewProductCommand)`
+
+* `Product`와 `ProductDiscussion`을 생성
+* `ProductCreated` 이벤트 발행
+    * `Discussion#availablity#isRequested`(토론 가능 상태)가 참이면 **장기 프로세스를 시작** 한다.
+    * 장기 실행 프로세스 == 상품 토론을 생성
+* 추후에 구매를 통해서 토론을 생성할 수도 있다. `Product#requestDiscussion(DiscussionAvailablity)`
+    * `ProductDiscussionRequested` 이벤트 발행
+
+그렇다면 사용 가능 상태가 `REQUESTED`가 아니라면 이 이벤트의 발행의 의미가 있는가?
+
+\> 이것에 대한 책임은 이벤트 구독자가 갖는다.
+
+`ProductDiscussionRequestedListener#listensToEvents`
+
+* `ProductCreated`, `ProductDiscussionRequested` 이벤트를 수신한다.
+
+`ProductDiscussionRequestedListener`
+
+```java
+    protected void filteredDispatch (String type, String textMessage) {
+        // 토론 사용 가능상태가 아니면 이벤트 처리 없음
+        if (!reater.eventBooleanValue("requestingDiscussion")) {
+            return;
+        }
+        ...
+        // CreateExclusiveDicussion 커맨드를 만들어 협업 컨텍스트에 메시징 인프라를 통해서 이벤트 발행
+        this.messageProducer().send(...);
+    }
+```
+
+`여기서 잠깐`
+
+* 애자일 프로젝트 관리 컨텍스트에서 `Product` 애그리게잇에서 발행된 이벤트(`ProductCreated`)를 구독할 리스터를 만들 필요가 있을까?
+    * 차라리 협업 컨텍스트에서 `ProductCreated` 이벤트를 바로 구독하는 것이 낫지 않을까?
+    * 그런데 `ProductCreated`는 협업 컨텍스트의 유비쿼터스 언어와 어울리지 않고, 이 이벤트가 `Forum`과 `Discussion`을 생성하게 한다는 것을 연결시키는 것이 힘들다.
+    * 고로 협업 컨텍스트 입장에서 `CreateExclusiveDicussion` 명령을 이벤트로 받는 것이 어색하지 않다.
+
+**협업 컨텍스트에서**
+
+`ExclusiveDiscussionCreationListener#filteredDispatch(String, String)`
+
+* 위에서 이어 애자일 프로젝트 관리 컨텍스트에서 발행한 `CreateExclusiveDicussion`를 구독
+* `ForumService#startExclusiveForumWithDiscussion`를 호출해서 `Forum`과 `Discussion`을 생성
+    * 생성과 동시에 `DiscussionStarted` 이벤트를 발행한다.
+
+**다시 애자일 프로젝트 관리 컨텍스트로 돌아와서**
+
+`DiscussionStartedListener#filteredDispatch(String, String)`
+
+* 협업 컨텍스트에서 발행한 `DiscussionStarted` 이벤트를 구독한다.
+
+이어서 `ProductService#initiateDiscussion(InitiateDiscussionCommand)`
+
+* `Product#initiateDiscussion` 를 실행해서 아까 생성한 `Product`에서 `Discussion` 생성 상태 변경
+    * 당연히 멱등하다. 이미 `Discussion`을 생성해서 `READY` 상태라면 아무일도 일어나지 않는다. 즉 `REQUESTED` 상태에서만 이하 작업이 실행된다.
+    * 그리고 `ProductDiscussionInitiated` 이벤트를 발행한다.
+
+`여기서 잠깐`
+
+* 이 장기 실행 프로세스는 네트워크를 건너서 통신하고 메시징 인프라에 의존하는데 여기에 문제가 생기면 어떻게 될까?
+* 즉 프로세스가 끝까지 실행한다고 확신할 수 있을까?
 
 ### 프로세스 상태 머신과 타임아웃 트래커
+
+TODO
 
 ### 좀 더 복잡한 프로세스 설계하기
 
