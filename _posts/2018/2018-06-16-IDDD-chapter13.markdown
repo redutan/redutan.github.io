@@ -128,12 +128,12 @@ Content-Type: application/vnd.saasovation.idovation+json
 `그림 13-1` *ID와 액세스 컨텍스트와 협업 컨텍스트의 부패 방지 계층 사이의 통합을 위해 사용된 오픈 호스트 서비스*
 
 ```java
-interface CollaboratorService  {
-    Author authorFrom(Tenant tenant, String identity);
-    Creator creatorFrom(Tenant tenant, String identity);
-    Moderator moderatorFrom(Tenant tenant, String identity);
-    Owner ownerFrom(Tenant tenant, String identity);
-    Participant participantFrom(Tenant tenant, String identity);
+interface CollaboratorService {
+    Author authorFrom(Tenant tenant, String identity);
+    Creator creatorFrom(Tenant tenant, String identity);
+    Moderator moderatorFrom(Tenant tenant, String identity);
+    Owner ownerFrom(Tenant tenant, String identity);
+    Participant participantFrom(Tenant tenant, String identity);
 }
 ```
 
