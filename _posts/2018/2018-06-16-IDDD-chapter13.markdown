@@ -247,6 +247,8 @@ class Member {
 
 **애자일 프로젝트 관리 컨텍스트에서**
 
+![애자일 프로젝트 관리 컨텍스트에서 흐름도](http://www.plantuml.com/plantuml/svg/ZP7DIaGn38NtUOg-m7q15yF0k5JmP-4wqnwzWTfUcrJnxGrSos0HTDdpdPEVzAZ6pVfh9evMMpXbGJ7QN9Ge6nSBTwsc7kqHxLqYVaFa4R7FyJmri25HhCLQpKE-5erTLMfvm5k7kkL6r53GVXIzXIg_O4yvIsnyPiK0znqTj0yQbiCqNxWA1H_VsfFOUcbBa_EItKE3EvXMSRxrSnPTQGABU__Up_FFaWqDoLqRMrpf7wdbC1_32obAebbUXdMSv-Wk_zKl)
+
 `ProjectService#newProductWithDiscussion(NewProductCommand)`
 
 * `Product`와 `ProductDiscussion`을 생성
@@ -287,6 +289,8 @@ class Member {
 
 **협업 컨텍스트에서**
 
+![협업 컨텍스트에서 흐름도](http://www.plantuml.com/plantuml/svg/ZP5DJaCn38JtFaKkq7S05gWIFojOe9uWBsy4bjBaAROBt1u72JNbWTHLf9dFav6z5urDxPXfYHhdA0ZF48clU34OADMYhURmy96o2Pzmpv9CX6kvQuZgxnEBeg3HwacSU8r5msDjTZoWdJXXQrmevqH2KTRFGJdqTbY8nb9Xjxkzfb2u2MApfCOpw1hUOyVUVRx_FqtJq74a_flurlucVv3VYHquQquLlDCWkBrPYrEhpPdbZRQUB-dob7kKnG_z1G00)
+
 `ExclusiveDiscussionCreationListener#filteredDispatch(String, String)`
 
 * 위에서 이어 애자일 프로젝트 관리 컨텍스트에서 발행한 `CreateExclusiveDicussion`를 구독
@@ -294,6 +298,9 @@ class Member {
     * 생성과 동시에 `DiscussionStarted` 이벤트를 발행한다.
 
 **다시 애자일 프로젝트 관리 컨텍스트로 돌아와서**
+
+![다시 애자일 프로젝트 관리 컨텍스트에서 흐름도](http://www.plantuml.com/plantuml/svg/VP1D2i8m48NtSufSe1TmKRfm8oWeFK5-7ZfGavAP2DxU24gaj2uV-RwybmoYDckvJnIiMcS5vWGHUyMbe81yYfhJPFOileXmYkDRG3YoA28opJMovzb6DUUSGl4w8Z_OO-s849Nr-OtjsaDaPQi8HBy3JDVrs-LcPwGuyPaTQ9lg-iMowl6dhrcqO9hr5s_SsckgEXStiTneG0prery0)
+
 
 `DiscussionStartedListener#filteredDispatch(String, String)`
 
@@ -312,10 +319,112 @@ class Member {
 
 ### 프로세스 상태 머신과 타임아웃 트래커
 
-TODO
+위 문제점 해결을 위해서 타임아웃 트래커가 필요하게 된다.
+
+*타입아웃 트래커*
+
+트래커는 완료까지 부여된 시간이 만료된 프로세스를 감시하는데. 이런 프로세스는 만료되기 전까지 몇번이고 재시도될 수 있다. 
+트래커는 원하는 경우 고정된 시간 간격을 재시도하도록 설계할 수 있고, 재시도를 전혀 하지 않거나 정해진 횟수만큰을 재시도한 후에 타임아웃을 발생시키도록 할 수도 있다.
+*기술적 서브도메인의 일부다*
+
+![상품의 토론 생성 흐름도 with 타임아웃 트래커](http://www.plantuml.com/plantuml/svg/XP5HIiSm38VVUufUm0liGGRwCX2KkGkK9W_1BTa_IGLlRmiAhbHzAQ7zVUdNT3PFwkNOGnPsbJs-g439_aYMYna9htWhQ8xmH7Lbr71MX3ATYVqx_ehwJXdxeunccwRyXhhYAKOk-d49RNJWWx2v9cA4AnD7LuNmlsAyk-_CuXJRKtz02vDJybg5BbhXlxMcVaeiNmgDW-VYWvQ_ZQDsIm1ZeEqqSnnwBn1cPAY_zma0)
+
+`ProductService#startDiscussionInitiation`
+
+```java
+package com.saasovation.agilepm.application;
+
+class ProductService {
+    @Transactional
+    public void startDiscussionInitiation(
+            StartDiscussionInitiationComman command) {
+        Product product = productRepository.findById(...)
+        
+        TimeConstrainedProcessTracker tracker = new TimeConstrainedProcessTracker(
+                product.tenantId().id,
+                ProcessId.newProcessId(),
+                "Create discussion for product : " + product.name(),
+                new Date(),
+                5L * 60L * 1000L, // 5분 마다 재시도
+                3,                // 총 3회 재시도한다.
+                ProductDiscussionRequestTimedOut.class);
+
+        processTrackerRepository.add(tracker);  // 타임아웃 트래커 등록
+        
+        product.setDiscussionInitiationId(
+                tracker.processId().id());
+    }
+}
+```
+
+**상품의 토론 타임아웃 or 재시도 흐름도**
+
+![상품의 토론 타임아웃 or 재시도 흐름도 with 타임아웃 트래커](http://www.plantuml.com/plantuml/svg/dOzTgi8m44RViufiuDu5-20jj8L2GL4t49EvC90Vd9aKkdldHG8g2lSb9EISR-RhM1n9JT6uA5OmGQbYh3rI2TNBWEmhCvPy0g5jGHR8GFPd_o3EG2jwiBidkNszXHbo69F3E1Mwg1WELHJomFmfGCq_bTfQSqP19tfhMkEbWMgsHxzgYBjYHDb-ftvUni50PB04sl9VzPlwlJp1hGBBon03EPXEZvhY7G00)
+
+**마지막에 상품과 토론이 정상적으로 생성되면 흐름도**
+
+![상품과 토론이 정상적으로 생성 시 흐름도](http://www.plantuml.com/plantuml/svg/ZOun3i8m34Ntd28Nu08Cg1AC34Zj1IBd3nQ94zaEvwTC5HKWHlk_x-V9FAcFMW8rSMqbNjXec76J-HKXNzaS0Wrz7Pcu9_5uqvO7-GnzCE5JzBPRkEBSn5mJ2_AA4CmMJNI7Xl3L6G-ddIeU8mix9yVM2ZjcQ_sB_tnmFKAjzW973XCaZrgU)
+
+* 애자일 프로젝트 관리 컨텍스트에서 마지막으로 상품의 토론이 정상적으로 생성되면 **타임아웃 트래커를 완료** 시켜야 한다.
+* 이것으로 프로세스는 끝난다.
+
+*위 장기 실행 프로세스의 문제점과 해결책*
+
+* 동일한 `CreateExclusiveDiscussion` 커맨드가 여러 번 발송된다.
+    * 멱등성을 지켰기 때문에 문제가 없을 것 같다.
+    * 하지만 애자일 프로젝트 관리 컨텍스트가 실패한다면 문제가 발생할 수 있다.
+    * 결국 협업 컨텍스트의 `ExclusiveDiscussionCreationListener`가 멱등한 애플리케이션 서비스 메서드로 작업을 위임할 수 있다면 많은 문제점을 해결할 수 있다.
+
+![협업 컨텍스트에서 흐름도](http://www.plantuml.com/plantuml/svg/ZP5DJaCn38JtFaKkq7S05gWIFojOe9uWBsy4bjBaAROBt1u72JNbWTHLf9dFav6z5urDxPXfYHhdA0ZF48clU34OADMYhURmy96o2Pzmpv9CX6kvQuZgxnEBeg3HwacSU8r5msDjTZoWdJXXQrmevqH2KTRFGJdqTbY8nb9Xjxkzfb2u2MApfCOpw1hUOyVUVRx_FqtJq74a_flurlucVv3VYHquQquLlDCWkBrPYrEhpPdbZRQUB-dob7kKnG_z1G00)
+
+* 위 흐름도 기준에서 `startForum`, `startDiscusssion` 행위가 멱등하면 해결된다.
 
 ### 좀 더 복잡한 프로세스 설계하기
 
+복잡한 상황에서 다수의 완료 단계가 필요하게 된다면 **상태 머신**이 좋은 선택
+
+```java
+Proces process = new TestableTimeConstrainedProcess(
+        TENANT_ID,
+        ProcessId.newProcessId(),
+        "Testable Time Constrained Process",
+        5000L); // 재시도 없이 5초 내로 완료되야 한다.
+
+TimeConstrainedProcessTracker tracker = 
+        process.timeConstrainedProcessTracker();
+    
+process.confirm1();
+
+assertFalse(process.isCompleted());
+assertFalse(process.didProcessingComplete());
+assertEquals(process.processCompletionType(), ProcessCompletionType.NotCompleted);
+
+process.confirm2();
+
+assertTrue(process.isCompleted());
+assertTrue(process.didProcessingComplete());
+assertEquals(process.processCompletionType(), ProcessCompletionType.CompletedNormally);
+assertNull(process.timedOutDate());
+
+tracker.informProcessTimedOut();    // 어짜피 이미 완료되어 있으므로 아무처리가 없을 것
+assertFalse(process.isTimedOut());  // 즉 타임아웃 되지 않았으므로 언제나 false
+```
+
+* `TestableTimeConstrainedProcess`는 재시도 없이 5초 내로 완료되야 한다.
+* `confirm1()`, `confirm2()`만 호출된다면 완전히 완료 상태로 표시된다. 
+    * 내부적으로 2가지 상태를 속성으로 지니고 있다.
+    * 즉, `confirm1`, `confirm2` 둘 다 `true` 여야지 완료 상태
+
 ### 메시징이나 시스템을 활용할 수 없을 때
 
+* **고가용성 확보**가 최선이다.
+* 메시징인프라가 죽었다가 다시 살아났을때 *자동으로 리스너가 재활성화* 될 수록 해야한다.
+
 ## 마무리
+
+* 분산 컴퓨팅에서의 통합
+* RESTful VS 메시징인프라
+* 장기 수행 프로세스
+    * Retry와 타임아웃
+    * **멱등성**
+    * 복잡한 상태를 해결해주는 *상태 머신*
