@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OS X - OS 업데이트 후 git 등 오류 발생 시 솔루션
+title: macOs - OS 업데이트 후 git 등 오류 발생 시 솔루션
 date: '2015-10-05 23:34'
 tags:
   - error
@@ -8,10 +8,12 @@ tags:
   - git
 ---
 
-`macOs High Sierra` 업데이트 시 발생 - 그냥 연례행사 인듯...
-`macOS Sierra` 업데이트 시 발생
+* `macOs High Sierra` 업데이트 시 발생
+* `macOs High Sierra` 업데이트 시 발생
+* `macOS Sierra` 업데이트 시 발생
+* `OS X El Capitan` 업데이트 tl qkftod
 
-*과거 `OS X El Capitan` 업데이트도 포함됨*
+> 그냥 연례행사 인 듯...
 
 _언제나 처럼 먼저 업데이트하면 골치아픈 일이 많이 생기네요 ㅠ_
 
