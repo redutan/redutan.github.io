@@ -11,7 +11,7 @@ tags:
 * `macOs High Sierra` 업데이트 시 발생
 * `macOs High Sierra` 업데이트 시 발생
 * `macOS Sierra` 업데이트 시 발생
-* `OS X El Capitan` 업데이트 tl qkftod
+* `OS X El Capitan` 업데이트 시 발생
 
 > 그냥 연례행사 인 듯...
 
