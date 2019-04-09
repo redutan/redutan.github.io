@@ -265,7 +265,7 @@ public interface DiscounterFactory {
     Discountable getDiscounter(String discountName);
 }
 
-public class SimpleDiscounterFactory {
+public class SimpleDiscounterFactory implements DiscounterFactory {
     @Override
     Discountable getDiscounter(String discountName) {
         if ("NAVER".equals(discountCode)) {   // 네이버검색 할인
@@ -282,7 +282,9 @@ public class SimpleDiscounterFactory {
 {% endhighlight %}
 
 {% highlight java %}
-    DiscounterFactory discounterFactory = new SimpleDiscounterFactory();
+    
+    
+    discounterFactory = new SimpleDiscounterFactory();
 
     // 실시간 할인내역 확인
     public Discount getDiscount(...) {
