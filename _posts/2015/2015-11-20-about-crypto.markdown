@@ -32,7 +32,7 @@ tags:
 # 암호화 인터페이스
 
 {% highlight java %}
-public class Crypto {
+public interface Crypto {
   // 암호화
   String encrypt(String plain);
   // 복호화
@@ -130,7 +130,7 @@ public class AES256Crypto implements Crypto {
 {% endhighlight %}
 
 256 bit 암호화 방식이기 때문에 키 입력에 대한 유효성을 추가하였습니다. - 아직은 논란이 있는 코드입니다.
-key size가 암호화 알고리즘의 bit 수를 가르치는 것과 동일하게 됩니다.
+key size가 암호화 알고리즘의 bit 수를 가르키는 것과 동일하게 됩니다.
 **즉 AES256 이라는 것은 암호화 키 사이즈가 256 bit 라는 말과 동일합니다.**
 
 
@@ -292,7 +292,7 @@ public class StringEncoder implements Encoder {
   }
   // string -> bytes
   public byte[] encode(String str) {
-    return str.getByte(charset);
+    return str.getBytes(charset);
   }
   // bytes -> string
   public String decode(byte[] bytes) {
@@ -332,7 +332,7 @@ public class AES256Crypto implements Crypto {
   // 암호화
   public String encrypt(String plain) {
     // 암호화 키 생성 - keyEncoder를 이용
-    byte[] keyData = keyEncoer(secretKey);
+    byte[] keyData = keyEncoer.encode(secretKey);
     SecretKey secureKey = new SecretKeySpec(keyData, "AES");
 
     Cipher c = Cipher.getInstance(algorithm);
