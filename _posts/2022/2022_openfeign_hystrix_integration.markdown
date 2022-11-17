@@ -1,3 +1,12 @@
+---
+layout: "post"
+title: "spring boot 2.4.x 에서 openfeign + hystrix 통합하기"
+date: "2022-11-17 23:09"
+tags:
+    - spring-boot
+---
+
+
 spring-boot 2.4.x spring-cloud 2020.x 의존성 상황에서 feign.hystrix.enabled=true가 안됨
 `feign.circuitbreaker.enabled=true` 로 바꿔보지만 openfeign과 hystrix가 잘 통합이 안 됨.
 
