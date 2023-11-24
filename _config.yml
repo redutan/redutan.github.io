@@ -37,7 +37,7 @@ menu:
 # Owner/author information
 owner:
   name:           MJ
-  site:           http://redutan.github.io
+  site:           https://redutan.github.io
   avatar:         images/avatar.jpg
   bio:            "Backend 개발자 사람입니다. 어플리케이션의 복잡성을 다루는 DDD에 관심이 많습니다. 어제보다 더 나은 개발자가 되려고 항상 노력합니다."
   email:          redutan@gmail.com
